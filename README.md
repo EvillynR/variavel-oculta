@@ -13,7 +13,13 @@ O projeto é o resultado prático do trabalho "A gamificação como solução no
 - **Ícaro Alves**: gamificação e pistas
 - **Evillyn Rosa**: gestão do projeto e back end
 
-## Como abrir
+## Jogar sem instalar nada (Windows)
+
+1. Na página do repositório, abra **Releases** e baixe o arquivo `VariavelOculta_v6.2.1_Windows.zip`.
+2. Descompacte a pasta inteira e dê dois cliques em `VariavelOculta.exe`. O `.exe` e o `.pck` precisam ficar juntos na mesma pasta.
+3. Se o Windows mostrar "O Windows protegeu o computador", clique em **Mais informações** e depois em **Executar assim mesmo**. O aviso aparece porque o jogo não tem assinatura digital.
+
+## Como abrir o projeto no Godot
 
 1. Instale o [Godot 4.7](https://godotengine.org/download) (versão padrão, não a .NET).
 2. No Godot, clique em **Importar**, escolha o arquivo `project.godot` desta pasta e abra o projeto.
@@ -64,6 +70,14 @@ godot --headless --fixed-fps 60 --path . --script res://tests/historia_completa_
 ```
 
 No fim aparece `RESULTADO: X ok, 0 falhas`.
+
+## Gerar o executável
+
+O arquivo `export_presets.cfg` já tem a configuração para Windows. No Godot, vá em **Projeto → Exportar**, escolha **Windows** e clique em **Exportar Projeto** (na primeira vez o Godot pede para baixar os modelos de exportação). Pelo terminal:
+
+```
+godot --headless --path . --export-release "Windows" build/windows/VariavelOculta.exe
+```
 
 ## Créditos
 
