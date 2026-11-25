@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/modelo_prop.gd" id="ms"]
+[ext_resource type="PackedScene" path="res://assets/models/calculadora.glb" id="g"]
+
+
+[node name="Calculadora" type="Node3D" groups=["camera_fade"]]
+
+[node name="Modelo" type="Node3D" parent="."]
+script = ExtResource("ms")
+modelo = ExtResource("g")
+rotacao = Vector3(0, 0, 0)
+caixa = Vector3(0.26, 0.2, 0.26)
+ajuste = 0
+base = Vector3(0, 0, 0)
+

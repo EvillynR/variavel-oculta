@@ -1,0 +1,17 @@
+# Normaliza finais de linha (Windows e Linux)
+* text=auto eol=lf
+
+# Arquivos binários: o Git não tenta comparar nem converter
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.glb binary
+*.blend binary
+*.wav binary
+*.ogg binary
+*.mp3 binary
+*.ttf binary
+*.otf binary
+*.zip binary
+*.res binary

@@ -1,0 +1,32 @@
+# Godot 4: cache de importação (é recriado ao abrir o projeto)
+.godot/
+.import/
+
+# Exportações e builds
+/build/
+/export/
+*.pck
+*.exe
+*.x86_64
+*.apk
+*.aab
+export_credentials.cfg
+
+# Configuração local do editor
+*.translation
+.mono/
+data_*/
+mono_crash.*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*~
+*.tmp

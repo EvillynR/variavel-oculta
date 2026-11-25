@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/materials/prop_board.tres" id="m0"]
+[ext_resource type="Material" path="res://assets/materials/prop_metal.tres" id="m1"]
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(1.480, 2.000, 0.510)
+
+
+[node name="ArmariosAlunos" type="CSGCombiner3D" groups=["camera_fade"]]
+
+[node name="Armario0" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.5100, 1.0000, 0.0000)
+material = ExtResource("m1")
+size = Vector3(0.480, 2.000, 0.500)
+
+[node name="Armario1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.0100, 1.0000, 0.0000)
+material = ExtResource("m1")
+size = Vector3(0.480, 2.000, 0.500)
+
+[node name="Armario2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.4900, 1.0000, 0.0000)
+material = ExtResource("m1")
+size = Vector3(0.480, 2.000, 0.500)
+
+[node name="Grade0" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.5100, 1.6750, 0.2550)
+material = ExtResource("m0")
+size = Vector3(0.280, 0.150, 0.010)
+
+[node name="Grade1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.0100, 1.6750, 0.2550)
+material = ExtResource("m0")
+size = Vector3(0.280, 0.150, 0.010)
+
+[node name="Grade2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.4900, 1.6750, 0.2550)
+material = ExtResource("m0")
+size = Vector3(0.280, 0.150, 0.010)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.0100, 1.0000, 0.0050)
+shape = SubResource("caixa")
+

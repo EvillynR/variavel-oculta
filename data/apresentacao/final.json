@@ -1,0 +1,313 @@
+{
+	"clues": {
+		"discovered": [
+			"ini_bilhete",
+			"port_quadro",
+			"port_frase",
+			"port_classes",
+			"mat_suplementares",
+			"mat_prova",
+			"mat_cantina",
+			"mat_senha",
+			"cie_ph",
+			"cie_caderno",
+			"cie_frascos",
+			"geo_rosa",
+			"geo_plano",
+			"geo_legenda",
+			"mus_lousa",
+			"mus_partitura",
+			"mus_bilhete",
+			"mus_sequencia"
+		]
+	},
+	"current_room": "",
+	"doors": {
+		"patio.porta": {
+			"open": true,
+			"story_locked": false,
+			"unlocked": true
+		},
+		"room_1.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"room_2.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"room_3.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"room_4.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"room_5.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"sala_saida.porta": {
+			"open": true,
+			"story_locked": false,
+			"unlocked": true
+		}
+	},
+	"monsters": {
+		"maestro": {
+			"active": false,
+			"pos": [
+				-15.0,
+				0.0,
+				-170.5
+			],
+			"state": "INACTIVE",
+			"yaw": -1.57079994678497
+		},
+		"reader": {
+			"active": false,
+			"pos": [
+				-18.6000003814697,
+				0.0,
+				-25.2000007629395
+			],
+			"state": "INACTIVE",
+			"yaw": 1.57079994678497
+		}
+	},
+	"narrative": {
+		"finished": [
+			"cena_abertura",
+			"cena_mapa",
+			"cena_portugues",
+			"doc_chamada",
+			"cena_leitor_desperta",
+			"nota_room_1_fim",
+			"cena_matematica",
+			"doc_diario",
+			"nota_room_2_fim",
+			"cena_ciencias",
+			"doc_relatorio",
+			"nota_room_3_fim",
+			"cena_geografia",
+			"doc_foto",
+			"nota_room_4_fim",
+			"cena_musica",
+			"doc_programa",
+			"nota_room_5_fim"
+		],
+		"fired": {
+			"cena_abertura": 1,
+			"cena_ciencias": 1,
+			"cena_geografia": 1,
+			"cena_leitor_desperta": 1,
+			"cena_mapa": 1,
+			"cena_matematica": 1,
+			"cena_musica": 1,
+			"cena_portugues": 1,
+			"doc_chamada": 1,
+			"doc_diario": 1,
+			"doc_foto": 1,
+			"doc_programa": 1,
+			"doc_relatorio": 1,
+			"nota_room_1_fim": 1,
+			"nota_room_2_fim": 1,
+			"nota_room_3_fim": 1,
+			"nota_room_4_fim": 1,
+			"nota_room_5_fim": 1
+		}
+	},
+	"objective": "A saída: a porta no fim do corredor.",
+	"phone": [],
+	"player": {
+		"pos": [
+			0.0,
+			0.0500000007450581,
+			-186.0
+		],
+		"visual_yaw": 3.14159265358979
+	},
+	"puzzles": {
+		"attempts": {
+			"cie_frasco": 2,
+			"geo_ponto": 2,
+			"mat_cofre": 2,
+			"mus_teclado": 1,
+			"port_gaveta": 2
+		},
+		"interactions": [
+			"patio.bilhete",
+			"patio.mapa",
+			"room_1.quadro",
+			"room_1.caderno",
+			"room_1.chamada",
+			"room_1.livro_preso",
+			"room_1.gaveta",
+			"room_2.cofre",
+			"room_2.quadro",
+			"room_2.prova",
+			"room_2.comanda",
+			"room_2.transferidor",
+			"room_2.diario",
+			"room_3.cartaz_ph",
+			"room_3.caderno",
+			"room_3.frascos",
+			"room_3.relatorio",
+			"room_3.armario",
+			"room_4.rosa",
+			"room_4.plano",
+			"room_4.globo",
+			"room_4.foto",
+			"room_4.mapa_cidade",
+			"room_5.quadro",
+			"room_5.partitura",
+			"room_5.bilhete",
+			"room_5.programa",
+			"room_5.piano",
+			"room_5.teclado"
+		],
+		"solved": [
+			"port_gaveta",
+			"mat_cofre",
+			"cie_frasco",
+			"geo_ponto",
+			"mus_teclado"
+		]
+	},
+	"reason": "apresentação: final",
+	"rooms": {
+		"states": {
+			"patio": 2,
+			"room_1": 5,
+			"room_2": 5,
+			"room_3": 5,
+			"room_4": 5,
+			"room_5": 5,
+			"sala_saida": 0
+		},
+		"visited": [
+			"patio",
+			"room_1",
+			"room_2",
+			"room_3",
+			"room_4",
+			"room_5"
+		]
+	},
+	"saved_at": "2026-11-15T19:23:02",
+	"story": {
+		"ended": false,
+		"flow": {
+			"room_1": "concluida",
+			"room_2": "concluida",
+			"room_3": "concluida",
+			"room_4": "concluida",
+			"room_5": "concluida"
+		},
+		"map": true,
+		"notes": [
+			{
+				"area": "patio",
+				"text": "NÃO FAÇA BARULHO.\nELES AINDA NÃO SABEM QUE VOCÊ ACORDOU."
+			},
+			{
+				"area": "patio",
+				"text": "AS PORTAS SÓ ABREM NA ORDEM DO MAPA."
+			},
+			{
+				"area": "patio",
+				"text": "EM CADA SALA HÁ UMA PERGUNTA.\nEM DUAS DELAS HÁ ALGUÉM."
+			},
+			{
+				"area": "patio",
+				"text": "SE OUVIR PASSOS, ESCONDA-SE.\nEU VOU TE AJUDAR A SAIR DAÍ."
+			},
+			{
+				"area": "room_1",
+				"text": "ELE QUASE NÃO ENXERGA.\nMAS OUVE TUDO."
+			},
+			{
+				"area": "room_1",
+				"text": "ESCONDA-SE."
+			},
+			{
+				"area": "room_1",
+				"text": "ELE SE ACALMOU.\nTERMINE O QUE COMEÇOU."
+			},
+			{
+				"area": "room_1",
+				"text": "A PORTA ESTÁ ABERTA.\nCORRA."
+			},
+			{
+				"area": "room_1",
+				"text": "BOA MENINA.\nA PRÓXIMA PORTA JÁ ESTÁ ABERTA."
+			},
+			{
+				"area": "room_2",
+				"text": "NÃO HÁ NINGUÉM AQUI.\nNÃO SE ACOSTUME."
+			},
+			{
+				"area": "room_2",
+				"text": "A PORTA ABRIU."
+			},
+			{
+				"area": "room_2",
+				"text": "FALTAM TRÊS.\nEU NUNCA ESTIVE NESSA ESCOLA."
+			},
+			{
+				"area": "room_3",
+				"text": "NÃO TOQUE NOS FRASCOS SEM PENSAR."
+			},
+			{
+				"area": "room_3",
+				"text": "A PORTA ABRIU."
+			},
+			{
+				"area": "room_3",
+				"text": "FALTAM DUAS."
+			},
+			{
+				"area": "room_4",
+				"text": "DESCUBRA PARA ONDE LEVARAM OS ALUNOS."
+			},
+			{
+				"area": "room_4",
+				"text": "A PORTA ABRIU."
+			},
+			{
+				"area": "room_4",
+				"text": "SÓ FALTA UMA.\nA ÚLTIMA TEM DONO."
+			},
+			{
+				"area": "room_5",
+				"text": "ELE NÃO TEM OLHOS.\nSÓ OUVIDOS."
+			},
+			{
+				"area": "room_5",
+				"text": "ELE TOCOU. AGORA ESCUTA.\nESCONDA-SE."
+			},
+			{
+				"area": "room_5",
+				"text": "O SILÊNCIO O ACALMOU.\nLEMBRA DA MELODIA?"
+			},
+			{
+				"area": "room_5",
+				"text": "CORRA. NÃO OLHE PARA TRÁS."
+			},
+			{
+				"area": "room_5",
+				"text": "A SAÍDA FICA NO FIM DO CORREDOR.\nEU ABRI PARA VOCÊ."
+			}
+		],
+		"revealed": [
+			"saida"
+		]
+	},
+	"version": 1
+}

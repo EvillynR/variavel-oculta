@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/materials/prop_board.tres" id="m0"]
+[ext_resource type="Material" path="res://assets/materials/prop_metal.tres" id="m1"]
+[ext_resource type="Material" path="res://assets/materials/prop_wood_dark.tres" id="m2"]
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(3.000, 1.300, 0.900)
+
+
+[node name="BancadaLab" type="CSGCombiner3D" groups=["camera_fade"]]
+
+[node name="Tampo" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.9300, 0.0000)
+material = ExtResource("m0")
+size = Vector3(3.000, 0.060, 0.900)
+
+[node name="Gabinete" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.4500, -0.0200)
+material = ExtResource("m2")
+size = Vector3(2.900, 0.900, 0.800)
+
+[node name="Pia" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 1.0500, 0.9800, -0.0500)
+material = ExtResource("m1")
+size = Vector3(0.500, 0.040, 0.500)
+
+[node name="Torneira" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 1.0300, 1.1300, -0.3500)
+material = ExtResource("m1")
+size = Vector3(0.060, 0.340, 0.060)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.6500, 0.0000)
+shape = SubResource("caixa")
+

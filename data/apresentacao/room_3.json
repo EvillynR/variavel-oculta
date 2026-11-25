@@ -1,0 +1,211 @@
+{
+	"clues": {
+		"discovered": [
+			"ini_bilhete",
+			"port_quadro",
+			"port_frase",
+			"port_classes",
+			"mat_suplementares",
+			"mat_prova",
+			"mat_cantina",
+			"mat_senha"
+		]
+	},
+	"current_room": "",
+	"doors": {
+		"patio.porta": {
+			"open": true,
+			"story_locked": false,
+			"unlocked": true
+		},
+		"room_1.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"room_2.porta": {
+			"open": false,
+			"story_locked": true,
+			"unlocked": true
+		},
+		"room_3.porta": {
+			"open": false,
+			"story_locked": false,
+			"unlocked": false
+		},
+		"room_4.porta": {
+			"open": false,
+			"story_locked": false,
+			"unlocked": false
+		},
+		"room_5.porta": {
+			"open": false,
+			"story_locked": false,
+			"unlocked": false
+		},
+		"sala_saida.porta": {
+			"open": false,
+			"story_locked": false,
+			"unlocked": false
+		}
+	},
+	"monsters": {
+		"maestro": {
+			"active": false,
+			"pos": [
+				-15.0,
+				0.000150250270962715,
+				-170.5
+			],
+			"state": "INACTIVE",
+			"yaw": -1.57079994678497
+		},
+		"reader": {
+			"active": false,
+			"pos": [
+				-18.6000003814697,
+				0.0,
+				-25.2000007629395
+			],
+			"state": "INACTIVE",
+			"yaw": 1.57079994678497
+		}
+	},
+	"narrative": {
+		"finished": [
+			"cena_abertura",
+			"cena_mapa",
+			"cena_portugues",
+			"doc_chamada",
+			"cena_leitor_desperta",
+			"nota_room_1_fim",
+			"cena_matematica",
+			"doc_diario",
+			"nota_room_2_fim"
+		],
+		"fired": {
+			"cena_abertura": 1,
+			"cena_leitor_desperta": 1,
+			"cena_mapa": 1,
+			"cena_matematica": 1,
+			"cena_portugues": 1,
+			"doc_chamada": 1,
+			"doc_diario": 1,
+			"nota_room_1_fim": 1,
+			"nota_room_2_fim": 1
+		}
+	},
+	"objective": "Vá para o Laboratório de Ciências (passe pela porta do pátio).",
+	"phone": [],
+	"player": {
+		"pos": [
+			0.0,
+			0.0500000007450581,
+			-95.5
+		],
+		"visual_yaw": -1.5707963267949
+	},
+	"puzzles": {
+		"attempts": {
+			"mat_cofre": 2,
+			"port_gaveta": 2
+		},
+		"interactions": [
+			"patio.bilhete",
+			"patio.mapa",
+			"room_1.quadro",
+			"room_1.caderno",
+			"room_1.chamada",
+			"room_1.livro_preso",
+			"room_1.gaveta",
+			"room_2.cofre",
+			"room_2.quadro",
+			"room_2.prova",
+			"room_2.comanda",
+			"room_2.transferidor",
+			"room_2.diario"
+		],
+		"solved": [
+			"port_gaveta",
+			"mat_cofre"
+		]
+	},
+	"reason": "apresentação: room_3",
+	"rooms": {
+		"states": {
+			"patio": 2,
+			"room_1": 5,
+			"room_2": 5,
+			"room_3": 1,
+			"room_4": 0,
+			"room_5": 0,
+			"sala_saida": 0
+		},
+		"visited": [
+			"patio",
+			"room_1",
+			"room_2"
+		]
+	},
+	"saved_at": "2026-11-15T19:22:51",
+	"story": {
+		"ended": false,
+		"flow": {
+			"room_1": "concluida",
+			"room_2": "concluida"
+		},
+		"map": true,
+		"notes": [
+			{
+				"area": "patio",
+				"text": "NÃO FAÇA BARULHO.\nELES AINDA NÃO SABEM QUE VOCÊ ACORDOU."
+			},
+			{
+				"area": "patio",
+				"text": "AS PORTAS SÓ ABREM NA ORDEM DO MAPA."
+			},
+			{
+				"area": "patio",
+				"text": "EM CADA SALA HÁ UMA PERGUNTA.\nEM DUAS DELAS HÁ ALGUÉM."
+			},
+			{
+				"area": "patio",
+				"text": "SE OUVIR PASSOS, ESCONDA-SE.\nEU VOU TE AJUDAR A SAIR DAÍ."
+			},
+			{
+				"area": "room_1",
+				"text": "ELE QUASE NÃO ENXERGA.\nMAS OUVE TUDO."
+			},
+			{
+				"area": "room_1",
+				"text": "ESCONDA-SE."
+			},
+			{
+				"area": "room_1",
+				"text": "ELE SE ACALMOU.\nTERMINE O QUE COMEÇOU."
+			},
+			{
+				"area": "room_1",
+				"text": "A PORTA ESTÁ ABERTA.\nCORRA."
+			},
+			{
+				"area": "room_1",
+				"text": "BOA MENINA.\nA PRÓXIMA PORTA JÁ ESTÁ ABERTA."
+			},
+			{
+				"area": "room_2",
+				"text": "NÃO HÁ NINGUÉM AQUI.\nNÃO SE ACOSTUME."
+			},
+			{
+				"area": "room_2",
+				"text": "A PORTA ABRIU."
+			},
+			{
+				"area": "room_2",
+				"text": "FALTAM TRÊS.\nEU NUNCA ESTIVE NESSA ESCOLA."
+			}
+		],
+		"revealed": []
+	},
+	"version": 1
+}

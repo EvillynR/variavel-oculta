@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/modelo_prop.gd" id="ms"]
+[ext_resource type="PackedScene" path="res://assets/models/escrivaninha.glb" id="g"]
+
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(1.6, 0.8, 1.45)
+
+[node name="Escrivaninha" type="Node3D" groups=["camera_fade"]]
+
+[node name="Modelo" type="Node3D" parent="."]
+script = ExtResource("ms")
+modelo = ExtResource("g")
+rotacao = Vector3(0, 0, 0)
+caixa = Vector3(1.6, 0.8, 1.45)
+ajuste = 0
+base = Vector3(0, 0, 0)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("caixa")
+

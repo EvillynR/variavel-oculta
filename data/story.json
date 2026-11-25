@@ -1,0 +1,1418 @@
+{
+ "description": "Roteiro das cenas de filme, documentos, escritos do mapa e fluxo das salas. Gerado por tools/build_story.py.",
+ "protagonist": "Yuko",
+ "map_speaker": "Mapa",
+ "cutscenes": {
+  "cena_abertura": {
+   "title": "Abertura",
+   "room_id": "patio",
+   "steps": [
+    {
+     "fade": "black"
+    },
+    {
+     "pose": "lying"
+    },
+    {
+     "title": "TRÊS DIAS DEPOIS DO ACIDENTE",
+     "wait": 3.2
+    },
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -6.0,
+        11.0,
+        -63.0
+       ],
+       "look": [
+        -14.0,
+        6.0,
+        -67.0
+       ]
+      },
+      "to": {
+       "pos": [
+        -8.0,
+        3.6,
+        -66.5
+       ],
+       "look": [
+        -12.5,
+        0.3,
+        -69.5
+       ]
+      },
+      "time": 8.0
+     },
+     "fade": "in"
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Frio... as pedras estão molhadas."
+      ],
+      [
+       "Yuko",
+       "Onde... onde eu estou?"
+      ]
+     ]
+    },
+    {
+     "cam": {
+      "to": {
+       "pos": {
+        "anchor": "player",
+        "offset": [
+         4.4,
+         2.4,
+         2.8
+        ]
+       },
+       "look": {
+        "anchor": "player",
+        "offset": [
+         0,
+         0.8,
+         0
+        ]
+       }
+      },
+      "time": 3.4
+     },
+     "pose": "standing",
+     "pose_time": 3.4
+    },
+    {
+     "cam": {
+      "to": {
+       "pos": [
+        -4.8,
+        2.3,
+        -77.0
+       ],
+       "look": [
+        -17.0,
+        4.6,
+        -64.5
+       ]
+      },
+      "time": 3.6,
+      "fov": 50
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Uma cerejeira... um pátio. É uma escola."
+      ],
+      [
+       "Yuko",
+       "Eu não lembro de ter vindo para cá."
+      ]
+     ]
+    },
+    {
+     "cam": {
+      "to": {
+       "pos": [
+        -7.5,
+        3.4,
+        -72.0
+       ],
+       "look": [
+        -11.0,
+        1.2,
+        -77.6
+       ]
+      },
+      "time": 3.0
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Tem alguma coisa em cima daquele banco."
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": [
+    {
+     "type": "set_objective",
+     "text": "Examine o banco do pátio."
+    },
+    {
+     "type": "show_controls"
+    },
+    {
+     "type": "checkpoint",
+     "reason": "início"
+    }
+   ]
+  },
+  "cena_mapa": {
+   "title": "O mapa",
+   "room_id": "patio",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": {
+        "anchor": "player",
+        "offset": [
+         4.0,
+         2.8,
+         2.6
+        ]
+       },
+       "look": {
+        "anchor": "player",
+        "offset": [
+         0,
+         1.2,
+         -1.0
+        ]
+       }
+      },
+      "to": {
+       "pos": {
+        "anchor": "player",
+        "offset": [
+         3.0,
+         2.4,
+         1.8
+        ]
+       },
+       "look": {
+        "anchor": "player",
+        "offset": [
+         0,
+         1.2,
+         -1.0
+        ]
+       }
+      },
+      "time": 3.0
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Um mapa da escola... alguém marcou cinco salas."
+      ],
+      [
+       "Yuko",
+       "Português, Matemática, Ciências, Geografia... Música."
+      ]
+     ]
+    },
+    {
+     "map_open": true
+    },
+    {
+     "lines": [
+      [
+       "Mapa",
+       "NÃO FAÇA BARULHO.\nELES AINDA NÃO SABEM QUE VOCÊ ACORDOU."
+      ]
+     ]
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Isso... não estava escrito aqui antes. A tinta ainda está molhada."
+      ]
+     ]
+    },
+    {
+     "lines": [
+      [
+       "Mapa",
+       "AS PORTAS SÓ ABREM NA ORDEM DO MAPA."
+      ],
+      [
+       "Mapa",
+       "EM CADA SALA HÁ UMA PERGUNTA.\nEM DUAS DELAS HÁ ALGUÉM."
+      ],
+      [
+       "Yuko",
+       "Alguém? Quem está escrevendo isso?"
+      ],
+      [
+       "Mapa",
+       "SE OUVIR PASSOS, ESCONDA-SE.\nEU VOU TE AJUDAR A SAIR DAÍ."
+      ]
+     ]
+    },
+    {
+     "map_close": true
+    }
+   ],
+   "luz": 1.0,
+   "effects": [
+    {
+     "type": "map_obtained"
+    },
+    {
+     "type": "open_door",
+     "door_id": "patio.porta",
+     "toast": "Mapa guardado — aperte [M] para abrir.\nA porta do pátio se abriu sozinha: o corredor fica logo à frente."
+    },
+    {
+     "type": "set_objective",
+     "text": "Vá até a Sala de Português (1ª porta do corredor). [M] abre o mapa."
+    },
+    {
+     "type": "checkpoint",
+     "reason": "mapa"
+    }
+   ]
+  },
+  "cena_portugues": {
+   "title": "A Leitora",
+   "room_id": "room_1",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -6.5,
+        5.0,
+        -12.0
+       ],
+       "look": [
+        -14.0,
+        1.4,
+        -17.0
+       ]
+      },
+      "to": {
+       "pos": [
+        -10.0,
+        5.2,
+        -21.0
+       ],
+       "look": {
+        "anchor": "monster:reader",
+        "offset": [
+         0,
+         2.6,
+         0
+        ]
+       }
+      },
+      "time": 5.0,
+      "fov": 42
+     }
+    },
+    {
+     "lines": [
+      [
+       "A Leitora",
+       "...a menina... assustada... abriu a porta... escura..."
+      ],
+      [
+       "Yuko",
+       "Ela não para de escrever. E fala sozinha."
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": []
+  },
+  "cena_leitor_desperta": {
+   "title": "A Leitora desperta",
+   "room_id": "room_1",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": {
+        "anchor": "monster:reader",
+        "offset": [
+         5.5,
+         3.2,
+         3.4
+        ]
+       },
+       "look": {
+        "anchor": "monster:reader",
+        "offset": [
+         0,
+         2.8,
+         0
+        ]
+       }
+      },
+      "to": {
+       "pos": {
+        "anchor": "monster:reader",
+        "offset": [
+         6.8,
+         3.6,
+         4.0
+        ]
+       },
+       "look": {
+        "anchor": "monster:reader",
+        "offset": [
+         0,
+         2.8,
+         0
+        ]
+       }
+      },
+      "time": 2.2,
+      "fov": 40
+     }
+    },
+    {
+     "lines": [
+      [
+       "A Leitora",
+       "Quem está... fora da carteira?"
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": []
+  },
+  "cena_matematica": {
+   "title": "Matemática",
+   "room_id": "room_2",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -6.0,
+        5.2,
+        -42.0
+       ],
+       "look": [
+        -15.0,
+        1.4,
+        -48.0
+       ]
+      },
+      "to": {
+       "pos": [
+        -7.0,
+        4.6,
+        -44.0
+       ],
+       "look": [
+        -21.5,
+        3.0,
+        -48.0
+       ]
+      },
+      "time": 4.0,
+      "fov": 42
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Ninguém... mas o giz ainda está no chão, quebrado."
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": []
+  },
+  "cena_ciencias": {
+   "title": "Ciências",
+   "room_id": "room_3",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -6.0,
+        5.0,
+        -97.0
+       ],
+       "look": [
+        -16.0,
+        1.4,
+        -104.0
+       ]
+      },
+      "to": {
+       "pos": [
+        -8.0,
+        4.4,
+        -99.5
+       ],
+       "look": [
+        -21.5,
+        3.0,
+        -104.2
+       ]
+      },
+      "time": 4.0,
+      "fov": 42
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Fórmulas até o teto... alguém escreveu isso por dias."
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": []
+  },
+  "cena_geografia": {
+   "title": "Geografia",
+   "room_id": "room_4",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -6.0,
+        5.0,
+        -122.0
+       ],
+       "look": [
+        -16.0,
+        1.4,
+        -128.0
+       ]
+      },
+      "to": {
+       "pos": [
+        -8.0,
+        4.4,
+        -123.0
+       ],
+       "look": [
+        -14.0,
+        1.5,
+        -128.0
+       ]
+      },
+      "time": 4.0,
+      "fov": 42
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Mapas riscados... todas as rotas terminam no mesmo lugar."
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": []
+  },
+  "cena_musica": {
+   "title": "O Maestro",
+   "room_id": "room_5",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -6.0,
+        5.2,
+        -172.0
+       ],
+       "look": [
+        -14.0,
+        1.6,
+        -176.0
+       ]
+      },
+      "to": {
+       "pos": [
+        -7.0,
+        5.0,
+        -168.0
+       ],
+       "look": {
+        "anchor": "monster:maestro",
+        "offset": [
+         0,
+         2.6,
+         0
+        ]
+       }
+      },
+      "time": 5.0,
+      "fov": 42
+     }
+    },
+    {
+     "lines": [
+      [
+       "O Maestro",
+       "(os dedos dele tocam no ar um piano que não existe)"
+      ],
+      [
+       "Yuko",
+       "Ele não tem olhos... só escuta."
+      ]
+     ]
+    }
+   ],
+   "luz": 1.0,
+   "effects": []
+  },
+  "cena_maestro_toca": {
+   "title": "A melodia do Maestro",
+   "room_id": "room_5",
+   "steps": [
+    {
+     "fade": "out",
+     "fade_time": 0.6,
+     "effects": [
+      {
+       "type": "monster_place",
+       "monster_id": "maestro",
+       "pos": [
+        -15.5,
+        0.0,
+        -182.2,
+        0.0
+       ]
+      },
+      {
+       "type": "player_place",
+       "pos": [
+        -7.0,
+        0.0,
+        -179.5
+       ],
+       "look": [
+        -15.5,
+        0.0,
+        -181.0
+       ]
+      }
+     ]
+    },
+    {
+     "fade": "in",
+     "fade_time": 1.0,
+     "cam": {
+      "from": {
+       "pos": [
+        -10.6,
+        4.6,
+        -179.4
+       ],
+       "look": [
+        -15.5,
+        2.9,
+        -181.2
+       ]
+      },
+      "to": {
+       "pos": [
+        -11.2,
+        4.3,
+        -179.8
+       ],
+       "look": [
+        -15.5,
+        3.1,
+        -181.4
+       ]
+      },
+      "time": 3.4,
+      "fov": 48
+     }
+    },
+    {
+     "lines": [
+      [
+       "O Maestro",
+       "(ele se senta ao piano. Os dedos compridos procuram as teclas.)"
+      ],
+      [
+       "Yuko",
+       "Ele vai tocar... e escrever na lousa. Uma vez só."
+      ]
+     ]
+    },
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -8.0,
+        4.6,
+        -174.6
+       ],
+       "look": [
+        -23.3,
+        3.2,
+        -175.4
+       ]
+      },
+      "to": {
+       "pos": [
+        -8.6,
+        4.5,
+        -174.8
+       ],
+       "look": [
+        -23.3,
+        3.2,
+        -175.4
+       ]
+      },
+      "time": 1.2,
+      "fov": 34
+     }
+    },
+    {
+     "sequencia": "room_5"
+    },
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        -11.0,
+        4.6,
+        -178.6
+       ],
+       "look": {
+        "anchor": "monster:maestro",
+        "offset": [
+         0,
+         3.1,
+         0
+        ]
+       }
+      },
+      "to": {
+       "pos": [
+        -11.6,
+        4.3,
+        -179.0
+       ],
+       "look": {
+        "anchor": "monster:maestro",
+        "offset": [
+         0,
+         3.3,
+         0
+        ]
+       }
+      },
+      "time": 2.4,
+      "fov": 44
+     },
+     "effects": [
+      {
+       "type": "monster_pose",
+       "monster_id": "maestro",
+       "pose": "search"
+      }
+     ]
+    },
+    {
+     "lines": [
+      [
+       "O Maestro",
+       "(as mãos param no ar. A cabeça gira, devagar, para onde você está.)"
+      ],
+      [
+       "O Maestro",
+       "...Agora é a sua vez. Sem desafinar."
+      ]
+     ]
+    }
+   ],
+   "luz": 0.8,
+   "effects": [
+    {
+     "type": "music_awake",
+     "room_id": "room_5"
+    }
+   ]
+  },
+  "cena_maestro_erro": {
+   "title": "Desafinado",
+   "room_id": "room_5",
+   "steps": [
+    {
+     "effects": [
+      {
+       "type": "monster_pose",
+       "monster_id": "maestro",
+       "pose": "catch"
+      }
+     ],
+     "cam": {
+      "from": {
+       "pos": {
+        "anchor": "monster:maestro",
+        "offset": [
+         5.6,
+         3.3,
+         1.5
+        ]
+       },
+       "look": {
+        "anchor": "monster:maestro",
+        "offset": [
+         0,
+         3.0,
+         0
+        ]
+       }
+      },
+      "to": {
+       "pos": {
+        "anchor": "monster:maestro",
+        "offset": [
+         4.8,
+         3.2,
+         1.2
+        ]
+       },
+       "look": {
+        "anchor": "monster:maestro",
+        "offset": [
+         0,
+         3.2,
+         0
+        ]
+       }
+      },
+      "time": 1.6,
+      "fov": 48
+     }
+    },
+    {
+     "lines": [
+      [
+       "O Maestro",
+       "DESAFINADO!"
+      ],
+      [
+       "O Maestro",
+       "(todas as cordas do piano rangem ao mesmo tempo)"
+      ]
+     ]
+    }
+   ],
+   "luz": 0.85,
+   "effects": [
+    {
+     "type": "music_wrong",
+     "room_id": "room_5"
+    }
+   ]
+  },
+  "cena_monitores": {
+   "title": "Os monitores",
+   "room_id": "sala_saida",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        3.5,
+        4.6,
+        -190.8
+       ],
+       "look": [
+        -5.8,
+        4.4,
+        -194.0
+       ]
+      },
+      "to": {
+       "pos": [
+        0.5,
+        4.0,
+        -192.0
+       ],
+       "look": [
+        -5.8,
+        4.5,
+        -194.0
+       ]
+      },
+      "time": 5.0,
+      "fov": 46
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Monitores... são as salas. Português... Matemática... Ciências... Geografia... Música."
+      ],
+      [
+       "Yuko",
+       "E esse aqui... é o pátio onde eu acordei."
+      ],
+      [
+       "Yuko",
+       "O horário da gravação: 02:14. Eu só acordei de manhã..."
+      ],
+      [
+       "Yuko",
+       "Alguém estava me olhando antes de eu acordar."
+      ]
+     ]
+    }
+   ],
+   "luz": 0.35,
+   "effects": [
+    {
+     "type": "set_objective",
+     "text": "Leia a ficha em cima da mesa."
+    },
+    {
+     "type": "checkpoint",
+     "reason": "entrada: saída"
+    }
+   ]
+  },
+  "cena_final": {
+   "title": "Final",
+   "room_id": "sala_saida",
+   "steps": [
+    {
+     "cam": {
+      "from": {
+       "pos": [
+        1.6,
+        2.7,
+        -190.7
+       ],
+       "look": [
+        -3.4,
+        1.9,
+        -192.6
+       ]
+      },
+      "to": {
+       "pos": [
+        1.0,
+        2.4,
+        -190.9
+       ],
+       "look": [
+        -3.4,
+        1.8,
+        -192.6
+       ]
+      },
+      "time": 3.0,
+      "fov": 48
+     }
+    },
+    {
+     "lines": [
+      [
+       "Ficha",
+       "PROJETO CRISÁLIDA — PARTICIPANTE 07: Yuko Tanaka. Ex-aluna, turma de 2019. Fase 2: CONCLUÍDA. Status: em observação."
+      ],
+      [
+       "Yuko",
+       "Ex-aluna... Fase 2... o que fizeram comigo?"
+      ],
+      [
+       "Yuko",
+       "O mapa... está escrevendo de novo."
+      ]
+     ]
+    },
+    {
+     "map_open": true
+    },
+    {
+     "lines": [
+      [
+       "Mapa",
+       "PARABÉNS. VOCÊ CHEGOU ATÉ AQUI."
+      ],
+      [
+       "Yuko",
+       "Você disse que ia me ajudar a escapar!"
+      ],
+      [
+       "Mapa",
+       "NÃO. EU DISSE QUE IA TE AJUDAR A SAIR DAÍ.\nDAQUELE PÁTIO."
+      ],
+      [
+       "Mapa",
+       "E VOCÊ SAIU. EXATAMENTE COMO PLANEJADO."
+      ],
+      [
+       "Mapa",
+       "OS TESTES ACABARAM, PARTICIPANTE 07.\nAGORA COMEÇA A PARTE INTERESSANTE."
+      ]
+     ]
+    },
+    {
+     "map_close": true
+    },
+    {
+     "cam": {
+      "to": {
+       "pos": [
+        0.5,
+        4.0,
+        -192.0
+       ],
+       "look": [
+        -5.8,
+        4.5,
+        -194.0
+       ]
+      },
+      "time": 2.5,
+      "fov": 42
+     }
+    },
+    {
+     "lines": [
+      [
+       "Yuko",
+       "Esse monitor... sou eu. De costas. Agora."
+      ]
+     ]
+    },
+    {
+     "fade": "out",
+     "wait": 1.5
+    },
+    {
+     "title": "CONTINUA...",
+     "wait": 3.5
+    }
+   ],
+   "luz": 0.55,
+   "effects": [
+    {
+     "type": "end_game"
+    }
+   ]
+  }
+ },
+ "documents": {
+  "doc_chamada": {
+   "after": [
+    [
+     "Yuko",
+     "Esse... é o meu nome. Eu estudei aqui?"
+    ]
+   ]
+  },
+  "doc_diario": {
+   "after": [
+    [
+     "Yuko",
+     "Vitamina C-7... fizeram isso com os próprios professores."
+    ]
+   ]
+  },
+  "doc_relatorio": {
+   "after": [
+    [
+     "Yuko",
+     "Participante 07... sou eu. Alguém está me observando."
+    ]
+   ]
+  },
+  "doc_foto": {
+   "after": [
+    [
+     "Yuko",
+     "Sou eu nessa foto... por que eu não lembro de nada disso?"
+    ]
+   ]
+  },
+  "doc_programa": {
+   "after": [
+    [
+     "Yuko",
+     "Eu tocava piano? ...minhas mãos lembram. Eu não."
+    ]
+   ]
+  }
+ },
+ "room_flow": {
+  "room_1": {
+   "door_id": "room_1.porta",
+   "monster_id": "reader",
+   "puzzle_id": "port_gaveta",
+   "noisy_object": "room_1.livro_preso",
+   "notes": {
+    "enter": "ELA QUASE NÃO ENXERGA.\nMAS OUVE TUDO.",
+    "awake": "ESCONDA-SE.",
+    "calm": "ELA SE ACALMOU.\nTERMINE O QUE COMEÇOU.",
+    "open": "A PORTA ESTÁ ABERTA.\nCORRA.",
+    "done": "BOA MENINA.\nA PRÓXIMA PORTA JÁ ESTÁ ABERTA."
+   },
+   "objective_search": "Procure as pistas (paredes, estantes e armários). A pergunta é o cadeado da gaveta da mesa da professora.",
+   "objective_hide": "Ela acordou! Esconda-se embaixo da mesa da professora e espere ela se acalmar.",
+   "objective_answer": "Ela se acalmou. Agora abra o cadeado da gaveta da mesa da professora (aperte E perto dele) e digite a resposta.",
+   "objective_run": "A porta abriu sozinha. Corra!",
+   "next_objective": "Vá para a Sala de Matemática (2ª porta)."
+  },
+  "room_2": {
+   "door_id": "room_2.porta",
+   "monster_id": "",
+   "puzzle_id": "mat_cofre",
+   "noisy_object": "",
+   "notes": {
+    "enter": "NÃO HÁ NINGUÉM AQUI.\nNÃO SE ACOSTUME.",
+    "open": "A PORTA ABRIU.",
+    "done": "FALTAM TRÊS.\nEU NUNCA ESTIVE NESSA ESCOLA."
+   },
+   "objective_search": "Procure as pistas (paredes, estantes e armários). A pergunta é o cofre de provas, embaixo da estante.",
+   "objective_hide": "Ele acordou! Esconda-se embaixo da mesa do professor e espere ele se acalmar.",
+   "objective_answer": "Ele se acalmou. Agora abra o cofre de provas, embaixo da estante (aperte E perto dele) e digite a resposta.",
+   "objective_run": "A porta abriu. Pode sair.",
+   "next_objective": "Vá para o Laboratório de Ciências (passe pela porta do pátio)."
+  },
+  "room_3": {
+   "door_id": "room_3.porta",
+   "monster_id": "",
+   "puzzle_id": "cie_frasco",
+   "noisy_object": "",
+   "notes": {
+    "enter": "NÃO TOQUE NOS FRASCOS SEM PENSAR.",
+    "open": "A PORTA ABRIU.",
+    "done": "FALTAM DUAS."
+   },
+   "objective_search": "Procure as pistas (paredes, estantes e armários). A pergunta é o armário de reagentes lacrado.",
+   "objective_hide": "Ele acordou! Esconda-se embaixo da mesa do professor e espere ele se acalmar.",
+   "objective_answer": "Ele se acalmou. Agora abra o armário de reagentes lacrado (aperte E perto dele) e digite a resposta.",
+   "objective_run": "A porta abriu. Pode sair.",
+   "next_objective": "Vá para a Sala de Geografia."
+  },
+  "room_4": {
+   "door_id": "room_4.porta",
+   "monster_id": "",
+   "puzzle_id": "geo_ponto",
+   "noisy_object": "",
+   "notes": {
+    "enter": "DESCUBRA PARA ONDE LEVARAM OS ALUNOS.",
+    "open": "A PORTA ABRIU.",
+    "done": "SÓ FALTA UMA.\nA ÚLTIMA TEM DONO."
+   },
+   "objective_search": "Procure as pistas (paredes, estantes e armários). A pergunta é o mapa da cidade na parede.",
+   "objective_hide": "Ele acordou! Esconda-se embaixo da mesa do professor e espere ele se acalmar.",
+   "objective_answer": "Ele se acalmou. Agora abra o mapa da cidade na parede (aperte E perto dele) e digite a resposta.",
+   "objective_run": "A porta abriu. Pode sair.",
+   "next_objective": "Vá para a Sala de Música (a última sala do corredor)."
+  },
+  "room_5": {
+   "door_id": "room_5.porta",
+   "monster_id": "maestro",
+   "puzzle_id": "mus_teclado",
+   "noisy_object": "",
+   "notes": {
+    "enter": "ELE NÃO TEM OLHOS.\nSÓ OUVIDOS.",
+    "awake": "ELE TOCOU. AGORA ESCUTA.\nESCONDA-SE.",
+    "calm": "O SILÊNCIO O ACALMOU.\nLEMBRA DA MELODIA?",
+    "erro": "DESAFINADO.\nESCONDA-SE.",
+    "open": "CORRA. NÃO OLHE PARA TRÁS.",
+    "done": "A SAÍDA FICA NO FIM DO CORREDOR.\nEU ABRI PARA VOCÊ."
+   },
+   "objective_search": "Leia as pistas (lousa, partitura e bilhete) e depois peça para ele tocar o piano. A senha vai no teclado ao lado da porta.",
+   "objective_hide": "Ele terminou de tocar e acordou! Esconda-se embaixo da mesa do professor e guarde a melodia na cabeça.",
+   "objective_answer": "Ele se acalmou. Digite a melodia (o número de cada nota, na ordem) no teclado ao lado da porta.",
+   "objective_run": "A porta abriu sozinha. Corra!",
+   "next_objective": "A saída: a porta no fim do corredor.",
+   "objective_wrong": "Desafinou! Ele ouviu o erro. Esconda-se e espere ele se acalmar para tentar de novo.",
+   "on_done": [
+    {
+     "type": "open_door",
+     "door_id": "sala_saida.porta"
+    },
+    {
+     "type": "map_reveal",
+     "area": "saida"
+    }
+   ]
+  }
+ },
+ "music_sequences": {
+  "room_5": {
+   "puzzle_id": "mus_teclado",
+   "monster_id": "maestro",
+   "notas": [
+    {
+     "nome": "Dó",
+     "numero": 3,
+     "som": "res://assets/audio/notas/do.wav",
+     "altura": -2
+    },
+    {
+     "nome": "Mi",
+     "numero": 7,
+     "som": "res://assets/audio/notas/mi.wav",
+     "altura": 0
+    },
+    {
+     "nome": "Si",
+     "numero": 8,
+     "som": "res://assets/audio/notas/si.wav",
+     "altura": 4
+    },
+    {
+     "nome": "Ré",
+     "numero": 4,
+     "som": "res://assets/audio/notas/re.wav",
+     "altura": -1
+    }
+   ],
+   "intervalo": 2.4,
+   "pausa": 0.5,
+   "piano": "room_5.piano",
+   "pistas_antes": [
+    "mus_lousa",
+    "mus_partitura",
+    "mus_bilhete"
+   ],
+   "pista_final": "mus_sequencia",
+   "cena": "cena_maestro_toca",
+   "cena_erro": "cena_maestro_erro",
+   "maestro_piano": [
+    -15.5,
+    0.0,
+    -182.2,
+    0.0
+   ],
+   "yuko_assiste": [
+    -7.0,
+    0.0,
+    -179.5
+   ],
+   "lousa": {
+    "centro": [
+     -23.3,
+     3.4,
+     -175.0
+    ],
+    "largura": 4.4
+   },
+   "teclado": {
+    "pos": [
+     -7.6,
+     0.0,
+     -178.4
+    ],
+    "yaw": 90.0
+   },
+   "ambiente": "musica_ambiente",
+   "resposta_tamanho": 4
+  }
+ },
+ "map": {
+  "areas": [
+   {
+    "id": "corredor",
+    "label": "",
+    "rect": [
+     -3.5,
+     -190,
+     3.5,
+     -4
+    ],
+    "requires": "map",
+    "kind": "corridor"
+   },
+   {
+    "id": "patio",
+    "label": "Pátio · onde acordei",
+    "rect": [
+     -23.5,
+     -83.5,
+     -3.5,
+     -58.5
+    ],
+    "requires": "map",
+    "door": [
+     -3.5,
+     -71.0
+    ],
+    "icon": "arvore",
+    "kind": "patio"
+   },
+   {
+    "id": "room_1",
+    "label": "1 · Português",
+    "rect": [
+     -23.5,
+     -30.1,
+     -3.5,
+     -7.4
+    ],
+    "requires": "map",
+    "door": [
+     -3.5,
+     -10.5
+    ],
+    "icon": "livro"
+   },
+   {
+    "id": "room_2",
+    "label": "2 · Matemática",
+    "rect": [
+     -23.5,
+     -58.5,
+     -3.5,
+     -37.5
+    ],
+    "requires": "map",
+    "door": [
+     -3.5,
+     -40.5
+    ],
+    "icon": "angulo"
+   },
+   {
+    "id": "room_3",
+    "label": "3 · Ciências",
+    "rect": [
+     -23.5,
+     -116.2,
+     -3.5,
+     -92.3
+    ],
+    "requires": "map",
+    "door": [
+     -3.5,
+     -95.5
+    ],
+    "icon": "frasco"
+   },
+   {
+    "id": "room_4",
+    "label": "4 · Geografia",
+    "rect": [
+     -23.5,
+     -138,
+     -3.5,
+     -116.8
+    ],
+    "requires": "map",
+    "door": [
+     -3.5,
+     -119.9
+    ],
+    "icon": "globo"
+   },
+   {
+    "id": "room_5",
+    "label": "5 · Música",
+    "rect": [
+     -23.5,
+     -185,
+     -3.5,
+     -165
+    ],
+    "requires": "map",
+    "door": [
+     -3.5,
+     -175.0
+    ],
+    "icon": "nota"
+   },
+   {
+    "id": "sala_saida",
+    "label": "SAÍDA",
+    "rect": [
+     -6,
+     -198,
+     6,
+     -190
+    ],
+    "requires": "saida",
+    "door": [
+     0.0,
+     -190.0
+    ],
+    "icon": "olho"
+   }
+  ],
+  "targets": [
+   {
+    "until_room_completed": "",
+    "needs": "no_map",
+    "target": [
+     -11.0,
+     -77.6
+    ],
+    "text": "O banco do pátio"
+   },
+   {
+    "until_room_completed": "room_1",
+    "target": [
+     -3.5,
+     -10.5
+    ],
+    "text": "Sala de Português"
+   },
+   {
+    "until_room_completed": "room_2",
+    "target": [
+     -3.5,
+     -40.5
+    ],
+    "text": "Sala de Matemática"
+   },
+   {
+    "until_room_completed": "room_3",
+    "target": [
+     -3.5,
+     -95.5
+    ],
+    "text": "Laboratório de Ciências"
+   },
+   {
+    "until_room_completed": "room_4",
+    "target": [
+     -3.5,
+     -119.9
+    ],
+    "text": "Sala de Geografia"
+   },
+   {
+    "until_room_completed": "room_5",
+    "target": [
+     -3.5,
+     -175.0
+    ],
+    "text": "Sala de Música"
+   },
+   {
+    "until_room_completed": "",
+    "target": [
+     0.0,
+     -190.0
+    ],
+    "text": "A saída"
+   }
+  ]
+ }
+}

@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bjajx66obiapj"]
+
+[ext_resource type="Texture2D" uid="uid://hc6pwllxg1qr" path="res://assets/textures/walls/lower_wood/weathered_planks_diff_2k.jpg" id="1_s8ax1"]
+[ext_resource type="Texture2D" uid="uid://cbixx8prsow3x" path="res://assets/textures/walls/lower_wood/weathered_planks_ao_2k.jpg" id="2_u2xf8"]
+[ext_resource type="Texture2D" uid="uid://dnnswpptvdwyd" path="res://assets/textures/walls/lower_wood/weathered_planks_nor_gl_2k.png" id="3_kg4br"]
+[ext_resource type="Texture2D" uid="uid://cewdan2qidl85" path="res://assets/textures/walls/lower_wood/weathered_planks_rough_2k.jpg" id="4_gholq"]
+
+[resource]
+albedo_color = Color(0.73153406, 0.78286356, 0.8319939, 1)
+albedo_texture = ExtResource("1_s8ax1")
+roughness = 0.66
+roughness_texture = ExtResource("4_gholq")
+emission_energy_multiplier = 0.1
+normal_enabled = true
+normal_scale = 3.49
+normal_texture = ExtResource("3_kg4br")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_u2xf8")
+uv1_scale = Vector3(0.25, 0.625, 0.25)
+uv1_triplanar = true
+texture_filter = 5

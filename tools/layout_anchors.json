@@ -1,0 +1,541 @@
+{
+ "scale": 3.0,
+ "marker_scale": 1.5,
+ "rooms": {
+  "Patio": {
+   "room_id": "patio",
+   "anchors": {
+    "mapa": {
+     "stand": [
+      -11.0,
+      0.0,
+      -76.3
+     ],
+     "marker": [
+      -11.0,
+      1.43,
+      -77.55
+     ],
+     "kind": "mapa",
+     "size": [
+      0.7,
+      0.03,
+      0.55
+     ],
+     "item": null
+    },
+    "bilhete": {
+     "stand": [
+      -9.0,
+      0.0,
+      -60.7
+     ],
+     "marker": [
+      -9.0,
+      2.9,
+      -58.75
+     ],
+     "kind": "papel_parede",
+     "size": null,
+     "item": null
+    }
+   },
+   "hiding": [],
+   "hiding_ids": []
+  },
+  "Portugues": {
+   "room_id": "room_1",
+   "anchors": {
+    "quadro": {
+     "stand": [
+      -18.0,
+      0.0,
+      -14.6
+     ],
+     "marker": [
+      -23.2,
+      3.4,
+      -18.75
+     ],
+     "kind": null,
+     "size": null,
+     "item": null
+    },
+    "caderno": {
+     "stand": [
+      -12.5,
+      0.0,
+      -9.65
+     ],
+     "marker": [
+      -12.5,
+      1.92,
+      -8.45
+     ],
+     "kind": "livro",
+     "size": null,
+     "item": "EstanteNorte"
+    },
+    "livro_preso": {
+     "stand": [
+      -11.0,
+      0.0,
+      -27.85
+     ],
+     "marker": [
+      -11.0,
+      3.57,
+      -28.9
+     ],
+     "kind": "livro",
+     "size": null,
+     "item": "EstanteSul"
+    },
+    "gaveta": {
+     "stand": [
+      -18.8,
+      0.0,
+      -28.9
+     ],
+     "marker": [
+      -18.8,
+      1.89,
+      -28.3
+     ],
+     "kind": "cadeado",
+     "size": null,
+     "item": "MesaProfessor1"
+    },
+    "chamada": {
+     "stand": [
+      -21.25,
+      0.0,
+      -13.9
+     ],
+     "marker": [
+      -21.79,
+      3.0,
+      -13.9
+     ],
+     "kind": "papel_parede",
+     "size": null,
+     "item": "EstanteFundo"
+    }
+   },
+   "hiding": [
+    "School/Props/Portugues/MesaProfessor1/Interactable"
+   ],
+   "hiding_ids": [
+    "room_1.esconderijo_mesa"
+   ]
+  },
+  "Matematica": {
+   "room_id": "room_2",
+   "anchors": {
+    "quadro": {
+     "stand": [
+      -18.0,
+      0.0,
+      -43.8
+     ],
+     "marker": [
+      -23.2,
+      3.4,
+      -47.95
+     ],
+     "kind": null,
+     "size": null,
+     "item": null
+    },
+    "prova": {
+     "stand": [
+      -17.0,
+      0.0,
+      -46.5
+     ],
+     "marker": [
+      -15.65,
+      2.235,
+      -46.5
+     ],
+     "kind": "papel",
+     "size": null,
+     "item": "Carteira2"
+    },
+    "comanda": {
+     "stand": [
+      -15.0,
+      0.0,
+      -39.65
+     ],
+     "marker": [
+      -15.0,
+      4.2,
+      -39.11
+     ],
+     "kind": "papel_parede",
+     "size": null,
+     "item": "EstanteNorte"
+    },
+    "transferidor": {
+     "stand": [
+      -21.0,
+      0.0,
+      -41.5
+     ],
+     "marker": [
+      -23.3,
+      3.6,
+      -41.5
+     ],
+     "kind": "transferidor",
+     "size": [
+      0.1,
+      2.4,
+      4.0
+     ],
+     "item": null
+    },
+    "cofre": {
+     "stand": [
+      -16.0,
+      0.0,
+      -56.25
+     ],
+     "marker": [
+      -16.0,
+      1.05,
+      -56.79
+     ],
+     "kind": "cadeado",
+     "size": null,
+     "item": "EstanteSul"
+    },
+    "diario": {
+     "stand": [
+      -18.6,
+      0.0,
+      -49.45
+     ],
+     "marker": [
+      -20.25,
+      2.46,
+      -49.45
+     ],
+     "kind": "livro",
+     "size": null,
+     "item": "MesaProfessor1"
+    }
+   },
+   "hiding": [
+    "School/Props/Matematica/MesaProfessor1/Interactable"
+   ],
+   "hiding_ids": [
+    "room_2.esconderijo_mesa"
+   ]
+  },
+  "Ciencias": {
+   "room_id": "room_3",
+   "anchors": {
+    "cartaz_ph": {
+     "stand": [
+      -19.0,
+      0.0,
+      -113.8
+     ],
+     "marker": [
+      -19.0,
+      3.2,
+      -115.9
+     ],
+     "kind": null,
+     "size": null,
+     "item": null
+    },
+    "caderno": {
+     "stand": [
+      -12.55,
+      0.0,
+      -111.0
+     ],
+     "marker": [
+      -14.5,
+      2.88,
+      -111.0
+     ],
+     "kind": "livro",
+     "size": null,
+     "item": "BancadaLab1"
+    },
+    "frascos": {
+     "stand": [
+      -18.0,
+      0.0,
+      -94.55
+     ],
+     "marker": [
+      -18.0,
+      1.92,
+      -93.2
+     ],
+     "kind": "frascos",
+     "size": [
+      1.6,
+      0.5,
+      0.5
+     ],
+     "item": "EstanteNorte"
+    },
+    "armario_reagentes": {
+     "stand": [
+      -9.6,
+      0.0,
+      -113.95
+     ],
+     "marker": [
+      -9.6,
+      1.05,
+      -114.49
+     ],
+     "kind": "cadeado",
+     "size": null,
+     "item": "EstanteSul"
+    },
+    "relatorio": {
+     "stand": [
+      -18.6,
+      0.0,
+      -102.75
+     ],
+     "marker": [
+      -20.25,
+      2.46,
+      -102.75
+     ],
+     "kind": "papel",
+     "size": null,
+     "item": "MesaProfessor1"
+    }
+   },
+   "hiding": [
+    "School/Props/Ciencias/MesaProfessor1/Interactable"
+   ],
+   "hiding_ids": [
+    "room_3.esconderijo_mesa"
+   ]
+  },
+  "Geografia": {
+   "room_id": "room_4",
+   "anchors": {
+    "rosa": {
+     "stand": [
+      -9.0,
+      0.0,
+      -124.0
+     ],
+     "marker": [
+      -9.0,
+      0.01,
+      -125.5
+     ],
+     "kind": "rosa",
+     "size": [
+      2.4,
+      0.02,
+      2.4
+     ],
+     "item": null
+    },
+    "plano": {
+     "stand": [
+      -10.8,
+      0.0,
+      -129.5
+     ],
+     "marker": [
+      -13.5,
+      2.64,
+      -129.5
+     ],
+     "kind": "papel",
+     "size": null,
+     "item": "MesaCartas1"
+    },
+    "globo": {
+     "stand": [
+      -6.85,
+      0.0,
+      -133.5
+     ],
+     "marker": [
+      -8.5,
+      2.0,
+      -133.5
+     ],
+     "kind": null,
+     "size": null,
+     "item": "Globo1"
+    },
+    "mapa_cidade": {
+     "stand": [
+      -20.6,
+      0.0,
+      -121.0
+     ],
+     "marker": [
+      -23.3,
+      2.8,
+      -121.0
+     ],
+     "kind": null,
+     "size": null,
+     "item": null
+    },
+    "foto": {
+     "stand": [
+      -19.1,
+      0.0,
+      -119.15
+     ],
+     "marker": [
+      -19.1,
+      3.9,
+      -118.61
+     ],
+     "kind": "foto",
+     "size": null,
+     "item": "EstanteNorte"
+    }
+   },
+   "hiding": [
+    "School/Props/Geografia/MesaProfessor1/Interactable"
+   ],
+   "hiding_ids": [
+    "room_4.esconderijo_mesa"
+   ]
+  },
+  "Musica": {
+   "room_id": "room_5",
+   "anchors": {
+    "quadro": {
+     "stand": [
+      -18.0,
+      0.0,
+      -170.4
+     ],
+     "marker": [
+      -23.2,
+      3.4,
+      -175.0
+     ],
+     "kind": null,
+     "size": null,
+     "item": null
+    },
+    "partitura": {
+     "stand": [
+      -11.8,
+      0.0,
+      -177.5
+     ],
+     "marker": [
+      -12.85,
+      3.75,
+      -177.5
+     ],
+     "kind": "papel_parede",
+     "size": null,
+     "item": "EstantePartitura1"
+    },
+    "piano": {
+     "stand": [
+      -15.5,
+      0.0,
+      -182.45
+     ],
+     "marker": [
+      -15.5,
+      2.4,
+      -182.81
+     ],
+     "kind": null,
+     "size": null,
+     "item": "Piano"
+    },
+    "bilhete": {
+     "stand": [
+      -12.5,
+      0.0,
+      -167.25
+     ],
+     "marker": [
+      -12.5,
+      3.0,
+      -166.71
+     ],
+     "kind": "papel_parede",
+     "size": null,
+     "item": "EstanteNorte"
+    },
+    "teclado": {
+     "stand": [
+      -6.25,
+      0.0,
+      -178.4
+     ],
+     "marker": [
+      -7.6,
+      1.3,
+      -178.4
+     ],
+     "kind": null,
+     "size": null,
+     "item": null
+    },
+    "programa": {
+     "stand": [
+      -18.6,
+      0.0,
+      -176.5
+     ],
+     "marker": [
+      -20.25,
+      2.46,
+      -176.5
+     ],
+     "kind": "papel",
+     "size": null,
+     "item": "MesaProfessor1"
+    }
+   },
+   "hiding": [
+    "School/Props/Musica/MesaProfessor1/Interactable"
+   ],
+   "hiding_ids": [
+    "room_5.esconderijo_mesa"
+   ]
+  },
+  "Saida": {
+   "room_id": "sala_saida",
+   "anchors": {
+    "ficha": {
+     "stand": [
+      -2.9,
+      0.0,
+      -191.9
+     ],
+     "marker": [
+      -4.2,
+      2.21,
+      -192.4
+     ],
+     "kind": "papel",
+     "size": null,
+     "item": null
+    }
+   },
+   "hiding": [],
+   "hiding_ids": []
+  }
+ }
+}

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://oe5pbsa1t6lh"]
+
+[ext_resource type="Script" uid="uid://bpm411nogjhmy" path="res://scripts/camera_zone.gd" id="1_6o7rs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6o7rs"]
+size = Vector3(4, 4.5, 10)
+
+[node name="CameraZone" type="Area3D" unique_id=687437370]
+script = ExtResource("1_6o7rs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1052127168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("BoxShape3D_6o7rs")
+
+[node name="CameraPoint" type="Marker3D" parent="." unique_id=992310303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 4, 7)

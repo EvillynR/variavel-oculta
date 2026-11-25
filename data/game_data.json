@@ -1,0 +1,1494 @@
+{
+ "format_version": 1,
+ "description": "Jogo de Yuko (escola japonesa) — pátio, 5 salas (Português e Música com professor; Matemática, Ciências e Geografia sem) e a saída no fim do corredor. Gerado por tools/build_story.py a partir de tools/story_content.py.",
+ "final_destination_id": "sala_saida",
+ "hearing_profiles": [
+  {
+   "id": "angulo_audicao",
+   "notes": "[PROVISÓRIO] Audição de O Ângulo: cópia do perfil padrão. Perfil final não especificado; ajuste aqui sem afetar os outros monstros."
+  },
+  {
+   "id": "cartografo_audicao",
+   "notes": "[PROVISÓRIO] Audição de O Cartógrafo: cópia do perfil padrão. Perfil final não especificado; ajuste aqui sem afetar os outros monstros."
+  },
+  {
+   "id": "leitor_audicao",
+   "notes": "[PROVISÓRIO] Audição de O Leitor: cópia do perfil padrão. Perfil final não especificado; ajuste aqui sem afetar os outros monstros."
+  },
+  {
+   "id": "maestro_audicao",
+   "notes": "[PROVISÓRIO] Audição de O Maestro: cópia do perfil padrão. Perfil final não especificado; ajuste aqui sem afetar os outros monstros."
+  },
+  {
+   "id": "perfil_alta_sensibilidade",
+   "sensitivity": 1.8,
+   "hearing_radius": 12.0,
+   "investigate_threshold": 0.1,
+   "wall_occlusion": 0.75,
+   "merge_radius": 1.0,
+   "merge_time": 3.0,
+   "notes": "[PERFIL] Muito sensível: alcance longo, investiga sons fracos, paredes abafam pouco."
+  },
+  {
+   "id": "perfil_baixa_audicao",
+   "sensitivity": 0.6,
+   "hearing_radius": 6.0,
+   "investigate_threshold": 0.4,
+   "wall_occlusion": 0.3,
+   "merge_radius": 2.0,
+   "merge_time": 5.0,
+   "notes": "[PERFIL] Pouco sensível: alcance curto, exige som forte e próximo, paredes abafam muito."
+  },
+  {
+   "id": "perfil_padrao",
+   "notes": "[PERFIL] Audição padrão. Modelo de partida para um monstro novo; copie e ajuste."
+  },
+  {
+   "id": "perfil_somente_roteiro",
+   "sensitivity": 0.0,
+   "notes": "[PERFIL] Surdo a fontes de som. Só reage a hear_stimulus(posição) de roteiro."
+  },
+  {
+   "id": "pintora_audicao",
+   "notes": "[PROVISÓRIO] Audição de A Pintora: cópia do perfil padrão. Perfil final não especificado; ajuste aqui sem afetar os outros monstros."
+  },
+  {
+   "id": "polvo_audicao",
+   "notes": "[PROVISÓRIO] Audição do Polvo (Room 1). Valores de calibragem iniciais: ouve um som de intensidade 1 a até 8 m; só investiga na faixa mais próxima (nível >= 0,25, ~6 m); paredes abafam pela metade. Recalibrar quando os sons reais existirem."
+  }
+ ],
+ "player_noise": {
+  "walk": {
+   "loudness": 0.55,
+   "interval": 0.5
+  },
+  "run": {
+   "loudness": 1.0,
+   "interval": 0.35
+  },
+  "crouch": {
+   "loudness": 0.15,
+   "interval": 0.7
+  },
+  "notes": "[PROVISÓRIO] Prompt 2: passos da protagonista como SoundStimulus. Com a audição do Polvo (raio 8 m, limiar 0,25): correr é investigado até ~6 m, andar até ~3,3 m e agachada até ~0,9 m. Intervalo em segundos de jogo."
+ },
+ "monsters": [
+  {
+   "monster_id": "reader",
+   "display_name": "A Leitora",
+   "room_id": "room_1",
+   "navigation_layers": 1,
+   "hearing_profile": "leitor_audicao",
+   "patrol_speed": 1.1,
+   "investigate_speed": 2.2,
+   "search_speed": 2.2,
+   "chase_speed": 3.0,
+   "sight_fov_degrees": 110.0,
+   "eye_height": 3.8,
+   "sight_distance": 14.0,
+   "search_duration": 10.0,
+   "placeholder_notes": "Professora de Literatura que virou aranha. Modelo: assets/characters/leitora/LeitoraRig.glb (MonsterRoster/Leitor).",
+   "state_events": {
+    "AWAKENING": "cena_leitor_desperta"
+   }
+  },
+  {
+   "monster_id": "maestro",
+   "display_name": "O Maestro",
+   "room_id": "room_5",
+   "navigation_layers": 32,
+   "hearing_profile": "maestro_audicao",
+   "patrol_speed": 1.2,
+   "investigate_speed": 2.3,
+   "search_speed": 2.3,
+   "chase_speed": 2.5,
+   "eye_height": 3.8,
+   "search_duration": 10.0,
+   "placeholder_notes": "Professor de Música (Prof. Hélio, regente). Não enxerga: caça pelo som. Anda devagar e, quando chega perto, faz a Yuko levitar."
+  }
+ ],
+ "puzzles": [
+  {
+   "id": "port_gaveta",
+   "room_id": "room_1",
+   "subject": "Português",
+   "title": "A gaveta da professora",
+   "description": "A gaveta da mesa tem um cadeado de 4 números.\nConte as classes de palavras da frase do caderno, na ordem do quadro\n(SUBSTANTIVOS · ADJETIVOS · VERBOS · ARTIGOS), e digite os 4 números.",
+   "question_type": "DOOR_CODE",
+   "correct_answer": "2212",
+   "solution_explanation": "\"A menina assustada abriu a porta escura\": substantivos menina e porta (2); adjetivos assustada e escura (2); verbo abriu (1); artigos A e a (2). Senha 2212.",
+   "hint_ids": [
+    "port_quadro",
+    "port_frase",
+    "port_classes"
+   ],
+   "required_clue_ids": [
+    "port_quadro",
+    "port_frase",
+    "port_classes"
+   ],
+   "monster_id": "reader",
+   "unlocks_exit": "room_1_exit"
+  },
+  {
+   "id": "mat_cofre",
+   "room_id": "room_2",
+   "subject": "Matemática",
+   "title": "O cofre de provas",
+   "description": "O cofre de provas pede uma senha numérica.\nUse a prova, a comanda da cantina e o bilhete do transferidor.",
+   "question_type": "DOOR_CODE",
+   "correct_answer": "5450",
+   "solution_explanation": "Ângulos: x + y = 180 e y = 2x + 30, então x = 50°. Cantina: 3s + 2l = 23 e s + 2l = 13; subtraindo, 2s = 10, s = 5 e l = 4. Senha 5 | 4 | 50 = 5450.",
+   "hint_ids": [
+    "mat_suplementares",
+    "mat_prova",
+    "mat_cantina",
+    "mat_senha"
+   ],
+   "required_clue_ids": [
+    "mat_suplementares",
+    "mat_prova",
+    "mat_cantina",
+    "mat_senha"
+   ],
+   "unlocks_exit": "room_2_exit"
+  },
+  {
+   "id": "cie_frasco",
+   "room_id": "room_3",
+   "subject": "Ciências",
+   "title": "O lacre ácido",
+   "description": "O armário de reagentes está lacrado com um gel ácido (pH 2).\nQual dos frascos que sobraram neutraliza o lacre?",
+   "question_type": "MULTIPLE_CHOICE",
+   "options": [
+    "Suco de limão (pH 2)",
+    "Vinagre (pH 3)",
+    "Água destilada (pH 7)",
+    "Leite de magnésia (pH 10)"
+   ],
+   "correct_option": 3,
+   "solution_explanation": "Para neutralizar um ácido é preciso uma BASE. O leite de magnésia (pH 10) é básico.",
+   "hint_ids": [
+    "cie_ph",
+    "cie_caderno",
+    "cie_frascos"
+   ],
+   "required_clue_ids": [
+    "cie_ph",
+    "cie_caderno",
+    "cie_frascos"
+   ],
+   "unlocks_exit": "room_3_exit"
+  },
+  {
+   "id": "geo_ponto",
+   "room_id": "room_4",
+   "subject": "Geografia",
+   "title": "O ponto de encontro",
+   "description": "O mapa da cidade ocupa a parede. Alguém riscou a rota de evacuação até a metade.\nEm qual quadrado fica o ponto de encontro dos alunos?",
+   "question_type": "MULTIPLE_CHOICE",
+   "options": [
+    "F5",
+    "B5",
+    "D5",
+    "B1"
+   ],
+   "correct_option": 1,
+   "solution_explanation": "De D2, 3 quadras para o sul chegam à linha 5 (D5); 2 quadras para o oeste chegam à coluna B. Ponto de encontro: B5.",
+   "hint_ids": [
+    "geo_rosa",
+    "geo_plano",
+    "geo_legenda"
+   ],
+   "required_clue_ids": [
+    "geo_rosa",
+    "geo_plano",
+    "geo_legenda"
+   ],
+   "unlocks_exit": "room_4_exit"
+  },
+  {
+   "id": "mus_teclado",
+   "room_id": "room_5",
+   "subject": "Música",
+   "title": "O teclado da porta",
+   "description": "Um teclado numérico ao lado da porta, coberto de pó de giz.\nDigite a melodia do Maestro: o NÚMERO de cada nota, na ORDEM em que ele tocou.",
+   "question_type": "DOOR_CODE",
+   "correct_answer": "3784",
+   "solution_explanation": "Ele tocou Dó (3), Mi (7), Si (8), Ré (4). Na ordem: 3784.",
+   "hint_ids": [
+    "mus_lousa",
+    "mus_partitura",
+    "mus_bilhete",
+    "mus_sequencia"
+   ],
+   "required_clue_ids": [
+    "mus_lousa",
+    "mus_partitura",
+    "mus_bilhete",
+    "mus_sequencia"
+   ],
+   "monster_id": "maestro",
+   "unlocks_exit": "room_5_exit"
+  },
+  {
+   "id": "teste_musica_sequencia",
+   "room_id": "room_test",
+   "subject": "Música",
+   "title": "[TESTE] Melodia",
+   "description": "[TESTE] Enunciado provisório.",
+   "question_type": "MUSIC_SEQUENCE",
+   "correct_sequence": [
+    "Mi",
+    "Ré",
+    "Dó",
+    "Ré",
+    "Mi"
+   ],
+   "solution_explanation": "[TESTE] Explicação provisória.",
+   "hint_ids": [
+    "teste_pista_partitura"
+   ],
+   "monster_id": "maestro",
+   "wrong_step_emits_event": true
+  },
+  {
+   "id": "teste_numerico",
+   "room_id": "room_test",
+   "subject": "Matemática",
+   "title": "[TESTE] Valor aproximado",
+   "description": "[TESTE] Enunciado provisório.",
+   "question_type": "NUMERIC",
+   "correct_answer": "3,14",
+   "numeric_tolerance": 0.01,
+   "solution_explanation": "[TESTE] Explicação provisória."
+  },
+  {
+   "id": "teste_documento",
+   "room_id": "room_test",
+   "subject": "Geografia",
+   "title": "[TESTE] Onde fica a passagem?",
+   "description": "[TESTE] Enunciado provisório.",
+   "question_type": "DOCUMENT_INTERPRETATION",
+   "correct_answer": "subsolo",
+   "accepted_answers": [
+    "porão",
+    "o subsolo"
+   ],
+   "solution_explanation": "[TESTE] Explicação provisória."
+  },
+  {
+   "id": "teste_associacao",
+   "room_id": "room_test",
+   "subject": "Artes",
+   "title": "[TESTE] Cada pincel na sua tinta",
+   "description": "[TESTE] Enunciado provisório.",
+   "question_type": "OBJECT_MATCHING",
+   "correct_pairs": {
+    "pincel_fino": "azul",
+    "pincel_largo": "vermelho"
+   },
+   "solution_explanation": "[TESTE] Explicação provisória."
+  },
+  {
+   "id": "teste_imagens",
+   "room_id": "room_test",
+   "subject": "Artes",
+   "title": "[TESTE] Ordem dos quadros",
+   "description": "[TESTE] Enunciado provisório.",
+   "question_type": "IMAGE_ORDER",
+   "correct_sequence": [
+    "quadro_c",
+    "quadro_a",
+    "quadro_b"
+   ],
+   "solution_explanation": "[TESTE] Explicação provisória."
+  },
+  {
+   "id": "teste_logica",
+   "room_id": "room_test",
+   "subject": "Matemática",
+   "title": "[TESTE] Próximos da sequência",
+   "description": "[TESTE] Enunciado provisório.",
+   "question_type": "LOGIC_SEQUENCE",
+   "correct_sequence": [
+    "2",
+    "4",
+    "8",
+    "16"
+   ],
+   "solution_explanation": "[TESTE] Explicação provisória."
+  }
+ ],
+ "clues": [
+  {
+   "id": "ini_bilhete",
+   "room_id": "patio",
+   "title": "Aviso no quadro do pátio",
+   "content": "\"Yuko, amanhã é a AVALIAÇÃO ESPECIAL. Não falte.\nQuem faltar perde a vaga no programa.\"\n— Coordenação",
+   "narrative_tags": [
+    "lore"
+   ]
+  },
+  {
+   "id": "port_quadro",
+   "room_id": "room_1",
+   "puzzle_id": "port_gaveta",
+   "title": "A última lição no quadro",
+   "content": "A letra da professora, enorme, ocupa o quadro inteiro:\n\n\"A SENHA DA GAVETA É A FRASE QUE EU REPITO.\nCONTE AS CLASSES DE PALAVRAS, NESTA ORDEM:\nSUBSTANTIVOS · ADJETIVOS · VERBOS · ARTIGOS.\""
+  },
+  {
+   "id": "port_frase",
+   "room_id": "room_1",
+   "puzzle_id": "port_gaveta",
+   "title": "Caderno da professora",
+   "content": "O caderno da professora de Literatura. A mesma frase, escrita centenas de vezes, cada vez com a letra mais torta:\n\n\"A menina assustada abriu a porta escura.\"\n\nNa última página: \"Ela vai voltar. A nº 07 sempre volta.\""
+  },
+  {
+   "id": "port_classes",
+   "room_id": "room_1",
+   "puzzle_id": "port_gaveta",
+   "title": "Livro de gramática",
+   "content": "Você puxa o livro preso — e a pilha inteira despenca da estante.\n\nCLASSES DE PALAVRAS (página marcada)\n• Substantivo: dá nome a seres e coisas (menina, escola, porta).\n• Adjetivo: dá uma característica ao substantivo (escura, velha, assustada).\n• Verbo: indica ação ou estado (abriu, correr, estar).\n• Artigo: vem antes do substantivo (o, a, os, as, um, uma)."
+  },
+  {
+   "id": "mat_suplementares",
+   "room_id": "room_2",
+   "puzzle_id": "mat_cofre",
+   "title": "Quadro: ângulos",
+   "content": "• Ângulos SUPLEMENTARES: a soma das medidas é 180°.\n• Ângulos COMPLEMENTARES: a soma das medidas é 90°.\n• Sistema de equações: isole uma incógnita em uma equação e substitua na outra."
+  },
+  {
+   "id": "mat_prova",
+   "room_id": "room_2",
+   "puzzle_id": "mat_cofre",
+   "title": "Prova esquecida",
+   "content": "PROVA — 9º ANO — QUESTÃO 3\nDois ângulos são suplementares. O maior mede o dobro do menor, mais 30°.\nQuanto mede o MENOR ângulo?\n\n(Ninguém respondeu. A folha está manchada.)"
+  },
+  {
+   "id": "mat_cantina",
+   "room_id": "room_2",
+   "puzzle_id": "mat_cofre",
+   "title": "Comanda da cantina",
+   "content": "A comanda estava presa embaixo de uma régua de metal do tamanho de você. A régua despenca no chão.\nO barulho ecoa... e nada acontece. A sala continua vazia.\n\n3 sucos + 2 lanches = R$ 23,00\n1 suco + 2 lanches = R$ 13,00\n\n(Todos os sucos têm o mesmo preço. Todos os lanches também.)"
+  },
+  {
+   "id": "mat_senha",
+   "room_id": "room_2",
+   "puzzle_id": "mat_cofre",
+   "title": "Bilhete no transferidor",
+   "content": "Preso no transferidor gigante da parede:\n\n\"SENHA DO COFRE DE PROVAS =\npreço do suco | preço do lanche | MENOR ângulo da questão 3\"\n\n(Os números ficam um ao lado do outro.)"
+  },
+  {
+   "id": "cie_ph",
+   "room_id": "room_3",
+   "puzzle_id": "cie_frasco",
+   "title": "Cartaz: escala de pH",
+   "content": "ESCALA DE pH\n• 0 a 6 — ÁCIDO (suco de limão ≈ 2, vinagre ≈ 3)\n• 7 — NEUTRO (água pura)\n• 8 a 14 — BÁSICO (leite de magnésia ≈ 10, sabão ≈ 10)\n\nÁcido + base → sal + água. Isso se chama NEUTRALIZAÇÃO."
+  },
+  {
+   "id": "cie_caderno",
+   "room_id": "room_3",
+   "puzzle_id": "cie_frasco",
+   "title": "Caderno de laboratório",
+   "content": "\"O armário de reagentes foi lacrado com um gel ÁCIDO (pH 2).\nPara dissolver o lacre sem estragar a fechadura é preciso NEUTRALIZAR o ácido.\nNão misture ácido com ácido!\""
+  },
+  {
+   "id": "cie_frascos",
+   "room_id": "room_3",
+   "puzzle_id": "cie_frasco",
+   "title": "Prateleira de frascos",
+   "content": "Você puxa a caixa de frascos. Os vidros batem uns nos outros — e um se espatifa no chão.\n\nSobraram quatro, com etiquetas à mão:\n• Suco de limão — pH 2\n• Vinagre — pH 3\n• Água destilada — pH 7\n• Leite de magnésia — pH 10"
+  },
+  {
+   "id": "geo_rosa",
+   "room_id": "room_4",
+   "puzzle_id": "geo_ponto",
+   "title": "Rosa dos ventos",
+   "content": "Pintada no chão: N (Norte) para cima, S (Sul) para baixo, L (Leste) para a direita, O (Oeste) para a esquerda."
+  },
+  {
+   "id": "geo_plano",
+   "room_id": "room_4",
+   "puzzle_id": "geo_ponto",
+   "title": "Plano de evacuação",
+   "content": "PLANO DE EVACUAÇÃO — DIA DO ACIDENTE\nA escola fica no quadrado D2 do mapa da cidade.\nRota: andar 3 quadras para o SUL e depois 2 quadras para o OESTE.\nLá fica o ponto de encontro dos alunos."
+  },
+  {
+   "id": "geo_legenda",
+   "room_id": "room_4",
+   "puzzle_id": "geo_ponto",
+   "title": "Etiqueta embaixo do globo",
+   "content": "Você gira o globo enferrujado. Ele range alto, um som que atravessa a sala.\n\nNa base, uma etiqueta: \"MAPA DA CIDADE — as COLUNAS vão de A (oeste) até F (leste); as LINHAS vão de 1 (norte) até 6 (sul).\""
+  },
+  {
+   "id": "mus_lousa",
+   "room_id": "room_5",
+   "puzzle_id": "mus_teclado",
+   "title": "A lousa de música",
+   "content": "Uma pauta de cinco linhas, vazia. No canto, em giz:\n\n\"NA MINHA AULA, CADA NOTA TEM UM NÚMERO.\nEu toco a nota no piano, escrevo a nota na pauta e o número dela ao lado.\nUMA VEZ SÓ. Depois apago.\"\n\n(Tem marcas de giz apagado por cima de marcas de giz apagado.)"
+  },
+  {
+   "id": "mus_partitura",
+   "room_id": "room_5",
+   "puzzle_id": "mus_teclado",
+   "title": "Partitura na estante",
+   "content": "LIÇÃO 1 — as notas na pauta (clave de sol), de baixo para cima:\n\n• DÓ — numa linha pequena só dela, embaixo da pauta\n• RÉ — logo abaixo da 1ª linha\n• MI — na 1ª linha\n• FÁ — no 1º espaço\n• SOL — na 2ª linha\n• LÁ — no 2º espaço\n• SI — na 3ª linha (a do meio)\n\n\"Quanto mais alta a nota na pauta, mais agudo o som.\""
+  },
+  {
+   "id": "mus_bilhete",
+   "room_id": "room_5",
+   "puzzle_id": "mus_teclado",
+   "title": "Bilhete na estante de partituras",
+   "content": "\"A porta só abre pelo TECLADO ao lado dela.\nA senha é a minha melodia: os NÚMEROS das notas, NA ORDEM em que eu toco.\n\nQuer ouvir? Peça no piano. Eu toco UMA vez.\nE se você errar... eu vou ouvir.\"\n\n— M."
+  },
+  {
+   "id": "mus_sequencia",
+   "room_id": "room_5",
+   "puzzle_id": "mus_teclado",
+   "title": "A melodia do Maestro",
+   "content": "Ele tocou as notas uma de cada vez e escreveu o número de cada uma na lousa. Depois apagou tudo.\nA senha são esses números, na ORDEM em que ele tocou.\n(Se esquecer, dá para pedir de novo no piano... mas ele acorda.)"
+  },
+  {
+   "id": "teste_pista_partitura",
+   "room_id": "room_test",
+   "puzzle_id": "teste_musica_sequencia",
+   "title": "[TESTE] Partitura rasgada",
+   "content": "[TESTE] Metade de uma melodia."
+  }
+ ],
+ "rooms": [
+  {
+   "id": "patio",
+   "kind": "STORY_AREA",
+   "display_name": "Pátio (onde Yuko acorda)",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/Patio",
+   "narrative_tier": 1,
+   "connected_area_paths": [
+    "School/Exit"
+   ],
+   "connection_notes": "Pátio a céu aberto no lugar da antiga 3ª sala. Porta para o corredor (z −71): tranca manual, abre depois da cena do mapa."
+  },
+  {
+   "id": "room_1",
+   "kind": "CLASSROOM",
+   "display_name": "Sala de Português",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/Room 1",
+   "order": 1,
+   "subject": "Português",
+   "puzzle_ids": [
+    "port_gaveta"
+   ],
+   "clue_ids": [
+    "port_quadro",
+    "port_frase",
+    "port_classes"
+   ],
+   "required_puzzle_ids": [
+    "port_gaveta"
+   ],
+   "exit_id": "room_1_exit",
+   "theme": "A Leitora (professora de Literatura, virou uma aranha). Acorda quando o livro preso derruba a pilha da estante.",
+   "connected_area_paths": [
+    "School/Corridor"
+   ],
+   "connection_notes": "Porta PortaRoom1 na parede leste, para o corredor. Fecha atrás da Yuko ao entrar e ao sair.",
+   "narrative_tier": 1,
+   "exit_event_id": "nota_room_1_fim",
+   "monster_id": "reader",
+   "navigation_layer": 1,
+   "navigation_mesh": "res://data/navigation/room_1_navmesh.tres",
+   "navigation_region_path": "Navigation/Room1Navigation"
+  },
+  {
+   "id": "room_2",
+   "kind": "CLASSROOM",
+   "display_name": "Sala de Matemática",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/Room 2",
+   "order": 2,
+   "subject": "Matemática",
+   "puzzle_ids": [
+    "mat_cofre"
+   ],
+   "clue_ids": [
+    "mat_suplementares",
+    "mat_prova",
+    "mat_cantina",
+    "mat_senha"
+   ],
+   "required_puzzle_ids": [
+    "mat_cofre"
+   ],
+   "exit_id": "room_2_exit",
+   "theme": "Sem professor (só pistas e pergunta). O Prof. Bruno não está; só o diário dele.",
+   "connected_area_paths": [
+    "School/Corridor"
+   ],
+   "connection_notes": "Porta PortaRoom2 na parede leste, para o corredor. Fecha atrás da Yuko ao entrar e ao sair.",
+   "narrative_tier": 2,
+   "exit_event_id": "nota_room_2_fim"
+  },
+  {
+   "id": "room_3",
+   "kind": "CLASSROOM",
+   "display_name": "Laboratório de Ciências",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/Room 3",
+   "order": 3,
+   "subject": "Ciências",
+   "puzzle_ids": [
+    "cie_frasco"
+   ],
+   "clue_ids": [
+    "cie_ph",
+    "cie_caderno",
+    "cie_frascos"
+   ],
+   "required_puzzle_ids": [
+    "cie_frasco"
+   ],
+   "exit_id": "room_3_exit",
+   "theme": "Sem professor (só pistas e pergunta). O relatório conta o que houve com a Profª Marta.",
+   "connected_area_paths": [
+    "School/Corridor"
+   ],
+   "connection_notes": "Porta PortaRoom3 na parede leste, para o corredor. Fecha atrás da Yuko ao entrar e ao sair.",
+   "narrative_tier": 2,
+   "exit_event_id": "nota_room_3_fim"
+  },
+  {
+   "id": "room_4",
+   "kind": "CLASSROOM",
+   "display_name": "Sala de Geografia",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/Room 4",
+   "order": 4,
+   "subject": "Geografia",
+   "puzzle_ids": [
+    "geo_ponto"
+   ],
+   "clue_ids": [
+    "geo_rosa",
+    "geo_plano",
+    "geo_legenda"
+   ],
+   "required_puzzle_ids": [
+    "geo_ponto"
+   ],
+   "exit_id": "room_4_exit",
+   "theme": "Sem professor (só pistas e pergunta). A foto da turma mostra a nº 07.",
+   "connected_area_paths": [
+    "School/Corridor"
+   ],
+   "connection_notes": "Porta PortaRoom4 na parede leste, para o corredor. Fecha atrás da Yuko ao entrar e ao sair.",
+   "narrative_tier": 2,
+   "exit_event_id": "nota_room_4_fim"
+  },
+  {
+   "id": "room_5",
+   "kind": "CLASSROOM",
+   "display_name": "Sala de Música",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/MusicRoom",
+   "order": 5,
+   "subject": "Música",
+   "puzzle_ids": [
+    "mus_teclado"
+   ],
+   "clue_ids": [
+    "mus_lousa",
+    "mus_partitura",
+    "mus_bilhete",
+    "mus_sequencia"
+   ],
+   "required_puzzle_ids": [
+    "mus_teclado"
+   ],
+   "exit_id": "room_5_exit",
+   "theme": "O Maestro (professor de Música). Guiado só pelo som: toca a melodia no piano (cada nota com um número na lousa), depois caça quem estiver na sala. A senha é a melodia, na ordem.",
+   "connected_area_paths": [
+    "School/Corridor"
+   ],
+   "connection_notes": "Porta PortaMusica na parede leste, para o corredor. Fecha atrás da Yuko ao entrar e ao sair.",
+   "narrative_tier": 3,
+   "exit_event_id": "nota_room_5_fim",
+   "monster_id": "maestro",
+   "navigation_layer": 6,
+   "navigation_mesh": "res://data/navigation/music_room_navmesh.tres",
+   "navigation_region_path": "Navigation/MusicNavigation"
+  },
+  {
+   "id": "sala_saida",
+   "kind": "STORY_AREA",
+   "display_name": "A saída (Sala dos Monitores)",
+   "content_status": "FINAL",
+   "geometry_status": "PHYSICAL",
+   "scene_anchor": "School/SalaMonitores",
+   "narrative_tier": 3,
+   "connected_area_paths": [
+    "School/Corridor5"
+   ],
+   "connection_notes": "Porta no fim do corredor (z −190), depois de Música. Abre e aparece no mapa só quando Música termina.",
+   "navigation_layer": 7,
+   "navigation_mesh": "res://data/navigation/initial_navmesh.tres",
+   "navigation_region_path": "Navigation/InitialNavigation"
+  }
+ ],
+ "events": [
+  {
+   "id": "cena_abertura",
+   "type": "CUTSCENE",
+   "room_id": "patio",
+   "content_status": "FINAL",
+   "title": "Abertura",
+   "trigger": "MANUAL",
+   "tier": "INITIAL"
+  },
+  {
+   "id": "cena_mapa",
+   "type": "CUTSCENE",
+   "room_id": "patio",
+   "content_status": "FINAL",
+   "title": "O mapa",
+   "trigger": "INTERACTION",
+   "trigger_id": "patio.mapa",
+   "tier": "INITIAL"
+  },
+  {
+   "id": "cena_portugues",
+   "type": "CUTSCENE",
+   "room_id": "room_1",
+   "content_status": "FINAL",
+   "title": "A Leitora",
+   "trigger": "ROOM_ENTERED",
+   "trigger_id": "room_1",
+   "tier": "INITIAL"
+  },
+  {
+   "id": "cena_leitor_desperta",
+   "type": "CUTSCENE",
+   "room_id": "room_1",
+   "content_status": "FINAL",
+   "title": "A Leitora desperta",
+   "trigger": "MONSTER_STATE",
+   "trigger_id": "reader",
+   "trigger_state": "AWAKENING",
+   "tier": "INITIAL"
+  },
+  {
+   "id": "cena_matematica",
+   "type": "CUTSCENE",
+   "room_id": "room_2",
+   "content_status": "FINAL",
+   "title": "Matemática",
+   "trigger": "ROOM_ENTERED",
+   "trigger_id": "room_2",
+   "tier": "INTERMEDIATE"
+  },
+  {
+   "id": "cena_ciencias",
+   "type": "CUTSCENE",
+   "room_id": "room_3",
+   "content_status": "FINAL",
+   "title": "Ciências",
+   "trigger": "ROOM_ENTERED",
+   "trigger_id": "room_3",
+   "tier": "INTERMEDIATE"
+  },
+  {
+   "id": "cena_geografia",
+   "type": "CUTSCENE",
+   "room_id": "room_4",
+   "content_status": "FINAL",
+   "title": "Geografia",
+   "trigger": "ROOM_ENTERED",
+   "trigger_id": "room_4",
+   "tier": "INTERMEDIATE"
+  },
+  {
+   "id": "cena_musica",
+   "type": "CUTSCENE",
+   "room_id": "room_5",
+   "content_status": "FINAL",
+   "title": "O Maestro",
+   "trigger": "ROOM_ENTERED",
+   "trigger_id": "room_5",
+   "tier": "FINAL",
+   "required_rooms_completed": [
+    "room_4"
+   ]
+  },
+  {
+   "id": "cena_monitores",
+   "type": "CUTSCENE",
+   "room_id": "sala_saida",
+   "content_status": "FINAL",
+   "title": "Os monitores",
+   "trigger": "ROOM_ENTERED",
+   "trigger_id": "sala_saida",
+   "tier": "FINAL",
+   "required_rooms_completed": [
+    "room_4"
+   ]
+  },
+  {
+   "id": "cena_final",
+   "type": "CUTSCENE",
+   "room_id": "sala_saida",
+   "content_status": "FINAL",
+   "title": "Final",
+   "trigger": "INTERACTION",
+   "trigger_id": "sala_saida.ficha",
+   "tier": "FINAL",
+   "required_rooms_completed": [
+    "room_4"
+   ],
+   "reveals": [
+    "voz_telefone",
+    "vigilancia"
+   ]
+  },
+  {
+   "id": "doc_chamada",
+   "type": "DOCUMENT",
+   "room_id": "room_1",
+   "content_status": "FINAL",
+   "title": "Lista de chamada — 3º ano B (2019)",
+   "lines": [
+    "01. Ana Beatriz Moura",
+    "02. Caio Ferraz",
+    "03. Davi Lins",
+    "04. Elisa Prado",
+    "05. Igor Mendes",
+    "06. Laura Siqueira",
+    "07. Yuko Tanaka ............ TRANSFERIDA PARA O PROGRAMA",
+    "08. Mateus Rocha"
+   ],
+   "trigger": "INTERACTION",
+   "trigger_id": "room_1.chamada",
+   "tier": "INITIAL",
+   "reveals": [
+    "yuko_aluna"
+   ],
+   "once": false
+  },
+  {
+   "id": "doc_diario",
+   "type": "DOCUMENT",
+   "room_id": "room_2",
+   "content_status": "FINAL",
+   "title": "Diário do Prof. Bruno Sá",
+   "lines": [
+    "Dia 3 — A direção mandou todos os professores tomarem a \"vitamina C-7\". Disseram que é para o cansaço.",
+    "Dia 9 — Meus dedos estalam quando escrevo no quadro. Contei: agora são quatro articulações em cada dedo.",
+    "Dia 12 — Os alunos do 3º B não voltaram do \"programa\". A diretora diz que foram transferidos."
+   ],
+   "trigger": "INTERACTION",
+   "trigger_id": "room_2.diario",
+   "tier": "INTERMEDIATE",
+   "reveals": [
+    "origem_criaturas"
+   ],
+   "once": false
+  },
+  {
+   "id": "doc_relatorio",
+   "type": "DOCUMENT",
+   "room_id": "room_3",
+   "content_status": "FINAL",
+   "title": "Projeto CRISÁLIDA — Relatório nº 3",
+   "lines": [
+    "Sujeito: Profª Marta Reis (Ciências). Dose: 12 ml de C-7.",
+    "Resultado: duplicação dos membros superiores. Pernas atrofiadas.",
+    "Comportamento: continua \"dando aula\". Escreve fórmulas por horas seguidas.",
+    "Próxima etapa: observar a reação da PARTICIPANTE 07 ao ambiente. — O Observador"
+   ],
+   "trigger": "INTERACTION",
+   "trigger_id": "room_3.relatorio",
+   "tier": "INTERMEDIATE",
+   "reveals": [
+    "vigilancia"
+   ],
+   "once": false
+  },
+  {
+   "id": "doc_foto",
+   "type": "DOCUMENT",
+   "room_id": "room_4",
+   "content_status": "FINAL",
+   "title": "Foto de turma — 3º B, 2019",
+   "lines": [
+    "Na segunda fila, uma garota de cabelo curto segura uma plaquinha: \"Nº 07\".",
+    "Atrás da foto, à caneta: \"Participantes selecionados para a Fase 2.\""
+   ],
+   "trigger": "INTERACTION",
+   "trigger_id": "room_4.foto",
+   "tier": "INTERMEDIATE",
+   "reveals": [
+    "yuko_aluna"
+   ],
+   "once": false
+  },
+  {
+   "id": "doc_programa",
+   "type": "DOCUMENT",
+   "room_id": "room_5",
+   "content_status": "FINAL",
+   "title": "Programa do recital — 3º B (2019)",
+   "lines": [
+    "RECITAL DE ENCERRAMENTO — regência: Prof. Hélio Amaral",
+    "1. Hino da escola (coro)",
+    "2. Noturno nº 2 — ao piano: YUKO TANAKA (nº 07)",
+    "Escrito à mão, embaixo: \"Cancelado. Os participantes da Fase 2 não podem se apresentar.\""
+   ],
+   "trigger": "INTERACTION",
+   "trigger_id": "room_5.programa",
+   "tier": "FINAL",
+   "reveals": [
+    "yuko_aluna"
+   ],
+   "once": false,
+   "required_rooms_completed": [
+    "room_4"
+   ]
+  },
+  {
+   "id": "nota_room_1_fim",
+   "type": "NOTE",
+   "room_id": "room_1",
+   "content_status": "FINAL",
+   "speaker": "Mapa",
+   "title": "Escrito no mapa",
+   "lines": [
+    "BOA MENINA.",
+    "A PRÓXIMA PORTA JÁ ESTÁ ABERTA."
+   ],
+   "trigger": "ROOM_COMPLETED",
+   "trigger_id": "room_1",
+   "tier": "INITIAL"
+  },
+  {
+   "id": "nota_room_2_fim",
+   "type": "NOTE",
+   "room_id": "room_2",
+   "content_status": "FINAL",
+   "speaker": "Mapa",
+   "title": "Escrito no mapa",
+   "lines": [
+    "FALTAM TRÊS.",
+    "EU NUNCA ESTIVE NESSA ESCOLA."
+   ],
+   "trigger": "ROOM_COMPLETED",
+   "trigger_id": "room_2",
+   "tier": "INTERMEDIATE"
+  },
+  {
+   "id": "nota_room_3_fim",
+   "type": "NOTE",
+   "room_id": "room_3",
+   "content_status": "FINAL",
+   "speaker": "Mapa",
+   "title": "Escrito no mapa",
+   "lines": [
+    "FALTAM DUAS."
+   ],
+   "trigger": "ROOM_COMPLETED",
+   "trigger_id": "room_3",
+   "tier": "INTERMEDIATE"
+  },
+  {
+   "id": "nota_room_4_fim",
+   "type": "NOTE",
+   "room_id": "room_4",
+   "content_status": "FINAL",
+   "speaker": "Mapa",
+   "title": "Escrito no mapa",
+   "lines": [
+    "SÓ FALTA UMA.",
+    "A ÚLTIMA TEM DONO."
+   ],
+   "trigger": "ROOM_COMPLETED",
+   "trigger_id": "room_4",
+   "tier": "INTERMEDIATE"
+  },
+  {
+   "id": "nota_room_5_fim",
+   "type": "NOTE",
+   "room_id": "room_5",
+   "content_status": "FINAL",
+   "speaker": "Mapa",
+   "title": "Escrito no mapa",
+   "lines": [
+    "A SAÍDA FICA NO FIM DO CORREDOR.",
+    "EU ABRI PARA VOCÊ."
+   ],
+   "trigger": "ROOM_COMPLETED",
+   "trigger_id": "room_5",
+   "tier": "FINAL",
+   "required_rooms_completed": [
+    "room_4"
+   ]
+  }
+ ],
+ "objects": [
+  {
+   "id": "patio.mapa",
+   "room_id": "patio",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Patio/Mapa",
+   "action": "pegar",
+   "prompt": "E  Pegar o mapa",
+   "effects": [],
+   "one_shot": true
+  },
+  {
+   "id": "patio.bilhete",
+   "room_id": "patio",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Patio/Bilhete",
+   "action": "ler",
+   "prompt": "E  Ler o aviso",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "ini_bilhete"
+    }
+   ]
+  },
+  {
+   "id": "room_1.quadro",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Portugues/Quadro",
+   "action": "ler",
+   "prompt": "E  Ler o quadro",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "port_quadro"
+    }
+   ]
+  },
+  {
+   "id": "room_1.caderno",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Portugues/Caderno",
+   "action": "ler",
+   "prompt": "E  Pegar o caderno",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "port_frase"
+    }
+   ]
+  },
+  {
+   "id": "room_1.livro_preso",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Portugues/LivroPreso",
+   "action": "puxar",
+   "prompt": "E  Puxar o livro",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "port_classes"
+    },
+    {
+     "type": "activate_monster",
+     "monster_id": "reader"
+    }
+   ],
+   "notes": "Pista barulhenta: acorda o professor da sala."
+  },
+  {
+   "id": "room_1.gaveta",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Portugues/Gaveta",
+   "action": "abrir",
+   "prompt": "E  Cadeado da gaveta",
+   "effects": [
+    {
+     "type": "open_puzzle",
+     "puzzle_id": "port_gaveta"
+    }
+   ]
+  },
+  {
+   "id": "room_1.chamada",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Portugues/Chamada",
+   "action": "ler",
+   "prompt": "E  Ler",
+   "effects": []
+  },
+  {
+   "id": "room_2.quadro",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Matematica/Quadro",
+   "action": "ler",
+   "prompt": "E  Ler o quadro",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mat_suplementares"
+    }
+   ]
+  },
+  {
+   "id": "room_2.prova",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Matematica/Prova",
+   "action": "ler",
+   "prompt": "E  Ler a prova",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mat_prova"
+    }
+   ]
+  },
+  {
+   "id": "room_2.comanda",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Matematica/Comanda",
+   "action": "puxar",
+   "prompt": "E  Puxar o papel",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mat_cantina"
+    }
+   ]
+  },
+  {
+   "id": "room_2.transferidor",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Matematica/Transferidor",
+   "action": "ler",
+   "prompt": "E  Ler o bilhete",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mat_senha"
+    }
+   ]
+  },
+  {
+   "id": "room_2.cofre",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Matematica/Cofre",
+   "action": "abrir",
+   "prompt": "E  Cofre de provas",
+   "effects": [
+    {
+     "type": "open_puzzle",
+     "puzzle_id": "mat_cofre"
+    }
+   ]
+  },
+  {
+   "id": "room_2.diario",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Matematica/Diario",
+   "action": "ler",
+   "prompt": "E  Ler o diário",
+   "effects": []
+  },
+  {
+   "id": "room_3.cartaz_ph",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Ciencias/CartazPh",
+   "action": "ler",
+   "prompt": "E  Ler o cartaz",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "cie_ph"
+    }
+   ]
+  },
+  {
+   "id": "room_3.caderno",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Ciencias/Caderno",
+   "action": "ler",
+   "prompt": "E  Ler o caderno",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "cie_caderno"
+    }
+   ]
+  },
+  {
+   "id": "room_3.frascos",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Ciencias/Frascos",
+   "action": "puxar",
+   "prompt": "E  Pegar os frascos",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "cie_frascos"
+    }
+   ]
+  },
+  {
+   "id": "room_3.armario",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Ciencias/Armario",
+   "action": "abrir",
+   "prompt": "E  Lacre do armário",
+   "effects": [
+    {
+     "type": "open_puzzle",
+     "puzzle_id": "cie_frasco"
+    }
+   ]
+  },
+  {
+   "id": "room_3.relatorio",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Ciencias/Relatorio",
+   "action": "ler",
+   "prompt": "E  Ler o relatório",
+   "effects": []
+  },
+  {
+   "id": "room_4.rosa",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Geografia/Rosa",
+   "action": "examinar",
+   "prompt": "E  Examinar o chão",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "geo_rosa"
+    }
+   ]
+  },
+  {
+   "id": "room_4.plano",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Geografia/Plano",
+   "action": "ler",
+   "prompt": "E  Ler o plano",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "geo_plano"
+    }
+   ]
+  },
+  {
+   "id": "room_4.globo",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Geografia/Globo",
+   "action": "girar",
+   "prompt": "E  Girar o globo",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "geo_legenda"
+    }
+   ]
+  },
+  {
+   "id": "room_4.mapa_cidade",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Geografia/MapaCidade",
+   "action": "examinar",
+   "prompt": "E  Mapa da cidade",
+   "effects": [
+    {
+     "type": "open_puzzle",
+     "puzzle_id": "geo_ponto"
+    }
+   ]
+  },
+  {
+   "id": "room_4.foto",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Geografia/Foto",
+   "action": "examinar",
+   "prompt": "E  Ver a foto",
+   "effects": []
+  },
+  {
+   "id": "room_5.quadro",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Musica/Quadro",
+   "action": "ler",
+   "prompt": "E  Ler a lousa",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mus_lousa"
+    }
+   ]
+  },
+  {
+   "id": "room_5.partitura",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Musica/Partitura",
+   "action": "ler",
+   "prompt": "E  Ler a partitura",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mus_partitura"
+    }
+   ]
+  },
+  {
+   "id": "room_5.piano",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Musica/Piano",
+   "action": "tocar",
+   "prompt": "E  Pedir para ele tocar o piano",
+   "effects": [
+    {
+     "type": "music_sequence",
+     "room_id": "room_5"
+    }
+   ]
+  },
+  {
+   "id": "room_5.bilhete",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Musica/Bilhete",
+   "action": "ler",
+   "prompt": "E  Ler o bilhete",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "mus_bilhete"
+    }
+   ]
+  },
+  {
+   "id": "room_5.teclado",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Musica/Teclado",
+   "action": "abrir",
+   "prompt": "E  Teclado da porta",
+   "effects": [
+    {
+     "type": "open_puzzle",
+     "puzzle_id": "mus_teclado"
+    }
+   ]
+  },
+  {
+   "id": "room_5.programa",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Musica/Programa",
+   "action": "ler",
+   "prompt": "E  Ler o programa",
+   "effects": []
+  },
+  {
+   "id": "sala_saida.ficha",
+   "room_id": "sala_saida",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "Gameplay/Saida/Ficha",
+   "action": "ler",
+   "prompt": "E  Ler a ficha",
+   "effects": [],
+   "one_shot": true
+  },
+  {
+   "id": "patio.porta",
+   "room_id": "patio",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaPatio/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "manual"
+   },
+   "effects": [],
+   "notes": "Porta do pátio para o corredor: abre depois da cena do mapa."
+  },
+  {
+   "id": "room_1.porta",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaRoom1/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "room_available",
+    "room_id": "room_1"
+   },
+   "effects": [],
+   "notes": "Fecha atrás dela ao entrar; abre sozinha com a resposta certa."
+  },
+  {
+   "id": "room_2.porta",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaRoom2/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "room_available",
+    "room_id": "room_2"
+   },
+   "effects": [],
+   "notes": "Abre quando Português termina."
+  },
+  {
+   "id": "room_3.porta",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaRoom3/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "room_available",
+    "room_id": "room_3"
+   },
+   "effects": [],
+   "notes": "Abre quando Matemática termina."
+  },
+  {
+   "id": "room_4.porta",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaRoom4/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "room_available",
+    "room_id": "room_4"
+   },
+   "effects": [],
+   "notes": "Abre quando Ciências termina."
+  },
+  {
+   "id": "room_5.porta",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaMusica/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "room_available",
+    "room_id": "room_5"
+   },
+   "effects": [],
+   "notes": "Abre quando Geografia termina."
+  },
+  {
+   "id": "sala_saida.porta",
+   "room_id": "sala_saida",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Doors/PortaInicial/Interactable",
+   "action": "abrir",
+   "prompt": "E  Abrir",
+   "door": {
+    "lock": "manual"
+   },
+   "effects": [],
+   "notes": "Fim do corredor: abre quando Música termina."
+  },
+  {
+   "id": "room_1.esconderijo_mesa",
+   "room_id": "room_1",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Props/Portugues/MesaProfessor1/Interactable",
+   "action": "esconder",
+   "prompt": "E  Esconder-se",
+   "effects": [],
+   "notes": "Esconderijo. E entra; E de novo sai pela frente do móvel."
+  },
+  {
+   "id": "room_2.esconderijo_mesa",
+   "room_id": "room_2",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Props/Matematica/MesaProfessor1/Interactable",
+   "action": "esconder",
+   "prompt": "E  Esconder-se",
+   "effects": [],
+   "notes": "Esconderijo. E entra; E de novo sai pela frente do móvel."
+  },
+  {
+   "id": "room_3.esconderijo_mesa",
+   "room_id": "room_3",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Props/Ciencias/MesaProfessor1/Interactable",
+   "action": "esconder",
+   "prompt": "E  Esconder-se",
+   "effects": [],
+   "notes": "Esconderijo. E entra; E de novo sai pela frente do móvel."
+  },
+  {
+   "id": "room_4.esconderijo_mesa",
+   "room_id": "room_4",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Props/Geografia/MesaProfessor1/Interactable",
+   "action": "esconder",
+   "prompt": "E  Esconder-se",
+   "effects": [],
+   "notes": "Esconderijo. E entra; E de novo sai pela frente do móvel."
+  },
+  {
+   "id": "room_5.esconderijo_mesa",
+   "room_id": "room_5",
+   "implementation": "FUNCTIONAL",
+   "scene_node": "School/Props/Musica/MesaProfessor1/Interactable",
+   "action": "esconder",
+   "prompt": "E  Esconder-se",
+   "effects": [],
+   "notes": "Esconderijo. E entra; E de novo sai pela frente do móvel."
+  },
+  {
+   "id": "room_test.partitura",
+   "room_id": "room_test",
+   "implementation": "TEST_ONLY",
+   "effects": [
+    {
+     "type": "reveal_clue",
+     "clue_id": "teste_pista_partitura"
+    }
+   ],
+   "notes": "Objeto só de teste automatizado: não existe na cena."
+  }
+ ]
+}

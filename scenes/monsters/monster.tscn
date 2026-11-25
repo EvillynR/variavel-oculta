@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/monsters/monster_controller.gd" id="1_gcx1e"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_perception.gd" id="2_bna5n"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_trigger.gd" id="3_ubufv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qkh16"]
+radius = 0.6
+height = 3.5
+
+[node name="Monster" type="CharacterBody3D" unique_id=1133828820]
+collision_layer = 4
+script = ExtResource("1_gcx1e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=775595584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("CapsuleShape3D_qkh16")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1068961785]
+path_desired_distance = 0.5
+target_desired_distance = 0.6
+path_max_distance = 2.0
+path_height_offset = 0.5
+height = 3.5
+radius = 0.6
+
+[node name="Perception" type="Node3D" parent="." unique_id=2060389221]
+script = ExtResource("2_bna5n")
+
+[node name="Trigger" type="Node" parent="." unique_id=417262162]
+script = ExtResource("3_ubufv")
+
+[node name="VisualLink" type="RemoteTransform3D" parent="." unique_id=1395188376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+update_scale = false

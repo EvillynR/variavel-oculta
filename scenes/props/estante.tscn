@@ -1,0 +1,103 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/modelo_prop.gd" id="ms"]
+[ext_resource type="PackedScene" path="res://assets/models/livros_velhos.glb" id="lv"]
+[ext_resource type="PackedScene" path="res://assets/models/livros_coloridos.glb" id="lc"]
+
+[ext_resource type="Material" path="res://assets/materials/prop_fabric.tres" id="m0"]
+[ext_resource type="Material" path="res://assets/materials/prop_books.tres" id="m1"]
+[ext_resource type="Material" path="res://assets/materials/prop_wood_dark.tres" id="m2"]
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(2.400, 2.300, 0.500)
+
+
+[node name="Estante" type="CSGCombiner3D" groups=["camera_fade"]]
+
+[node name="LadoE" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -1.1750, 1.1500, 0.0000)
+material = ExtResource("m2")
+size = Vector3(0.050, 2.300, 0.500)
+
+[node name="LadoD" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 1.1750, 1.1500, 0.0000)
+material = ExtResource("m2")
+size = Vector3(0.050, 2.300, 0.500)
+
+[node name="Fundo" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.1500, -0.2350)
+material = ExtResource("m2")
+size = Vector3(2.300, 2.300, 0.030)
+
+[node name="Prateleira0" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.0700, 0.0150)
+material = ExtResource("m2")
+size = Vector3(2.300, 0.040, 0.470)
+
+[node name="Prateleira1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.6200, 0.0150)
+material = ExtResource("m2")
+size = Vector3(2.300, 0.040, 0.470)
+
+[node name="Prateleira2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.1700, 0.0150)
+material = ExtResource("m2")
+size = Vector3(2.300, 0.040, 0.470)
+
+[node name="Prateleira3" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.7200, 0.0150)
+material = ExtResource("m2")
+size = Vector3(2.300, 0.040, 0.470)
+
+[node name="Prateleira4" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 2.2800, 0.0150)
+material = ExtResource("m2")
+size = Vector3(2.300, 0.040, 0.470)
+
+[node name="Livros0" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.8000, 0.8100, -0.0100)
+material = ExtResource("m1")
+size = Vector3(0.600, 0.340, 0.380)
+
+[node name="Livros1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.0500, 1.3600, -0.0100)
+material = ExtResource("m1")
+size = Vector3(0.600, 0.340, 0.380)
+
+[node name="Livros2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.7000, 1.9100, -0.0100)
+material = ExtResource("m1")
+size = Vector3(0.600, 0.340, 0.380)
+
+[node name="LivrosB0" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.0250, 0.2550, -0.0100)
+material = ExtResource("m0")
+size = Vector3(0.550, 0.330, 0.380)
+
+[node name="LivrosB1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.5750, 1.3550, -0.0100)
+material = ExtResource("m0")
+size = Vector3(0.550, 0.330, 0.380)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.1500, 0.0000)
+shape = SubResource("caixa")
+
+[node name="LivrosTopo" type="Node3D" parent="."]
+script = ExtResource("ms")
+modelo = ExtResource("lv")
+rotacao = Vector3(0, 0, 0)
+caixa = Vector3(0.7, 0.42, 0.45)
+ajuste = 0
+base = Vector3(-0.62, 2.3, 0)
+
+[node name="LivrosTopo2" type="Node3D" parent="."]
+script = ExtResource("ms")
+modelo = ExtResource("lc")
+rotacao = Vector3(0, 0, 0)
+caixa = Vector3(0.55, 0.1, 0.4)
+ajuste = 0
+base = Vector3(0.55, 2.3, 0)
+

@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/modelo_prop.gd" id="ms"]
+[ext_resource type="PackedScene" path="res://assets/models/porta_laboratorio.glb" id="g"]
+
+
+[node name="PortaLaboratorio" type="Node3D" groups=["camera_fade"]]
+
+[node name="Modelo" type="Node3D" parent="."]
+script = ExtResource("ms")
+modelo = ExtResource("g")
+rotacao = Vector3(0, 0, 0)
+caixa = Vector3(1.07, 2.1, 0.12)
+ajuste = 0
+base = Vector3(0, 0, 0)
+

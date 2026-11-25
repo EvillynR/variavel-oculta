@@ -1,0 +1,43 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/materials/prop_wood_dark.tres" id="m2"]
+[ext_resource type="Texture2D" path="res://assets/textures/mapa_cidade.png" id="tex"]
+
+[sub_resource type="StandardMaterial3D" id="papel"]
+albedo_texture = ExtResource("tex")
+roughness = 0.9
+albedo_color = Color(0.9, 0.86, 0.78, 1)
+
+[sub_resource type="QuadMesh" id="quad"]
+size = Vector2(3.0, 1.6)
+
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(3.100, 1.700, 0.070)
+
+[node name="MapaCidade" type="Node3D" groups=["camera_fade"]]
+
+[node name="Moldura" type="CSGBox3D" parent="." groups=["camera_fade"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.02)
+material = ExtResource("m2")
+size = Vector3(3.1, 1.7, 0.04)
+
+[node name="Papel" type="MeshInstance3D" parent="." groups=["camera_fade"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0.004)
+cast_shadow = 0
+mesh = SubResource("quad")
+surface_material_override/0 = SubResource("papel")
+
+[node name="Lamparina" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0.9)
+light_color = Color(1, 0.72, 0.42, 1)
+light_energy = 0.55
+omni_range = 2.6
+omni_attenuation = 1.6
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.005)
+shape = SubResource("caixa")

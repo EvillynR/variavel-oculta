@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dukqmnbnymgia"]
+
+[ext_resource type="Texture2D" uid="uid://xgfkkwhjnklt" path="res://assets/textures/wood_floor/dark_wooden_planks_diff_2k.jpg" id="1_m7mof"]
+[ext_resource type="Texture2D" uid="uid://bll2rq43lsm5g" path="res://assets/textures/wood_floor/dark_wooden_planks_nor_gl_2k.jpg" id="2_vc3m8"]
+[ext_resource type="Texture2D" uid="uid://2unbqrwyoj6p" path="res://assets/textures/wood_floor/dark_wooden_planks_rough_2k.jpg" id="3_jyfp7"]
+
+[resource]
+albedo_color = Color(0.77254903, 0.8156863, 0.85882354, 1)
+albedo_texture = ExtResource("1_m7mof")
+roughness = 0.66
+roughness_texture = ExtResource("3_jyfp7")
+normal_enabled = true
+normal_scale = 3.49
+normal_texture = ExtResource("2_vc3m8")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+texture_filter = 5

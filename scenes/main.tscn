@@ -1,0 +1,4376 @@
+[gd_scene format=3 uid="uid://wuov3qqkqij8"]
+
+[ext_resource type="PackedScene" uid="uid://dke2385wcigyj" path="res://scenes/player/player.tscn" id="1_o5qli"]
+[ext_resource type="Material" uid="uid://dukqmnbnymgia" path="res://assets/materials/floor_corridor_wood.tres" id="1_o6xl0"]
+[ext_resource type="Script" uid="uid://cg82q6d443h17" path="res://scripts/camera_controller.gd" id="2_0wfyh"]
+[ext_resource type="Material" uid="uid://ks7fdwoiu0jk" path="res://assets/materials/ceiling_old_plaster.tres" id="2_tipki"]
+[ext_resource type="PackedScene" uid="uid://oe5pbsa1t6lh" path="res://scenes/player/camera_zone.tscn" id="3_sugp2"]
+[ext_resource type="Material" uid="uid://bonawqij2j024" path="res://assets/materials/wall_upper_plaster.tres" id="4_tipki"]
+[ext_resource type="Material" uid="uid://bjajx66obiapj" path="res://assets/materials/wall_lower_wood.tres" id="5_85g3d"]
+[ext_resource type="Script" path="res://scripts/puzzles/clue_manager.gd" id="20_cluemgr"]
+[ext_resource type="Script" path="res://scripts/puzzles/puzzle_manager.gd" id="21_puzzlemgr"]
+[ext_resource type="Script" path="res://scripts/interaction/interactable.gd" id="30_interact"]
+[ext_resource type="Script" path="res://scripts/interaction/player_interactor.gd" id="31_interactor"]
+[ext_resource type="Script" path="res://scripts/interaction/interaction_router.gd" id="32_router"]
+[ext_resource type="PackedScene" path="res://scenes/monsters/monster.tscn" id="33_monster"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/room_1_navmesh.tres" id="35_room1nav"]
+[ext_resource type="Script" path="res://scripts/narrative/room_progress_manager.gd" id="40_roomprog"]
+[ext_resource type="Script" path="res://scripts/narrative/narrative_manager.gd" id="41_narrmgr"]
+[ext_resource type="Script" path="res://scripts/narrative/room_volume.gd" id="42_roomvol"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/room_2_navmesh.tres" id="44_room2nav"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/room_4_navmesh.tres" id="46_room4nav"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/room_5_navmesh.tres" id="47_room5nav"]
+[ext_resource type="Script" path="res://scripts/protagonist_light_rig.gd" id="50_protolight"]
+[ext_resource type="Script" path="res://scripts/puzzles/puzzle_ui.gd" id="51_puzzleui"]
+[ext_resource type="Script" path="res://scripts/monsters/game_over_manager.gd" id="52_gameover"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_room_activation.gd" id="53_roomactivation"]
+[ext_resource type="PackedScene" path="res://scenes/world/door.tscn" id="60_door"]
+[ext_resource type="Script" path="res://scripts/core/game_session.gd" id="70_session"]
+[ext_resource type="Material" path="res://assets/materials/exterior_dark.tres" id="71_ext"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/corridors_navmesh.tres" id="61_corrnav"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/initial_navmesh.tres" id="63_initnav"]
+[ext_resource type="PackedScene" path="res://scenes/props/carteira.tscn" id="p2_Carteira"]
+[ext_resource type="PackedScene" path="res://scenes/props/cadeira.tscn" id="p2_Cadeira"]
+[ext_resource type="PackedScene" path="res://scenes/props/mesaprofessor.tscn" id="p2_MesaProfessor"]
+[ext_resource type="PackedScene" path="res://scenes/props/quadronegro.tscn" id="p2_QuadroNegro"]
+[ext_resource type="PackedScene" path="res://scenes/props/armarioalto.tscn" id="p2_ArmarioAlto"]
+[ext_resource type="PackedScene" path="res://scenes/props/estante.tscn" id="p2_Estante"]
+[ext_resource type="PackedScene" path="res://scenes/props/cavalete.tscn" id="p2_Cavalete"]
+[ext_resource type="PackedScene" path="res://scenes/props/mapamundi.tscn" id="p2_MapaMundi"]
+[ext_resource type="PackedScene" path="res://scenes/props/globo.tscn" id="p2_Globo"]
+[ext_resource type="PackedScene" path="res://scenes/props/piano.tscn" id="p2_Piano"]
+[ext_resource type="PackedScene" path="res://scenes/props/estantepartitura.tscn" id="p2_EstantePartitura"]
+[ext_resource type="PackedScene" path="res://scenes/props/bancadalab.tscn" id="p2_BancadaLab"]
+[ext_resource type="PackedScene" path="res://scenes/props/quadroavisos.tscn" id="p2_QuadroAvisos"]
+[ext_resource type="PackedScene" path="res://scenes/props/lixeira.tscn" id="p2_Lixeira"]
+[ext_resource type="PackedScene" path="res://scenes/props/armariosalunos.tscn" id="p2_ArmariosAlunos"]
+[ext_resource type="PackedScene" path="res://scenes/props/mesacartas.tscn" id="p2_MesaCartas"]
+[ext_resource type="PackedScene" path="res://scenes/props/entulho.tscn" id="p2_Entulho"]
+[ext_resource type="NavigationMesh" path="res://data/navigation/music_room_navmesh.tres" id="48_musicnav"]
+[ext_resource type="Script" path="res://scripts/world/follow_fade.gd" id="fade_follow"]
+[ext_resource type="Material" path="res://assets/materials/patio_stone.tres" id="v5_stone"]
+[ext_resource type="Script" path="res://scripts/world/deco/janela.gd" id="v5_janela"]
+[ext_resource type="Script" path="res://scripts/world/deco/luminaria.gd" id="v5_luminaria"]
+[ext_resource type="Script" path="res://scripts/world/deco/toro.gd" id="v5_toro"]
+[ext_resource type="Script" path="res://scripts/world/deco/cerejeira.gd" id="v5_cerejeira"]
+[ext_resource type="Script" path="res://scripts/world/deco/banco_patio.gd" id="v5_banco_patio"]
+[ext_resource type="Script" path="res://scripts/world/deco/entulho_patio.gd" id="v5_entulho_patio"]
+[ext_resource type="Script" path="res://scripts/world/deco/lua.gd" id="v5_lua"]
+[ext_resource type="Script" path="res://scripts/world/deco/telhado.gd" id="v5_telhado"]
+[ext_resource type="Script" path="res://scripts/monsters/monster_animator.gd" id="v52_monster_animator"]
+[ext_resource type="PackedScene" path="res://assets/characters/maestro/MaestroRig.glb" id="v52_maestro_glb"]
+[ext_resource type="PackedScene" uid="uid://bameglwih1v0v" path="res://assets/characters/leitora/LeitoraRig.glb" id="v62_leitora_glb"]
+[ext_resource type="Script" path="res://scripts/world/deco/patio_sono.gd" id="v54_patio_sono"]
+[ext_resource type="PackedScene" path="res://scenes/props/bancadapesquisa.tscn" id="p2_BancadaPesquisa"]
+[ext_resource type="PackedScene" path="res://scenes/props/calculadora.tscn" id="p2_Calculadora"]
+[ext_resource type="PackedScene" path="res://scenes/props/cantigas.tscn" id="p2_Cantigas"]
+[ext_resource type="PackedScene" path="res://scenes/props/cranio.tscn" id="p2_Cranio"]
+[ext_resource type="PackedScene" path="res://scenes/props/escrivaninha.tscn" id="p2_Escrivaninha"]
+[ext_resource type="PackedScene" path="res://scenes/props/estanteantiga.tscn" id="p2_EstanteAntiga"]
+[ext_resource type="PackedScene" path="res://scenes/props/frascociencia.tscn" id="p2_FrascoCiencia"]
+[ext_resource type="PackedScene" path="res://scenes/props/livrosantigos.tscn" id="p2_LivrosAntigos"]
+[ext_resource type="PackedScene" path="res://scenes/props/portalaboratorio.tscn" id="p2_PortaLaboratorio"]
+[ext_resource type="PackedScene" path="res://scenes/props/relogio.tscn" id="p2_Relogio"]
+[ext_resource type="PackedScene" path="res://scenes/props/vidrarias.tscn" id="p2_Vidrarias"]
+[ext_resource type="Script" path="res://scripts/world/modelo_prop.gd" id="v54_modelo_prop"]
+[ext_resource type="PackedScene" path="res://assets/models/monitor.glb" id="v54_monitor"]
+[ext_resource type="PackedScene" path="res://assets/models/aranha.glb" id="v54_aranha_glb"]
+[ext_resource type="Script" path="res://scripts/world/aranha.gd" id="v54_aranha"]
+[ext_resource type="Texture2D" path="res://assets/textures/transferidor.png" id="tex_transferidor"]
+[ext_resource type="Material" path="res://assets/materials/prop_wood_dark.tres" id="v56_madeira"]
+[ext_resource type="Script" path="res://scripts/world/lousa_notas.gd" id="lousa_notas"]
+[ext_resource type="Script" path="res://scripts/world/teclado_porta.gd" id="teclado_porta"]
+[ext_resource type="PackedScene" path="res://scenes/props/mapacidade.tscn" id="p2_MapaCidade"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room1volume"]
+size = Vector3(19.2, 4.5, 22.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room2volume"]
+size = Vector3(19.2, 4.5, 20.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exitvolume"]
+size = Vector3(19.2, 4.5, 24.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room3volume"]
+size = Vector3(19.2, 4.5, 23.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room4volume"]
+size = Vector3(19.2, 4.5, 20.7)
+
+[sub_resource type="Environment" id="Environment_7gohe"]
+volumetric_fog_enabled = false
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.55, 0.62, 0.75, 1)
+volumetric_fog_length = 40.0
+background_mode = 1
+background_color = Color(0.019607844, 0.03137255, 0.050980393, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.08, 0.12, 0.18, 1)
+ambient_light_energy = 0.3
+tonemap_mode = 2
+tonemap_exposure = 0.92
+fog_enabled = true
+fog_light_color = Color(0.025, 0.035, 0.05, 1)
+fog_light_energy = 1.0
+fog_density = 0.011
+fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.2
+adjustment_saturation = 0.72
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tefeu"]
+albedo_color = Color(0.21568628, 0.2, 0.18431373, 1)
+roughness = 0.85
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ckpol"]
+radius = 0.6
+height = 3.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyhfs"]
+size = Vector3(12, 4.5, 7.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sugp2"]
+size = Vector3(2, 4.5, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room1camera"]
+size = Vector3(19.8, 4.5, 22.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room2camera"]
+size = Vector3(19.8, 4.5, 20.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room3camera"]
+size = Vector3(19.8, 4.5, 23.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_corridor1camera"]
+size = Vector3(6.30, 4.5, 24.20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_corridor2camera"]
+size = Vector3(6.30, 4.5, 24.00)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exitcorridorcamera"]
+size = Vector3(6.30, 4.5, 36.30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_corridor3camera"]
+size = Vector3(6.30, 4.5, 24.10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_corridor4camera"]
+size = Vector3(6.30, 4.5, 23.70)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exitcamera"]
+size = Vector3(19.8, 4.5, 24.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_room4camera"]
+size = Vector3(19.8, 4.5, 20.7)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_flask"]
+top_radius = 0.08
+bottom_radius = 0.16
+height = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_notebook"]
+size = Vector3(0.35, 0.05, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cabinet"]
+size = Vector3(1.2, 2.2, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cabinet"]
+size = Vector3(1.2, 2.2, 0.6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_chart"]
+size = Vector3(1.4, 1.0, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fall_safety"]
+size = Vector3(300, 1, 400)
+
+[sub_resource type="CapsuleMesh" id="AnguloMesh"]
+radius = 0.55
+height = 2.7
+
+[sub_resource type="StandardMaterial3D" id="AnguloMat"]
+albedo_color = Color(0.18, 0.17, 0.17, 1)
+roughness = 0.9
+
+[sub_resource type="CapsuleMesh" id="PintoraMesh"]
+radius = 0.55
+height = 2.7
+
+[sub_resource type="StandardMaterial3D" id="PintoraMat"]
+albedo_color = Color(0.18, 0.17, 0.17, 1)
+roughness = 0.9
+
+[sub_resource type="CapsuleMesh" id="LeitorMesh"]
+radius = 0.75
+height = 4.2
+
+[sub_resource type="StandardMaterial3D" id="LeitorMat"]
+albedo_color = Color(0.18, 0.17, 0.17, 1)
+roughness = 0.9
+
+[sub_resource type="CapsuleMesh" id="CartografoMesh"]
+radius = 0.55
+height = 2.7
+
+[sub_resource type="StandardMaterial3D" id="CartografoMat"]
+albedo_color = Color(0.18, 0.17, 0.17, 1)
+roughness = 0.9
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_musicvolume"]
+size = Vector3(19.2, 4.5, 19.5)
+
+[sub_resource type="FastNoiseLite" id="Noise_estatica"]
+frequency = 0.35
+
+[sub_resource type="NoiseTexture2D" id="Tex_estatica"]
+width = 128
+height = 96
+noise = SubResource("Noise_estatica")
+
+[sub_resource type="BoxMesh" id="Mesh_monitor"]
+size = Vector3(0.06, 0.95, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="Mat_monitor0"]
+albedo_color = Color(0.05, 0.08, 0.1, 1)
+emission_enabled = true
+emission = Color(0.35, 0.62, 0.9, 1)
+emission_energy_multiplier = 0.45
+emission_texture = SubResource("Tex_estatica")
+
+[sub_resource type="StandardMaterial3D" id="Mat_monitor1"]
+albedo_color = Color(0.05, 0.08, 0.1, 1)
+emission_enabled = true
+emission = Color(0.42, 0.75, 0.66, 1)
+emission_energy_multiplier = 0.45
+emission_texture = SubResource("Tex_estatica")
+
+[sub_resource type="StandardMaterial3D" id="Mat_console"]
+albedo_color = Color(0.12, 0.13, 0.14, 1)
+emission_enabled = true
+emission = Color(0.9, 0.3, 0.25, 1)
+emission_energy_multiplier = 0.06
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_monitorvolume"]
+size = Vector3(13.2, 5.0, 13.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_corridor5camera"]
+size = Vector3(6.40, 4.50, 52.00)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_musiccamera"]
+size = Vector3(19.30, 4.50, 19.60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_subsolorampcamera"]
+size = Vector3(6.40, 11.00, 19.80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_subsolocorridorcamera"]
+size = Vector3(6.40, 4.50, 17.90)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_monitoramentocamera"]
+size = Vector3(13.30, 4.50, 13.80)
+
+[sub_resource type="BoxShape3D" id="InitialVolumeShape"]
+size = Vector3(11.6, 4.5, 7.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_patiocamera"]
+size = Vector3(19.8, 4.5, 24.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_patiovolume"]
+size = Vector3(19.8, 4.5, 24.6)
+
+[sub_resource type="FogMaterial" id="FogMat_patio"]
+density = 0.05
+albedo = Color(0.62, 0.68, 0.8, 1)
+height_falloff = 0.6
+edge_fade = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_papel"]
+albedo_color = Color(0.66, 0.62, 0.52, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 0.93, 0.75, 1)
+emission_energy_multiplier = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_papel_parede"]
+albedo_color = Color(0.66, 0.62, 0.52, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 0.93, 0.75, 1)
+emission_energy_multiplier = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_livro"]
+albedo_color = Color(0.42, 0.14, 0.1, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(0.9, 0.45, 0.3, 1)
+emission_energy_multiplier = 0.06
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_cadeado"]
+albedo_color = Color(0.62, 0.5, 0.22, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 0.8, 0.35, 1)
+emission_energy_multiplier = 0.18
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_mapa"]
+albedo_color = Color(0.7, 0.62, 0.45, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 0.85, 0.55, 1)
+emission_energy_multiplier = 0.10
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_transferidor"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+cull_mode = 2
+albedo_texture = ExtResource("tex_transferidor")
+albedo_color = Color(0.85, 0.8, 0.7, 1)
+roughness = 0.6
+emission_enabled = true
+emission = Color(0.35, 0.3, 0.2, 1)
+emission_energy_multiplier = 0.25
+emission_texture = ExtResource("tex_transferidor")
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_frascos"]
+albedo_color = Color(0.4, 0.75, 0.7, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(0.5, 1, 0.9, 1)
+emission_energy_multiplier = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_rosa"]
+albedo_color = Color(0.55, 0.5, 0.42, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(0.85, 0.8, 0.6, 1)
+emission_energy_multiplier = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StoryMat_foto"]
+albedo_color = Color(0.6, 0.58, 0.52, 1)
+roughness = 0.8
+emission_enabled = true
+emission = Color(1, 1, 0.9, 1)
+emission_energy_multiplier = 0.06
+
+[sub_resource type="BoxMesh" id="StoryVis_0"]
+size = Vector3(0.700, 0.030, 0.550)
+
+[sub_resource type="BoxMesh" id="StoryVis_1"]
+size = Vector3(0.420, 0.560, 0.012)
+
+[sub_resource type="BoxMesh" id="StoryVis_2"]
+size = Vector3(0.360, 0.100, 0.500)
+
+[sub_resource type="BoxMesh" id="StoryVis_3"]
+size = Vector3(0.340, 0.080, 0.460)
+
+[sub_resource type="BoxMesh" id="StoryVis_4"]
+size = Vector3(0.360, 0.100, 0.500)
+
+[sub_resource type="BoxMesh" id="StoryVis_5"]
+size = Vector3(0.340, 0.080, 0.460)
+
+[sub_resource type="BoxMesh" id="StoryVis_6"]
+size = Vector3(0.260, 0.300, 0.120)
+
+[sub_resource type="TorusMesh" id="StoryVis_7"]
+inner_radius = 0.07
+outer_radius = 0.1
+
+[sub_resource type="BoxMesh" id="StoryVis_8"]
+size = Vector3(0.420, 0.560, 0.012)
+
+[sub_resource type="BoxMesh" id="StoryVis_9"]
+size = Vector3(0.420, 0.012, 0.300)
+
+[sub_resource type="BoxMesh" id="StoryVis_10"]
+size = Vector3(0.420, 0.560, 0.012)
+
+[sub_resource type="QuadMesh" id="StoryVis_11"]
+size = Vector2(3.36, 1.68)
+
+[sub_resource type="BoxMesh" id="StoryVis_12"]
+size = Vector3(0.260, 0.300, 0.120)
+
+[sub_resource type="TorusMesh" id="StoryVis_13"]
+inner_radius = 0.07
+outer_radius = 0.1
+
+[sub_resource type="BoxMesh" id="StoryVis_14"]
+size = Vector3(0.360, 0.100, 0.500)
+
+[sub_resource type="BoxMesh" id="StoryVis_15"]
+size = Vector3(0.340, 0.080, 0.460)
+
+[sub_resource type="BoxMesh" id="StoryVis_16"]
+size = Vector3(0.360, 0.100, 0.500)
+
+[sub_resource type="BoxMesh" id="StoryVis_17"]
+size = Vector3(0.340, 0.080, 0.460)
+
+[sub_resource type="CylinderMesh" id="StoryVis_18"]
+top_radius = 0.07
+bottom_radius = 0.13
+height = 0.42
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="StoryVis_19"]
+top_radius = 0.07
+bottom_radius = 0.13
+height = 0.42
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="StoryVis_20"]
+top_radius = 0.07
+bottom_radius = 0.13
+height = 0.42
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="StoryVis_21"]
+top_radius = 0.07
+bottom_radius = 0.13
+height = 0.42
+radial_segments = 12
+
+[sub_resource type="BoxMesh" id="StoryVis_22"]
+size = Vector3(0.260, 0.300, 0.120)
+
+[sub_resource type="TorusMesh" id="StoryVis_23"]
+inner_radius = 0.07
+outer_radius = 0.1
+
+[sub_resource type="BoxMesh" id="StoryVis_24"]
+size = Vector3(0.420, 0.012, 0.300)
+
+[sub_resource type="CylinderMesh" id="StoryVis_25"]
+top_radius = 1.20
+bottom_radius = 1.20
+height = 0.02
+radial_segments = 32
+
+[sub_resource type="BoxMesh" id="StoryVis_26"]
+size = Vector3(0.420, 0.012, 0.300)
+
+[sub_resource type="BoxMesh" id="StoryVis_27"]
+size = Vector3(0.600, 0.450, 0.030)
+
+[sub_resource type="BoxMesh" id="StoryVis_28"]
+size = Vector3(0.420, 0.560, 0.012)
+
+[sub_resource type="BoxMesh" id="StoryVis_29"]
+size = Vector3(0.420, 0.560, 0.012)
+
+[sub_resource type="BoxMesh" id="StoryVis_30"]
+size = Vector3(0.420, 0.012, 0.300)
+
+[sub_resource type="BoxMesh" id="StoryVis_31"]
+size = Vector3(0.420, 0.012, 0.300)
+
+[node name="Main" type="Node3D" unique_id=1637688047]
+[node name="FallSafety" type="StaticBody3D" parent="." unique_id=981772340]
+position = Vector3(-10, -20, -100)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallSafety"]
+shape = SubResource("BoxShape3D_fall_safety")
+
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1096167606]
+environment = SubResource("Environment_7gohe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=353444]
+transform = Transform3D(1, 0, 0, 0, 0.37784073, 0.92587054, 0, -0.92587054, 0.37784073, 0, 1, 0)
+visible = false
+
+[node name="School" type="Node3D" parent="." unique_id=1859462191]
+
+[node name="Corridor" type="Node3D" parent="School" unique_id=567027654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="Floor" type="CSGBox3D" parent="School/Corridor" unique_id=1935911246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -8.2)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(7, 0.2, 24.5)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Corridor" unique_id=1609237071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -8.2)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(7, 0.2, 24.5)
+
+[node name="WallEast" type="CSGBox3D" parent="School/Corridor" unique_id=1066851217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.25, -8)
+visible = false
+use_collision = true
+size = Vector3(0.2, 4.5, 24)
+
+[node name="WallDoorTop2" type="CSGBox3D" parent="School/Corridor" unique_id=163353585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -20.4)
+material_override = ExtResource("4_tipki")
+size = Vector3(4, 2, 0.2)
+
+[node name="WallDoorRight_Upper" type="CSGBox3D" parent="School/Corridor" unique_id=1722705295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.1, 4.6, 0.2)
+
+[node name="WallDoorRight_Trim" type="CSGBox3D" parent="School/Corridor" unique_id=154427698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 0.12, 0.3)
+
+[node name="WallDoorRight_Lower" type="CSGBox3D" parent="School/Corridor" unique_id=2062156733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 2.4, 0.2)
+
+[node name="WallDoorLeft_Upper" type="CSGBox3D" parent="School/Corridor" unique_id=798217196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.5, 4.6, 0.2)
+
+[node name="WallDoorLeft_Trim" type="CSGBox3D" parent="School/Corridor" unique_id=267578355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 0.12, 0.3)
+
+[node name="WallDoorLeft_Lower" type="CSGBox3D" parent="School/Corridor" unique_id=1208013184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 2.4, 0.2)
+
+[node name="FrontWallProfessorRoom_Upper" type="CSGBox3D" parent="School/Corridor" unique_id=1102684533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.7, -12.256489)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 16.512976)
+
+[node name="FrontWallProfessorRoom_Trim" type="CSGBox3D" parent="School/Corridor" unique_id=656170690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.4, -12.254677)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 16.50935)
+
+[node name="FrontWallProfessorRoom_Lower" type="CSGBox3D" parent="School/Corridor" unique_id=1158232641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.2, -12.261757)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 16.52351)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Corridor" unique_id=2047488069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.7, 1.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 5)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Corridor" unique_id=841918423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.4, 1.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, -0.12, 5)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Corridor" unique_id=812742361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.2, 1.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 5)
+
+[node name="WallDoorTop" type="CSGBox3D" parent="School/Corridor" unique_id=1522039742]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5, 6, -2.5)
+material_override = ExtResource("4_tipki")
+size = Vector3(3, 2, 0.2)
+
+[node name="CorridorLight1" type="SpotLight3D" parent="School/Corridor" unique_id=1906275130]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -2.2659988)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.9
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight2" type="SpotLight3D" parent="School/Corridor" unique_id=540383332]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -13.75968)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Corridor2" type="Node3D" parent="School" unique_id=513624710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32.5)
+
+[node name="Floor" type="CSGBox3D" parent="School/Corridor2" unique_id=1132678815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -7.950489)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(7, 0.2, 24.5)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Corridor2" unique_id=1322874118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -8.2)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(7, 0.2, 24.5)
+
+[node name="WallEast" type="CSGBox3D" parent="School/Corridor2" unique_id=648275401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2.25, -8)
+visible = false
+use_collision = true
+size = Vector3(0.2, 4.5, 24)
+
+[node name="WallDoorTop2" type="CSGBox3D" parent="School/Corridor2" unique_id=1514977032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -20.4)
+material_override = ExtResource("4_tipki")
+size = Vector3(4, 2, 0.2)
+
+[node name="WallDoorRight_Upper" type="CSGBox3D" parent="School/Corridor2" unique_id=336019877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.1, 4.6, 0.2)
+
+[node name="WallDoorRight_Trim" type="CSGBox3D" parent="School/Corridor2" unique_id=659223041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 0.12, 0.3)
+
+[node name="WallDoorRight_Lower" type="CSGBox3D" parent="School/Corridor2" unique_id=2093427441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 2.4, 0.2)
+
+[node name="WallDoorLeft_Upper" type="CSGBox3D" parent="School/Corridor2" unique_id=90975622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.5, 4.6, 0.2)
+
+[node name="WallDoorLeft_Trim" type="CSGBox3D" parent="School/Corridor2" unique_id=40384472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 0.12, 0.3)
+
+[node name="WallDoorLeft_Lower" type="CSGBox3D" parent="School/Corridor2" unique_id=1021368864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74, 1.2, -20.400002)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 2.4, 0.2)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Corridor2" unique_id=1755860128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.7, -1.26)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 10.5)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Corridor2" unique_id=524765229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.4, -1.26)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 10.5)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Corridor2" unique_id=583254129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.2, -1.26)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 10.5)
+
+[node name="WallDoorTop" type="CSGBox3D" parent="School/Corridor2" unique_id=2000378610]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5, 6, -8)
+material_override = ExtResource("4_tipki")
+size = Vector3(3, 2, 0.2)
+
+[node name="WallWest_Upper2" type="CSGBox3D" parent="School/Corridor2" unique_id=1531690796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.7, -17.7)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 16.4)
+
+[node name="WallWest_Trim2" type="CSGBox3D" parent="School/Corridor2" unique_id=1698742482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 2.4, -17.7)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 16.4)
+
+[node name="WallWest_Lower2" type="CSGBox3D" parent="School/Corridor2" unique_id=1360095073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.2, -17.7)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 16.4)
+
+[node name="CorridorLight1" type="SpotLight3D" parent="School/Corridor2" unique_id=1421439507]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -2.3064308)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight2" type="SpotLight3D" parent="School/Corridor2" unique_id=1107215550]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -13.232788)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Room 1" type="Node3D" parent="School" unique_id=1160046024]
+
+[node name="Floor" type="CSGBox3D" parent="School/Room 1" unique_id=388724336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -0.1, -18.7)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(20, 0.2, 22.4)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Room 1" unique_id=457902886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 7, -18.7)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(20, 0.2, 22.4)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Room 1" unique_id=1333151011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 4.7, -18.7)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 22.4)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Room 1" unique_id=1948226864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 2.4, -18.7)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 22.4)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Room 1" unique_id=1866602004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 1.2, -18.7)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 22.4)
+
+[node name="WallNorthLeft_Upper" type="CSGBox3D" parent="School/Room 1" unique_id=93230037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -7.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthLeft_Trim" type="CSGBox3D" parent="School/Room 1" unique_id=1609457720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthLeft_Lower" type="CSGBox3D" parent="School/Room 1" unique_id=1735762094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="WallNorthRight_Upper" type="CSGBox3D" parent="School/Room 1" unique_id=1720683283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -30)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthRight_Trim" type="CSGBox3D" parent="School/Room 1" unique_id=425784995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -30)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthRight_Lower" type="CSGBox3D" parent="School/Room 1" unique_id=90886286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -30)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="ProfessorSpawn" type="Marker3D" parent="School/Room 1" unique_id=954307338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2, 1.75, -18.7)
+
+[node name="ProfessorRoomLight1" type="SpotLight3D" parent="School/Room 1" unique_id=1997338148]
+transform = Transform3D(0.2295282, -0.6246866, 0.7463802, 0.0000000, 0.7668537, 0.6418220, -0.9733020, -0.1473163, 0.1760146, -17.283203, 6.600000, -18.793335)
+light_color = Color(0.6862745, 0.7882353, 0.9098039, 1)
+light_energy = 4.550
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 11.0
+spot_attenuation = 1.3
+spot_angle = 50.0
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="LuzLousa" type="OmniLight3D" parent="School/Room 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2, 4.4, -19.6)
+light_color = Color(0.72, 0.8, 0.95, 1)
+light_energy = 4.0
+shadow_enabled = true
+omni_range = 6.5
+omni_attenuation = 1.4
+
+[node name="ProfessorRoomLight2" type="SpotLight3D" parent="School/Room 1" unique_id=331077579]
+transform = Transform3D(-4.371139e-08, 0.9953962, -0.09584576, 0, 0.09584576, 0.9953962, 1, 4.351015e-08, -4.1895514e-09, -12.078687, 6.6, -18.793335)
+light_color = Color(0.6862745, 0.7882353, 0.9098039, 1)
+light_energy = 7.000
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 15.0
+spot_attenuation = 1.3
+spot_angle = 55.0
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Room 2" type="Node3D" parent="School" unique_id=1401081289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="Floor" type="CSGBox3D" parent="School/Room 2" unique_id=1139509084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -0.1, -18)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(20, 0.2, 20.9)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Room 2" unique_id=1962481813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 7, -18)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(20, 0.2, 20.9)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Room 2" unique_id=1942452119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 4.7, -18)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 20.9)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Room 2" unique_id=1848100771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 2.4, -18)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 20.9)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Room 2" unique_id=122826010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 1.2, -18)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 20.9)
+
+[node name="WallNorthLeft_Upper" type="CSGBox3D" parent="School/Room 2" unique_id=1544398966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -7.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthLeft_Trim" type="CSGBox3D" parent="School/Room 2" unique_id=376404733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthLeft_Lower" type="CSGBox3D" parent="School/Room 2" unique_id=1992323696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="ProfessorRoomLight3" type="SpotLight3D" parent="School/Room 2" unique_id=1256072053]
+transform = Transform3D(-4.371139e-08, 0.9953962, -0.09584576, 0, 0.09584576, 0.9953962, 1, 4.351015e-08, -4.1895514e-09, -13.956215, 6.6, -18.295322)
+light_color = Color(0.76862746, 0.81960785, 0.8745098, 1)
+light_energy = 7.000
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 15.0
+spot_attenuation = 1.3
+spot_angle = 85.71
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Exit" type="Node3D" parent="School" unique_id=712304413]
+
+[node name="WallNorthRight_Upper" type="CSGBox3D" parent="School/Exit" unique_id=71297972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -58.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthRight_Trim" type="CSGBox3D" parent="School/Exit" unique_id=1750916790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -58.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthRight_Lower" type="CSGBox3D" parent="School/Exit" unique_id=268347731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -58.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="Floor2" type="CSGBox3D" parent="School/Exit" unique_id=1831443136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5001905e-09, -0.1, -71.12583)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(7, 0.2, 36.848)
+
+[node name="Ceiling2" type="CSGBox3D" parent="School/Exit" unique_id=976393900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -71.27263)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(7, 0.2, 36.610565)
+
+[node name="CorridorLight1" type="SpotLight3D" parent="School/Exit" unique_id=1854308100]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -57.04397)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight2" type="SpotLight3D" parent="School/Exit" unique_id=399738542]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -70.42163)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight3" type="SpotLight3D" parent="School/Exit" unique_id=841009857]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.6, -82.928665)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Room 3" type="Node3D" parent="School" unique_id=1011717623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -85)
+
+[node name="Floor" type="CSGBox3D" parent="School/Room 3" unique_id=1938186414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -0.1, -19.3)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(20, 0.2, 23.6)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Room 3" unique_id=138518654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 7, -19.3)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(20, 0.2, 23.6)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Room 3" unique_id=553551277]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 4.7, -19.3)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 23.6)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Room 3" unique_id=72912930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 2.4, -19.3)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 23.6)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Room 3" unique_id=1510141719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 1.2, -19.3)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 23.6)
+
+[node name="WallNorthLeft_Upper" type="CSGBox3D" parent="School/Room 3" unique_id=835500427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -7.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthLeft_Upper2" type="CSGBox3D" parent="School/Room 3" unique_id=722271689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthLeft_Lower" type="CSGBox3D" parent="School/Room 3" unique_id=1449486395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="WallNorthRight_Upper" type="CSGBox3D" parent="School/Room 3" unique_id=1323423750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -31)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthRight_Trim" type="CSGBox3D" parent="School/Room 3" unique_id=205984142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -31)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthRight_Lower" type="CSGBox3D" parent="School/Room 3" unique_id=854156222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -31)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="ProfessorRoomLight3" type="SpotLight3D" parent="School/Room 3" unique_id=569588072]
+transform = Transform3D(0.9073194, -1.8378106e-08, 0.42044201, -0.42044201, -3.9660197e-08, 0.9073194, 0, -1, -4.3711395e-08, -17.283203, 6.6, -19.001495)
+light_color = Color(0.6862745, 0.7882353, 0.9098039, 1)
+light_energy = 4.550
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 11.0
+spot_attenuation = 1.3
+spot_angle = 50.0
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="ProfessorRoomLight5" type="SpotLight3D" parent="School/Room 3" unique_id=734770366]
+transform = Transform3D(0.0938117, 0.9848077, 0.1461268, -0.8415108, -3.6783604e-08, 0.5402403, 0.5320328, -0.17364815, 0.8287263, -17.283203, 6.6, -19.001495)
+light_color = Color(0.6862745, 0.7882353, 0.9098039, 1)
+light_energy = 9.999
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 21.691
+spot_attenuation = 1.3
+spot_angle = 26.12
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="ProfessorRoomLight4" type="SpotLight3D" parent="School/Room 3" unique_id=110266164]
+transform = Transform3D(-4.371139e-08, 0.9953962, -0.09584576, 0, 0.09584576, 0.9953962, 1, 4.351015e-08, -4.1895514e-09, -12.078687, 6.6, -18.970085)
+light_color = Color(0.6862745, 0.7882353, 0.9098039, 1)
+light_energy = 7.000
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 15.0
+spot_attenuation = 1.3
+spot_angle = 55.0
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Room 4" type="Node3D" parent="School" unique_id=1387256320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -109.4)
+
+[node name="Floor" type="CSGBox3D" parent="School/Room 4" unique_id=576954790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -0.1, -18)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(20, 0.2, 20.9)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Room 4" unique_id=1775353902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 7, -18)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(20, 0.2, 20.9)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Room 4" unique_id=1814653966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 4.7, -18)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 20.9)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Room 4" unique_id=584827675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 2.4, -18)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 20.9)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Room 4" unique_id=1640768115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5, 1.2, -18)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 20.9)
+
+[node name="WallNorthLeft_Upper" type="CSGBox3D" parent="School/Room 4" unique_id=1495285567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -7.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthLeft_Trim" type="CSGBox3D" parent="School/Room 4" unique_id=1308389025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthLeft_Lower" type="CSGBox3D" parent="School/Room 4" unique_id=1553012106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -7.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="WallNorthRight_Upper" type="CSGBox3D" parent="School/Room 4" unique_id=103863547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 4.7, -28.5)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20, 4.6, 0.2)
+
+[node name="WallNorthRight_Trim" type="CSGBox3D" parent="School/Room 4" unique_id=457077666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 2.4, -28.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 0.12, 0.3)
+
+[node name="WallNorthRight_Lower" type="CSGBox3D" parent="School/Room 4" unique_id=1481433584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 1.2, -28.5)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20, 2.4, 0.2)
+
+[node name="ProfessorRoomLight4" type="SpotLight3D" parent="School/Room 4" unique_id=658096254]
+transform = Transform3D(-4.371139e-08, 0.9953962, -0.09584576, 0, 0.09584576, 0.9953962, 1, 4.351015e-08, -4.1895514e-09, -13.956215, 6.6, -18.15242)
+light_color = Color(0.76862746, 0.81960785, 0.8745098, 1)
+light_energy = 7.000
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 15.0
+spot_attenuation = 1.3
+spot_angle = 85.71
+spot_angle_attenuation = 0.8122525
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Corridor3" type="Node3D" parent="School" unique_id=1715968670]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -110)
+
+[node name="Floor" type="CSGBox3D" parent="School/Corridor3" unique_id=2020933629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -8.2)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(7, 0.2, 24.5)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Corridor3" unique_id=2091369117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.094947e-13, 7, -8.178612)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(7, 0.2, 24.457226)
+
+[node name="WallEast" type="CSGBox3D" parent="School/Corridor3" unique_id=1030357678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.25, -8)
+visible = false
+use_collision = true
+size = Vector3(0.2, 4.5, 24)
+
+[node name="WallDoorTop2" type="CSGBox3D" parent="School/Corridor3" unique_id=828483695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -20.4)
+material_override = ExtResource("4_tipki")
+size = Vector3(4, 2, 0.2)
+
+[node name="WallDoorRight_Upper" type="CSGBox3D" parent="School/Corridor3" unique_id=16977441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.5, 4.6, 0.2)
+
+[node name="WallDoorRight_Trim" type="CSGBox3D" parent="School/Corridor3" unique_id=474293084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 0.12, 0.3)
+
+[node name="WallDoorRight_Lower" type="CSGBox3D" parent="School/Corridor3" unique_id=1036602379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 2.4, 0.2)
+
+[node name="WallDoorLeft_Upper" type="CSGBox3D" parent="School/Corridor3" unique_id=274900609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.1, 4.6, 0.2)
+
+[node name="WallDoorLeft_Trim" type="CSGBox3D" parent="School/Corridor3" unique_id=1115068538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 0.12, 0.3)
+
+[node name="WallDoorLeft_Lower" type="CSGBox3D" parent="School/Corridor3" unique_id=135242106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 2.4, 0.2)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Corridor3" unique_id=1251501667]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 4.7, -21.24)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 10.5)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Corridor3" unique_id=1645351203]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 2.4, -21.24)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 10.5)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Corridor3" unique_id=1249466402]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 1.2, -21.24)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 10.5)
+
+[node name="WallDoorTop" type="CSGBox3D" parent="School/Corridor3" unique_id=983279240]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5000012, 6, -14.5)
+material_override = ExtResource("4_tipki")
+size = Vector3(3, 2, 0.2)
+
+[node name="WallWest_Upper2" type="CSGBox3D" parent="School/Corridor3" unique_id=990622543]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 4.7, -4.8)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 16.4)
+
+[node name="WallWest_Trim2" type="CSGBox3D" parent="School/Corridor3" unique_id=311884221]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 2.4, -4.8)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 16.4)
+
+[node name="WallWest_Lower2" type="CSGBox3D" parent="School/Corridor3" unique_id=774873585]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 1.2, -4.8)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 16.4)
+
+[node name="CorridorLight1" type="SpotLight3D" parent="School/Corridor3" unique_id=588707175]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 1.266335e-06, 6.6, -14.485153)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight2" type="SpotLight3D" parent="School/Corridor3" unique_id=1429185727]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 2.4178826e-07, 6.6, -2.765709)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Corridor4" type="Node3D" parent="School" unique_id=192745447]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -134.5)
+
+[node name="Floor" type="CSGBox3D" parent="School/Corridor4" unique_id=507885111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8189894e-12, -0.1, -8.465561)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(7, 0.2, 24.5)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Corridor4" unique_id=1749820298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.637979e-12, 7, -8.438751)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(7, 0.2, 24.022491)
+
+[node name="WallEast" type="CSGBox3D" parent="School/Corridor4" unique_id=1761962031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.25, -8)
+visible = false
+use_collision = true
+size = Vector3(0.2, 4.5, 24)
+
+[node name="WallDoorTop2" type="CSGBox3D" parent="School/Corridor4" unique_id=1971642663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -20.4)
+material_override = ExtResource("4_tipki")
+size = Vector3(4, 2, 0.2)
+
+[node name="WallDoorRight_Upper" type="CSGBox3D" parent="School/Corridor4" unique_id=1646408377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.5, 4.6, 0.2)
+
+[node name="WallDoorRight_Trim" type="CSGBox3D" parent="School/Corridor4" unique_id=124810168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 0.12, 0.3)
+
+[node name="WallDoorRight_Lower" type="CSGBox3D" parent="School/Corridor4" unique_id=2003357439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5, 2.4, 0.2)
+
+[node name="WallDoorLeft_Upper" type="CSGBox3D" parent="School/Corridor4" unique_id=590759262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 4.7, -20.4)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.1, 4.6, 0.2)
+
+[node name="WallDoorLeft_Trim" type="CSGBox3D" parent="School/Corridor4" unique_id=1975270366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 2.4, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 0.12, 0.3)
+
+[node name="WallDoorLeft_Lower" type="CSGBox3D" parent="School/Corridor4" unique_id=738232844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55, 1.2, -20.4)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1, 2.4, 0.2)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/Corridor4" unique_id=144475872]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 4.7, -18.6)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 5)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/Corridor4" unique_id=943269010]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 2.4, -18.6)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 5)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/Corridor4" unique_id=1002156703]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 1.2, -18.6)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 5)
+
+[node name="WallWest_Upper2" type="CSGBox3D" parent="School/Corridor4" unique_id=490836600]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 4.7, -4.9)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2, 4.6, 16.4)
+
+[node name="WallWest_Trim2" type="CSGBox3D" parent="School/Corridor4" unique_id=791592894]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 2.4, -4.9)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3, 0.12, 16.4)
+
+[node name="WallWest_Lower2" type="CSGBox3D" parent="School/Corridor4" unique_id=548760648]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.5, 1.2, -4.9)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2, 2.4, 16.4)
+
+[node name="WallDoorTop" type="CSGBox3D" parent="School/Corridor4" unique_id=1502807976]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.5000012, 6, -14.599998)
+material_override = ExtResource("4_tipki")
+size = Vector3(3, 2, 0.2)
+
+[node name="CorridorLight3" type="SpotLight3D" parent="School/Corridor4" unique_id=1371268089]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 1.2226174e-06, 6.6, -13.985085)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight4" type="SpotLight3D" parent="School/Corridor4" unique_id=901396834]
+transform = Transform3D(-1, -8.742278e-08, -3.821371e-15, 0, -4.371139e-08, 1, -8.742278e-08, 1, 4.371139e-08, 2.1246888e-07, 6.6, -2.4303284)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.8
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Player" parent="." unique_id=3191872 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -12.5000, 0.0500, -69.5000)
+collision_mask = 5
+
+[node name="ProtagonistLightRig" type="Node3D" parent="Player" unique_id=1735060001]
+script = ExtResource("50_protolight")
+
+[node name="CameraController" type="Node3D" parent="." unique_id=256697341 node_paths=PackedStringArray("player")]
+script = ExtResource("2_0wfyh")
+player = NodePath("../Player")
+default_offset = Vector3(9, 5.6, 0)
+default_fov = 38.0
+look_height = 2.4
+horizontal_dead_zone = 2.0
+
+[node name="Focuspoint" type="Node3D" parent="CameraController" unique_id=1500732830]
+
+[node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=74007086]
+transform = Transform3D(0.0003041866, -0.08715521, 0.9961947, -0.0034773685, 0.99618864, 0.087155744, -0.9999939, -0.0034906478, -4.3565073e-08, 5, 1.5, 0)
+current = true
+fov = 45.0
+
+[node name="InitialRoomCamera" parent="." unique_id=2132365830 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 0.0000, -194.0000)
+camera_offset = Vector3(11.5, 5.2, 0)
+camera_fov = 38.0
+blend_speed = 1.6
+minimum_camera_z = -197.4
+maximum_camera_z = -190.6
+
+[node name="CollisionShape3D" parent="InitialRoomCamera" index="0" unique_id=1052127168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("BoxShape3D_jyhfs")
+
+[node name="CameraPoint" parent="InitialRoomCamera" index="1" unique_id=992310303]
+visible = false
+
+[node name="FrontEdgeCamera" parent="." unique_id=990755622 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.25)
+camera_priority = 10
+camera_offset = Vector3(10.5, 5.4, 0)
+blend_speed = 1.5
+minimum_camera_z = 0.3
+maximum_camera_z = 0.3
+
+[node name="CollisionShape3D" parent="FrontEdgeCamera" index="0" unique_id=1052127168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.25, -3.2)
+shape = SubResource("BoxShape3D_sugp2")
+
+[node name="CameraPoint" parent="FrontEdgeCamera" index="1" unique_id=992310303]
+visible = false
+
+[editable path="InitialRoomCamera"]
+[editable path="FrontEdgeCamera"]
+
+[node name="Room1Camera" parent="." unique_id=795425564 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -18.7)
+camera_priority = 5
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 0.8
+use_z_limits = true
+minimum_camera_z = -29.4
+maximum_camera_z = -8.0
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor/WallWest_Upper"), NodePath("../School/Corridor/WallWest_Trim"), NodePath("../School/Corridor/WallWest_Lower"), NodePath("../School/Corridor/FrontWallProfessorRoom_Upper"), NodePath("../School/Corridor/FrontWallProfessorRoom_Trim"), NodePath("../School/Corridor/FrontWallProfessorRoom_Lower"), NodePath("../School/Corridor/WallDoorTop"), NodePath("../School/Corridor2/WallWest_Upper"), NodePath("../School/Corridor2/WallWest_Trim"), NodePath("../School/Corridor2/WallWest_Lower"), NodePath("../School/Corridor/WallDoorRight_Upper"), NodePath("../School/Corridor/WallDoorRight_Trim"), NodePath("../School/Corridor/WallDoorRight_Lower"), NodePath("../School/Corridor/WallDoorLeft_Upper"), NodePath("../School/Corridor/WallDoorLeft_Trim"), NodePath("../School/Corridor/WallDoorLeft_Lower"), NodePath("../School/Corridor/WallDoorTop2")])
+
+[node name="CollisionShape3D" parent="Room1Camera" index="0" unique_id=1052127168]
+shape = SubResource("BoxShape3D_room1camera")
+
+[node name="CameraPoint" parent="Room1Camera" index="1" unique_id=992310303]
+visible = false
+
+[node name="Room2Camera" parent="." unique_id=423946139 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -48.0)
+camera_priority = 5
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 0.8
+use_z_limits = true
+minimum_camera_z = -57.95
+maximum_camera_z = -38.05
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor2/WallWest_Upper"), NodePath("../School/Corridor2/WallWest_Trim"), NodePath("../School/Corridor2/WallWest_Lower"), NodePath("../School/Corridor2/WallDoorTop"), NodePath("../School/Corridor2/WallWest_Upper2"), NodePath("../School/Corridor2/WallWest_Trim2"), NodePath("../School/Corridor2/WallWest_Lower2"), NodePath("../School/Corridor2/WallDoorRight_Upper"), NodePath("../School/Corridor2/WallDoorRight_Trim"), NodePath("../School/Corridor2/WallDoorRight_Lower"), NodePath("../School/Corridor2/WallDoorLeft_Upper"), NodePath("../School/Corridor2/WallDoorLeft_Trim"), NodePath("../School/Corridor2/WallDoorLeft_Lower"), NodePath("../School/Corridor2/WallDoorTop2")])
+
+[node name="CollisionShape3D" parent="Room2Camera" index="0" unique_id=1052127168]
+shape = SubResource("BoxShape3D_room2camera")
+
+[node name="CameraPoint" parent="Room2Camera" index="1" unique_id=992310303]
+visible = false
+
+[node name="Room3Camera" parent="." unique_id=947876999 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -104.3)
+camera_priority = 5
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 0.8
+use_z_limits = true
+minimum_camera_z = -115.6
+maximum_camera_z = -93.0
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor3/WallWest_Upper"), NodePath("../School/Corridor3/WallWest_Trim"), NodePath("../School/Corridor3/WallWest_Lower"), NodePath("../School/Corridor3/WallDoorTop"), NodePath("../School/Corridor3/WallWest_Upper2"), NodePath("../School/Corridor3/WallWest_Trim2"), NodePath("../School/Corridor3/WallWest_Lower2"), NodePath("../School/Corridor4/WallWest_Upper"), NodePath("../School/Corridor4/WallWest_Trim"), NodePath("../School/Corridor4/WallWest_Lower"), NodePath("../School/Corridor4/WallDoorRight_Upper"), NodePath("../School/Corridor4/WallDoorRight_Trim"), NodePath("../School/Corridor4/WallDoorRight_Lower"), NodePath("../School/Corridor4/WallDoorLeft_Upper"), NodePath("../School/Corridor4/WallDoorLeft_Trim"), NodePath("../School/Corridor4/WallDoorLeft_Lower"), NodePath("../School/Corridor4/WallDoorTop2")])
+
+[node name="CollisionShape3D" parent="Room3Camera" index="0" unique_id=1052127168]
+shape = SubResource("BoxShape3D_room3camera")
+
+[node name="CameraPoint" parent="Room3Camera" index="1" unique_id=992310303]
+visible = false
+
+[node name="Room4Camera" parent="." unique_id=1497871144 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -127.4)
+camera_priority = 5
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 0.8
+use_z_limits = true
+minimum_camera_z = -137.35
+maximum_camera_z = -117.45
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor4/WallWest_Upper"), NodePath("../School/Corridor4/WallWest_Trim"), NodePath("../School/Corridor4/WallWest_Lower"), NodePath("../School/Corridor4/WallDoorTop"), NodePath("../School/Corridor4/WallWest_Upper2"), NodePath("../School/Corridor4/WallWest_Trim2"), NodePath("../School/Corridor4/WallWest_Lower2")])
+
+[node name="CollisionShape3D" parent="Room4Camera" index="0" unique_id=1052127168]
+shape = SubResource("BoxShape3D_room4camera")
+
+[node name="CameraPoint" parent="Room4Camera" index="1" unique_id=992310303]
+visible = false
+
+[node name="Corridor1Camera" parent="." unique_id=1735020110 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300, 0, -16.200)
+camera_priority = 3
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 2.0
+minimum_camera_z = -27.9
+maximum_camera_z = -4.6
+occluder_paths = Array[NodePath]([NodePath("../School/Fechamentos/InicioCorredor_Upper"), NodePath("../School/Fechamentos/InicioCorredor_Trim"), NodePath("../School/Fechamentos/InicioCorredor_Lower"), NodePath("../School/Corridor/WallDoorRight_Upper"), NodePath("../School/Corridor/WallDoorRight_Trim"), NodePath("../School/Corridor/WallDoorRight_Lower")])
+
+[node name="CollisionShape3D" parent="Corridor1Camera" index="0" unique_id=1735020111]
+shape = SubResource("BoxShape3D_corridor1camera")
+
+[node name="CameraPoint" parent="Corridor1Camera" index="1" unique_id=1735020112]
+visible = false
+
+[node name="Corridor2Camera" parent="." unique_id=1735020113 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300, 0, -40.600)
+camera_priority = 3
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 2.0
+minimum_camera_z = -52.3
+maximum_camera_z = -28.9
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor/WallDoorRight_Upper"), NodePath("../School/Corridor/WallDoorRight_Trim"), NodePath("../School/Corridor/WallDoorRight_Lower"), NodePath("../School/Corridor2/WallDoorRight_Upper"), NodePath("../School/Corridor2/WallDoorRight_Trim"), NodePath("../School/Corridor2/WallDoorRight_Lower")])
+
+[node name="CollisionShape3D" parent="Corridor2Camera" index="0" unique_id=1735020114]
+shape = SubResource("BoxShape3D_corridor2camera")
+
+[node name="CameraPoint" parent="Corridor2Camera" index="1" unique_id=1735020115]
+visible = false
+
+[node name="ExitCorridorCamera" parent="." unique_id=1735020116 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300, 0, -71.250)
+camera_priority = 3
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 2.0
+minimum_camera_z = -89.0
+maximum_camera_z = -53.4
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor2/WallDoorRight_Upper"), NodePath("../School/Corridor2/WallDoorRight_Trim"), NodePath("../School/Corridor2/WallDoorRight_Lower"), NodePath("../School/Corridor3/WallDoorLeft_Upper"), NodePath("../School/Corridor3/WallDoorLeft_Trim"), NodePath("../School/Corridor3/WallDoorLeft_Lower")])
+
+[node name="CollisionShape3D" parent="ExitCorridorCamera" index="0" unique_id=1735020117]
+shape = SubResource("BoxShape3D_exitcorridorcamera")
+
+[node name="CameraPoint" parent="ExitCorridorCamera" index="1" unique_id=1735020118]
+visible = false
+
+[node name="Corridor3Camera" parent="." unique_id=1735020119 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300, 0, -101.850)
+camera_priority = 3
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 2.0
+minimum_camera_z = -113.5
+maximum_camera_z = -90.2
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor3/WallDoorLeft_Upper"), NodePath("../School/Corridor3/WallDoorLeft_Trim"), NodePath("../School/Corridor3/WallDoorLeft_Lower"), NodePath("../School/Corridor4/WallDoorLeft_Upper"), NodePath("../School/Corridor4/WallDoorLeft_Trim"), NodePath("../School/Corridor4/WallDoorLeft_Lower")])
+
+[node name="CollisionShape3D" parent="Corridor3Camera" index="0" unique_id=1735020120]
+shape = SubResource("BoxShape3D_corridor3camera")
+
+[node name="CameraPoint" parent="Corridor3Camera" index="1" unique_id=1735020121]
+visible = false
+
+[node name="Corridor4Camera" parent="." unique_id=1735020122 instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300, 0, -126.150)
+camera_priority = 3
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 2.0
+minimum_camera_z = -137.4
+maximum_camera_z = -114.7
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor4/WallDoorLeft_Upper"), NodePath("../School/Corridor4/WallDoorLeft_Trim"), NodePath("../School/Corridor4/WallDoorLeft_Lower"), NodePath("../School/Corridor5/JunctionLeft_Upper"), NodePath("../School/Corridor5/JunctionLeft_Trim"), NodePath("../School/Corridor5/JunctionLeft_Lower"), NodePath("../School/Corridor5/JunctionRight_Upper"), NodePath("../School/Corridor5/JunctionRight_Trim"), NodePath("../School/Corridor5/JunctionRight_Lower"), NodePath("../School/Corridor5/JunctionTop")])
+
+[node name="CollisionShape3D" parent="Corridor4Camera" index="0" unique_id=1735020123]
+shape = SubResource("BoxShape3D_corridor4camera")
+
+[node name="CameraPoint" parent="Corridor4Camera" index="1" unique_id=1735020124]
+visible = false
+
+[node name="Systems" type="Node" parent="." unique_id=1735011201]
+
+[node name="ClueManager" type="Node" parent="Systems" unique_id=1735011202]
+script = ExtResource("20_cluemgr")
+
+[node name="PuzzleManager" type="Node" parent="Systems" unique_id=1735011203 node_paths=PackedStringArray("clue_manager")]
+script = ExtResource("21_puzzlemgr")
+clue_manager = NodePath("../ClueManager")
+
+[node name="PlayerInteractor" type="Node" parent="Systems" unique_id=1735020002 node_paths=PackedStringArray("player")]
+script = ExtResource("31_interactor")
+player = NodePath("../../Player")
+
+[node name="InteractionRouter" type="Node" parent="Systems" unique_id=1735020003 node_paths=PackedStringArray("interactor", "puzzle_manager", "clue_manager")]
+script = ExtResource("32_router")
+interactor = NodePath("../PlayerInteractor")
+puzzle_manager = NodePath("../PuzzleManager")
+clue_manager = NodePath("../ClueManager")
+
+[node name="RoomProgressManager" type="Node" parent="Systems" unique_id=1735040001 node_paths=PackedStringArray("puzzle_manager")]
+script = ExtResource("40_roomprog")
+puzzle_manager = NodePath("../PuzzleManager")
+
+[node name="NarrativeManager" type="Node" parent="Systems" unique_id=1735040002 node_paths=PackedStringArray("puzzle_manager", "clue_manager", "room_progress", "interactor")]
+script = ExtResource("41_narrmgr")
+puzzle_manager = NodePath("../PuzzleManager")
+clue_manager = NodePath("../ClueManager")
+room_progress = NodePath("../RoomProgressManager")
+interactor = NodePath("../PlayerInteractor")
+
+[node name="RoomVolumes" type="Node3D" parent="." unique_id=1735040003]
+
+[node name="InitialVolume" type="Area3D" parent="RoomVolumes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 0.0000, -194.0000)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"sala_saida"
+
+[node name="Shape" type="CollisionShape3D" parent="RoomVolumes/InitialVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("InitialVolumeShape")
+
+[node name="Room1Volume" type="Area3D" parent="RoomVolumes" unique_id=1735040004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -18.7)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"room_1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomVolumes/Room1Volume" unique_id=1735040005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.25, 0)
+shape = SubResource("BoxShape3D_room1volume")
+
+[node name="Room2Volume" type="Area3D" parent="RoomVolumes" unique_id=1735050001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -48.0)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"room_2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomVolumes/Room2Volume" unique_id=1735050002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.25, 0)
+shape = SubResource("BoxShape3D_room2volume")
+
+[node name="Room3Volume" type="Area3D" parent="RoomVolumes" unique_id=1735050005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -104.3)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"room_3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomVolumes/Room3Volume" unique_id=1735050006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.25, 0)
+shape = SubResource("BoxShape3D_room3volume")
+
+[node name="Room4Volume" type="Area3D" parent="RoomVolumes" unique_id=1735050007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -127.45)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"room_4"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomVolumes/Room4Volume" unique_id=1735050008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.25, 0)
+shape = SubResource("BoxShape3D_room4volume")
+
+[node name="Navigation" type="Node3D" parent="." unique_id=1735020004]
+
+[node name="Room1Navigation" type="NavigationRegion3D" parent="Navigation" unique_id=1735020005]
+navigation_mesh = ExtResource("35_room1nav")
+
+[node name="Room2Navigation" type="NavigationRegion3D" parent="Navigation" unique_id=1735050009]
+navigation_layers = 2
+navigation_mesh = ExtResource("44_room2nav")
+
+[node name="Room3Navigation" type="NavigationRegion3D" parent="Navigation" unique_id=1735050011]
+navigation_layers = 8
+navigation_mesh = ExtResource("46_room4nav")
+
+[node name="Room4Navigation" type="NavigationRegion3D" parent="Navigation" unique_id=1735050012]
+navigation_layers = 16
+navigation_mesh = ExtResource("47_room5nav")
+
+[node name="PuzzleUI" type="CanvasLayer" parent="." unique_id=1735090001]
+script = ExtResource("51_puzzleui")
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+script = ExtResource("52_gameover")
+
+[node name="MonsterRoster" type="Node3D" parent="."]
+script = ExtResource("53_roomactivation")
+
+[node name="Maestro" parent="MonsterRoster" instance=ExtResource("33_monster")]
+position = Vector3(-15.00, 0, -170.50)
+rotation = Vector3(0, -1.57080, 0)
+config_id = &"maestro"
+listen_pause = 1.0
+levitate_catch = true
+
+[node name="Visual" type="Node3D" parent="MonsterRoster/Maestro"]
+script = ExtResource("v52_monster_animator")
+model = ExtResource("v52_maestro_glb")
+move_clip = &"Andando"
+chase_clip = &"Andando"
+listen_clip = &"Atento_longe"
+chase_natural_speed = 2.6
+
+[node name="Leitor" parent="MonsterRoster" instance=ExtResource("33_monster")]
+position = Vector3(-22.30, 0, -20.60)
+rotation = Vector3(0, 1.57080, 0)
+config_id = &"reader"
+
+[node name="Visual" type="Node3D" parent="MonsterRoster/Leitor"]
+script = ExtResource("v52_monster_animator")
+model = ExtResource("v62_leitora_glb")
+target_height = 3.4
+idle_clip = &"Escrevendo"
+awaken_clip = &""
+move_clip = &"Andando"
+search_clip = &""
+rest_clip = &"Escrevendo"
+catch_clip = &"Matando"
+chase_clip = &"Correndo"
+glow_energy = 1.6
+glow_color = Color(0.85, 0.8, 0.95, 1)
+glow_range = 7.0
+
+[node name="MusicRoom" type="Node3D" parent="School"]
+position = Vector3(0, 0, -175)
+
+[node name="WallEastA_Lower" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 1.2000, -63.9500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 11.1000)
+
+[node name="WallEastA_Trim" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 2.4000, -63.9500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 11.1000)
+
+[node name="WallEastA_Upper" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 4.7000, -63.9500)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 11.1000)
+
+[node name="WallEastB_Lower" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 1.2000, -78.0500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 11.1000)
+
+[node name="WallEastB_Trim" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 2.4000, -78.0500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 11.1000)
+
+[node name="WallEastB_Upper" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 4.7000, -78.0500)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 11.1000)
+
+[node name="WallEastDoorTop" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 6.0000, -71.0000)
+material_override = ExtResource("4_tipki")
+size = Vector3(0.2000, 2.0000, 3.0000)
+
+[node name="WallEastCorridor" type="CSGBox3D" parent="School/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0000, 2.2500, -71.2500)
+visible = false
+use_collision = true
+size = Vector3(0.2000, 4.5000, 37.5000)
+
+[node name="Corridor5" type="Node3D" parent="School"]
+
+[node name="JunctionLeft_Lower" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7500, 1.2000, -138.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5000, 2.4000, 0.2000)
+
+[node name="JunctionLeft_Trim" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7500, 2.4000, -138.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.5000, 0.1200, 0.3000)
+
+[node name="JunctionLeft_Upper" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7500, 4.7000, -138.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.5000, 4.6000, 0.2000)
+
+[node name="JunctionRight_Lower" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5500, 1.2000, -138.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1000, 2.4000, 0.2000)
+
+[node name="JunctionRight_Trim" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5500, 2.4000, -138.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(1.1000, 0.1200, 0.3000)
+
+[node name="JunctionRight_Upper" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5500, 4.7000, -138.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(1.1000, 4.6000, 0.2000)
+
+[node name="JunctionTop" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0000, 6.0000, -138.0000)
+material_override = ExtResource("4_tipki")
+size = Vector3(4.0000, 2.0000, 0.2000)
+
+[node name="Floor" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0000, -0.1000, -164.1400)
+material_override = ExtResource("1_o6xl0")
+use_collision = true
+size = Vector3(7.0000, 0.2000, 51.7200)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0000, 7.0000, -164.0350)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(7.0000, 0.2000, 51.9300)
+
+[node name="WallEast" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0000, 2.2500, -164.0000)
+visible = false
+use_collision = true
+size = Vector3(0.2000, 4.5000, 52.0000)
+
+[node name="WallWestA_Lower" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 1.2000, -151.5000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 27.0000)
+
+[node name="WallWestA_Trim" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 2.4000, -151.5000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 27.0000)
+
+[node name="WallWestA_Upper" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 4.7000, -151.5000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 27.0000)
+
+[node name="WallWestB_Lower" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 1.2000, -187.5000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 5.0000)
+
+[node name="WallWestB_Trim" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 2.4000, -187.5000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 5.0000)
+
+[node name="WallWestB_Upper" type="CSGBox3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 4.7000, -187.5000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 5.0000)
+
+[node name="CorridorLight1" type="SpotLight3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0000, 6.6000, -146.0000)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.9
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight2" type="SpotLight3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0000, 6.6000, -160.0000)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.9
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight3" type="SpotLight3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0000, 6.6000, -174.0000)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.9
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="CorridorLight4" type="SpotLight3D" parent="School/Corridor5"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0000, 6.6000, -186.0000)
+light_color = Color(0.78039217, 0.8509804, 0.9372549, 1)
+light_energy = 3.500
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 0.9
+spot_angle = 70.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="WallEastA_Lower" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 1.2000, 5.7500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 8.5000)
+
+[node name="WallEastA_Trim" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 2.4000, 5.7500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 8.5000)
+
+[node name="WallEastA_Upper" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 4.7000, 5.7500)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 8.5000)
+
+[node name="WallEastB_Lower" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 1.2000, -5.7500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 8.5000)
+
+[node name="WallEastB_Trim" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 2.4000, -5.7500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 8.5000)
+
+[node name="WallEastB_Upper" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 4.7000, -5.7500)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 8.5000)
+
+[node name="WallEastDoorTop" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5000, 6.0000, 0.0000)
+material_override = ExtResource("4_tipki")
+size = Vector3(0.2000, 2.0000, 3.0000)
+
+[node name="Doors" type="Node3D" parent="School"]
+
+[node name="PortaInicial" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 0.0000, -190.0000)
+door_id = &"sala_saida.porta"
+opening_width = 3.0
+swing_sign = 1.0
+link_layers = 64
+
+[node name="PortaRoom1" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5000, 0.0000, -10.5000)
+door_id = &"room_1.porta"
+opening_width = 3.0
+swing_sign = -1.0
+link_layers = 65
+
+[node name="PortaRoom2" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5000, 0.0000, -40.5000)
+door_id = &"room_2.porta"
+opening_width = 3.0
+swing_sign = -1.0
+link_layers = 66
+
+[node name="PortaRoom3" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5000, 0.0000, -95.5000)
+door_id = &"room_3.porta"
+opening_width = 3.0
+swing_sign = -1.0
+link_layers = 72
+
+[node name="PortaRoom4" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5000, 0.0000, -119.9000)
+door_id = &"room_4.porta"
+opening_width = 3.0
+swing_sign = -1.0
+link_layers = 80
+
+[node name="CorridorsNavigation" type="NavigationRegion3D" parent="Navigation"]
+navigation_layers = 64
+navigation_mesh = ExtResource("61_corrnav")
+
+[node name="InitialNavigation" type="NavigationRegion3D" parent="Navigation"]
+navigation_layers = 64
+navigation_mesh = ExtResource("63_initnav")
+
+[node name="Corridor5Camera" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3000, 0.0000, -164.0000)
+camera_priority = 3
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 2.0
+minimum_camera_z = -185.5
+maximum_camera_z = -138.40
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor5/JunctionLeft_Upper"), NodePath("../School/Corridor5/JunctionLeft_Trim"), NodePath("../School/Corridor5/JunctionLeft_Lower"), NodePath("../School/Corridor5/JunctionRight_Upper"), NodePath("../School/Corridor5/JunctionRight_Trim"), NodePath("../School/Corridor5/JunctionRight_Lower"), NodePath("../School/Corridor5/JunctionTop"), NodePath("../School/Corridor5/EndWall_Upper"), NodePath("../School/Corridor5/EndWall_Trim"), NodePath("../School/Corridor5/EndWall_Lower")])
+
+[node name="CollisionShape3D" parent="Corridor5Camera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0000, 2.2500, 0.0000)
+shape = SubResource("BoxShape3D_corridor5camera")
+
+[node name="CameraPoint" parent="Corridor5Camera" index="1"]
+visible = false
+
+[node name="Props" type="Node3D" parent="School"]
+
+[node name="GameSession" type="Node" parent="."]
+script = ExtResource("70_session")
+
+[node name="Exterior" type="Node3D" parent="School"]
+
+[node name="ChaoTerreo" type="CSGBox3D" parent="School/Exterior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.750, -0.170, -91.000)
+material_override = ExtResource("71_ext")
+size = Vector3(26.500, 0.300, 202.000)
+
+[node name="MusicFloor" type="CSGBox3D" parent="School/MusicRoom"]
+position = Vector3(-13.5, -0.1, 0)
+size = Vector3(20, 0.2, 20)
+use_collision = true
+material_override = ExtResource("1_o6xl0")
+
+[node name="MusicCeiling" type="CSGBox3D" parent="School/MusicRoom"]
+position = Vector3(-13.5, 7, 0)
+size = Vector3(20, 0.2, 20)
+use_collision = true
+material_override = ExtResource("2_tipki")
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5000, 1.2000, 0.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.2000, 2.4000, 20.0000)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5000, 2.4000, 0.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.3000, 0.1200, 20.0000)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5000, 4.7000, 0.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.2000, 4.6000, 20.0000)
+
+[node name="WallNorth_Lower" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5000, 1.2000, -10.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20.0000, 2.4000, 0.2000)
+
+[node name="WallNorth_Trim" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5000, 2.4000, -10.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20.0000, 0.1200, 0.3000)
+
+[node name="WallNorth_Upper" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5000, 4.7000, -10.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20.0000, 4.6000, 0.2000)
+
+[node name="WallSouth_Lower" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5000, 1.2000, 10.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20.0000, 2.4000, 0.2000)
+
+[node name="WallSouth_Trim" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5000, 2.4000, 10.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20.0000, 0.1200, 0.3000)
+
+[node name="WallSouth_Upper" type="CSGBox3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5000, 4.7000, 10.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20.0000, 4.6000, 0.2000)
+
+[node name="MusicLight1" type="SpotLight3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9.5000, 6.6000, 4.0000)
+light_color = Color(0.76862746, 0.81960785, 0.8745098, 1)
+light_energy = 5.600
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 14.0
+spot_attenuation = 0.9
+spot_angle = 72.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="MusicLight2" type="SpotLight3D" parent="School/MusicRoom"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -17.5000, 6.6000, -4.0000)
+light_color = Color(0.76862746, 0.81960785, 0.8745098, 1)
+light_energy = 5.600
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 14.0
+spot_attenuation = 0.9
+spot_angle = 72.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="PortaMusica" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5000, 0.0000, -175.0000)
+door_id = &"room_5.porta"
+opening_width = 3.0
+swing_sign = -1.0
+link_layers = 96
+
+[node name="MusicCamera" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7500, 0.0000, -175.0000)
+camera_priority = 5
+camera_offset = Vector3(9, 5.6, 0)
+camera_fov = 38.0
+blend_speed = 0.8
+minimum_camera_z = -184.40
+maximum_camera_z = -165.60
+occluder_paths = Array[NodePath]([NodePath("../School/Corridor5/WallWestA_Upper"), NodePath("../School/Corridor5/WallWestA_Trim"), NodePath("../School/Corridor5/WallWestA_Lower"), NodePath("../School/Corridor5/WallWestB_Upper"), NodePath("../School/Corridor5/WallWestB_Trim"), NodePath("../School/Corridor5/WallWestB_Lower"), NodePath("../School/MusicRoom/WallEastA_Upper"), NodePath("../School/MusicRoom/WallEastA_Trim"), NodePath("../School/MusicRoom/WallEastA_Lower"), NodePath("../School/MusicRoom/WallEastB_Upper"), NodePath("../School/MusicRoom/WallEastB_Trim"), NodePath("../School/MusicRoom/WallEastB_Lower"), NodePath("../School/MusicRoom/WallEastDoorTop")])
+
+[node name="CollisionShape3D" parent="MusicCamera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0000, 2.2500, 0.0000)
+shape = SubResource("BoxShape3D_musiccamera")
+
+[node name="CameraPoint" parent="MusicCamera" index="1"]
+visible = false
+
+[node name="MusicRoomVolume" type="Area3D" parent="RoomVolumes"]
+position = Vector3(-13.5, 0, -175)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"room_5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomVolumes/MusicRoomVolume"]
+position = Vector3(-0.2, 2.25, 0)
+shape = SubResource("BoxShape3D_musicvolume")
+
+[node name="MusicNavigation" type="NavigationRegion3D" parent="Navigation"]
+navigation_layers = 32
+navigation_mesh = ExtResource("48_musicnav")
+
+
+[node name="Fechamentos" type="Node3D" parent="School"]
+
+[node name="InicioCorredor_Lower" type="CSGBox3D" parent="School/Fechamentos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 1.2000, -4.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(7.200, 2.400, 0.200)
+
+[node name="InicioCorredor_Trim" type="CSGBox3D" parent="School/Fechamentos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 2.4000, -4.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(7.200, 0.120, 0.300)
+
+[node name="InicioCorredor_Upper" type="CSGBox3D" parent="School/Fechamentos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 4.7000, -4.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(7.200, 4.600, 0.200)
+
+[node name="SalaMonitores" type="Node3D" parent="School"]
+
+[node name="Floor" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, -0.1000, -194.0000)
+material_override = ExtResource("1_o6xl0")
+material = SubResource("StandardMaterial3D_tefeu")
+use_collision = true
+size = Vector3(12.000, 0.200, 8.000)
+
+[node name="Ceiling" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 7.0000, -194.0000)
+material_override = ExtResource("2_tipki")
+use_collision = true
+size = Vector3(12.000, 0.200, 8.000)
+
+[node name="WallWest_Lower" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -6.0000, 1.2000, -194.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.200, 2.400, 8.000)
+
+[node name="WallWest_Trim" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -6.0000, 2.4000, -194.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.300, 0.120, 8.000)
+
+[node name="WallWest_Upper" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -6.0000, 4.7000, -194.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.200, 4.600, 8.000)
+
+[node name="WallEast" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 6.0000, 2.2500, -194.0000)
+visible = false
+use_collision = true
+size = Vector3(0.200, 4.500, 8.000)
+
+[node name="WallSouth_Lower" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 1.2000, -198.0500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(12.200, 2.400, 0.200)
+
+[node name="WallSouth_Trim" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 2.4000, -198.0500)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(12.200, 0.120, 0.300)
+
+[node name="WallSouth_Upper" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 4.7000, -198.0500)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(12.200, 4.600, 0.200)
+
+[node name="WallDoorLeft_Lower" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -3.8000, 1.2000, -190.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(4.600, 2.400, 0.200)
+
+[node name="WallDoorLeft_Trim" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -3.8000, 2.4000, -190.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(4.600, 0.120, 0.300)
+
+[node name="WallDoorLeft_Upper" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -3.8000, 4.7000, -190.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(4.600, 4.600, 0.200)
+
+[node name="WallDoorRight_Lower" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 3.8000, 1.2000, -190.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(4.600, 2.400, 0.200)
+
+[node name="WallDoorRight_Trim" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 3.8000, 2.4000, -190.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(4.600, 0.120, 0.300)
+
+[node name="WallDoorRight_Upper" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 3.8000, 4.7000, -190.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(4.600, 4.600, 0.200)
+
+[node name="WallDoorTop" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.0000, -190.0000)
+material_override = ExtResource("4_tipki")
+size = Vector3(3.000, 2.000, 0.200)
+
+[node name="SalaLight" type="SpotLight3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.5, 6.6, -194)
+light_color = Color(0.62, 0.72, 0.9, 1)
+light_energy = 0.7
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 1.5
+spot_range = 10.0
+spot_attenuation = 1.3
+spot_angle = 60.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Desk" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -4.7000, 1.1000, -194.0000)
+material = SubResource("StandardMaterial3D_tefeu")
+use_collision = true
+size = Vector3(2.200, 2.200, 6.400)
+
+[node name="Console" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -5.5000, 2.5000, -194.0000)
+material = SubResource("Mat_console")
+use_collision = true
+size = Vector3(0.600, 0.600, 5.400)
+
+[node name="Chair" type="CSGBox3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -2.4000, 0.9000, -195.2000)
+material = ExtResource("v56_madeira")
+use_collision = true
+size = Vector3(1.400, 1.800, 1.600)
+
+[node name="Monitor0" type="MeshInstance3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 0.76, 0, 0, 0, 0.66, -4.73, 2.85, -195.87)
+mesh = SubResource("Mesh_monitor")
+surface_material_override/0 = SubResource("Mat_monitor0")
+
+[node name="Monitor1" type="MeshInstance3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 0.76, 0, 0, 0, 0.66, -4.73, 2.85, -193.67)
+mesh = SubResource("Mesh_monitor")
+surface_material_override/0 = SubResource("Mat_monitor1")
+
+[node name="Monitor2" type="MeshInstance3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 0.76, 0, 0, 0, 0.66, -4.73, 2.85, -191.47)
+mesh = SubResource("Mesh_monitor")
+surface_material_override/0 = SubResource("Mat_monitor0")
+
+[node name="Monitor3" type="MeshInstance3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 0.76, 0, 0, 0, 0.66, -4.73, 4.07, -195.87)
+mesh = SubResource("Mesh_monitor")
+surface_material_override/0 = SubResource("Mat_monitor1")
+
+[node name="Monitor4" type="MeshInstance3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 0.76, 0, 0, 0, 0.66, -4.73, 4.07, -193.67)
+mesh = SubResource("Mesh_monitor")
+surface_material_override/0 = SubResource("Mat_monitor0")
+
+[node name="Monitor5" type="MeshInstance3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 0.76, 0, 0, 0, 0.66, -4.73, 4.07, -191.47)
+mesh = SubResource("Mesh_monitor")
+surface_material_override/0 = SubResource("Mat_monitor1")
+
+[node name="MonitorGlow" type="OmniLight3D" parent="School/SalaMonitores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -3.6000, 4.4000, -194.0000)
+light_color = Color(0.45, 0.7, 1, 1)
+light_energy = 1.3
+light_cull_mask = 4294966273
+shadow_enabled = true
+omni_range = 8.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Patio" type="Node3D" parent="School"]
+script = ExtResource("v54_patio_sono")
+
+[node name="Piso" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, -0.1000, -71.0000)
+material_override = ExtResource("v5_stone")
+use_collision = true
+size = Vector3(20.000, 0.200, 25.000)
+
+[node name="ParedeOeste_Lower" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -23.5000, 1.2000, -71.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.200, 2.400, 25.200)
+
+[node name="ParedeOeste_Trim" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -23.5000, 2.4000, -71.0000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(0.300, 0.120, 25.200)
+
+[node name="ParedeOeste_Upper" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -23.5000, 6.8000, -71.0000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(0.200, 8.800, 25.200)
+
+[node name="ParedeSul_Lower" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 1.2000, -83.5000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20.200, 2.400, 0.200)
+
+[node name="ParedeSul_Trim" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 2.4000, -83.5000)
+material_override = ExtResource("5_85g3d")
+use_collision = true
+size = Vector3(20.200, 0.120, 0.300)
+
+[node name="ParedeSul_Upper" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 6.8000, -83.5000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20.200, 8.800, 0.200)
+
+[node name="FachadaNorte" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 9.1000, -58.5000)
+material_override = ExtResource("4_tipki")
+use_collision = true
+size = Vector3(20.200, 4.200, 0.200)
+
+[node name="FachadaLeste" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -3.5000, 9.1000, -71.0000)
+material_override = ExtResource("4_tipki")
+size = Vector3(0.200, 4.200, 25.200)
+
+[node name="FaixaAndar" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 7.1000, -58.6500)
+material_override = ExtResource("5_85g3d")
+size = Vector3(20.200, 0.350, 0.350)
+
+[node name="FaixaAndarOeste" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -23.3500, 7.1000, -71.0000)
+material_override = ExtResource("5_85g3d")
+size = Vector3(0.350, 0.350, 25.200)
+
+[node name="FaixaAndarSul" type="CSGBox3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 7.1000, -83.3500)
+material_override = ExtResource("5_85g3d")
+size = Vector3(20.200, 0.350, 0.350)
+
+[node name="JanelaOesteT0" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 3.6000, -62.0000)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 1
+
+[node name="JanelaOesteA0" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 9.1000, -62.0000)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaOesteT1" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 3.6000, -66.5000)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 1
+
+[node name="JanelaOesteA1" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 9.1000, -66.5000)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 2
+
+[node name="JanelaOesteT2" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 3.6000, -75.5000)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 1
+
+[node name="JanelaOesteA2" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 9.1000, -75.5000)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaOesteT3" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 3.6000, -80.0000)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 1
+
+[node name="JanelaOesteA3" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 9.1000, -80.0000)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteT0" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -20.0000, 3.6000, -58.6200)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteA0" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -20.0000, 9.1000, -58.6200)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaSulT0" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -20.0000, 3.6000, -83.3800)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaSulA0" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -20.0000, 9.1000, -83.3800)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteT1" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -15.5000, 3.6000, -58.6200)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteA1" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -15.5000, 9.1000, -58.6200)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaSulT1" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -15.5000, 3.6000, -83.3800)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 1
+
+[node name="JanelaSulA1" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -15.5000, 9.1000, -83.3800)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteT2" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -11.0000, 3.6000, -58.6200)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteA2" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -11.0000, 9.1000, -58.6200)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 2
+
+[node name="JanelaSulT2" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -11.0000, 3.6000, -83.3800)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaSulA2" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -11.0000, 9.1000, -83.3800)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteT3" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -6.5000, 3.6000, -58.6200)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaNorteA3" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -6.5000, 9.1000, -58.6200)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaSulT3" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -6.5000, 3.6000, -83.3800)
+largura = 3.0
+altura = 2.2
+colunas = 3
+linhas = 2
+luz = 0
+
+[node name="JanelaSulA3" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_janela")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -6.5000, 9.1000, -83.3800)
+largura = 3.0
+altura = 2.0
+colunas = 3
+linhas = 2
+luz = 2
+
+[node name="TelhadoOeste" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_telhado")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.4000, 11.3000, -71.0000)
+comprimento = 25.6
+
+[node name="TelhadoNorte" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_telhado")
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, -13.5000, 11.3000, -58.6000)
+comprimento = 20.6
+
+[node name="TelhadoSul" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_telhado")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 11.3000, -83.4000)
+comprimento = 20.6
+
+[node name="Cerejeira" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_cerejeira")
+altura = 4.2
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -18.0000, 0.0000, -65.5000)
+
+[node name="ToroNorte" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_toro")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0, 0, -61.6)
+
+[node name="ToroSul" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_toro")
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -21.6, 0, -80.6)
+
+[node name="Banco" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_banco_patio")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -11.0000, 0.0000, -77.6000)
+
+[node name="Entulho" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_entulho_patio")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -18.5000, 0.0000, -77.0000)
+
+[node name="Lua" type="Node3D" parent="School/Patio"]
+script = ExtResource("v5_lua")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -95.0000, 46.0000, -60.0000)
+
+[node name="Luar" type="SpotLight3D" parent="School/Patio"]
+transform = Transform3D(0.501036, -0.698389, 0.511093, 0.000000, 0.590567, 0.806988, -0.865426, -0.404330, 0.295896, 4.0000, 30.0000, -62.0000)
+light_color = Color(0.55, 0.66, 0.92, 1)
+light_energy = 11.0
+light_cull_mask = 4294966273
+shadow_enabled = true
+shadow_blur = 2.0
+spot_range = 48.0
+spot_attenuation = 0.6
+spot_angle = 42.0
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="LuzAmbientePatio" type="OmniLight3D" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 6.0000, -71.0000)
+light_color = Color(0.35, 0.42, 0.6, 1)
+light_energy = 1.4
+omni_range = 20.0
+shadow_enabled = false
+distance_fade_enabled = true
+distance_fade_begin = 40.0
+distance_fade_shadow = 28.0
+distance_fade_length = 8.0
+
+[node name="Nevoa" type="FogVolume" parent="School/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 1.0000, -71.0000)
+size = Vector3(20, 2.4, 25)
+material = SubResource("FogMat_patio")
+
+[node name="PortaPatio" parent="School/Doors" instance=ExtResource("60_door")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.5000, 0.0000, -71.0000)
+door_id = &"patio.porta"
+opening_width = 3.0
+swing_sign = -1.0
+link_layers = 64
+
+[node name="PatioCamera" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0, -71.0)
+camera_priority = 5
+camera_offset = Vector3(9, 6.2, 0)
+camera_fov = 40.0
+blend_speed = 0.8
+use_z_limits = true
+minimum_camera_z = -82.9
+maximum_camera_z = -59.1
+occluder_paths = Array[NodePath]([NodePath("../School/Exit/WallEastA_Upper"), NodePath("../School/Exit/WallEastA_Trim"), NodePath("../School/Exit/WallEastA_Lower"), NodePath("../School/Exit/WallEastB_Upper"), NodePath("../School/Exit/WallEastB_Trim"), NodePath("../School/Exit/WallEastB_Lower"), NodePath("../School/Exit/WallEastDoorTop"), NodePath("../School/Patio/FachadaLeste")])
+
+[node name="CollisionShape3D" parent="PatioCamera" index="0"]
+shape = SubResource("BoxShape3D_patiocamera")
+
+[node name="CameraPoint" parent="PatioCamera" index="1"]
+visible = false
+
+[node name="PatioVolume" type="Area3D" parent="RoomVolumes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -13.5000, 0.0000, -71.0000)
+collision_layer = 0
+monitorable = false
+script = ExtResource("42_roomvol")
+room_id = &"patio"
+
+[node name="Shape" type="CollisionShape3D" parent="RoomVolumes/PatioVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("BoxShape3D_patiovolume")
+
+[node name="EscolaJaponesa" type="Node3D" parent="School"]
+
+[node name="Luminaria0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -10.2660)
+
+[node name="Luminaria1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -21.7597)
+
+[node name="Luminaria2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -34.8064)
+
+[node name="Luminaria3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -45.7328)
+
+[node name="Luminaria4" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -57.0440)
+
+[node name="Luminaria5" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -70.4216)
+
+[node name="Luminaria6" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -82.9287)
+
+[node name="Luminaria7" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -112.7657)
+
+[node name="Luminaria8" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -124.4852)
+
+[node name="Luminaria9" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -136.9303)
+
+[node name="Luminaria10" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -146.0000)
+
+[node name="Luminaria11" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -148.4851)
+
+[node name="Luminaria12" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -160.0000)
+
+[node name="Luminaria13" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -174.0000)
+
+[node name="Luminaria14" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_luminaria")
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 0.0000, 6.9000, -186.0000)
+
+[node name="JanelaCorredor0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -6.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -14.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -19.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -23.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor4" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -27.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor5" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -31.7000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor6" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -35.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor7" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -44.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor8" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -48.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor9" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -52.7000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor10" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -56.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor11" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -61.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor12" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -65.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor13" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -77.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor14" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -82.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor15" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -86.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor16" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -90.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor17" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -98.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor18" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -103.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor19" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -107.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor20" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -111.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor21" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -115.7000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor22" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -124.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor23" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -128.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor24" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -132.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor25" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -136.7000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor26" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -140.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor27" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -145.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor28" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -149.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor29" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -153.5000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor30" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -157.7000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor31" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -161.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor32" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -166.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor33" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -170.3000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaCorredor34" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -178.7000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor35" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -182.9000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCorredor36" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -3.3800, 4.6000, -187.1000)
+largura = 2.6
+altura = 1.3
+colunas = 4
+linhas = 1
+luz = 0
+
+[node name="JanelaPortugues0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -26.2500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaPortugues1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -21.2500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaPortugues2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -16.2500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaPortugues3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -11.2500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMatematica0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -55.4500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMatematica1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -50.4500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMatematica2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -45.4500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMatematica3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -40.4500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCiencias0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -111.7500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCiencias1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -106.7500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCiencias2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -101.7500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaCiencias3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -96.7500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaGeografia0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -134.9500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaGeografia1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -129.9500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaGeografia2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -124.9500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaGeografia3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -119.9500)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMusica0" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -182.5000)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMusica1" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -177.5000)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMusica2" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -172.5000)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="JanelaMusica3" type="Node3D" parent="School/EscolaJaponesa"]
+script = ExtResource("v5_janela")
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, -23.3800, 5.7500, -167.5000)
+largura = 3.6
+altura = 1.4
+colunas = 4
+linhas = 1
+luz = 1
+
+[node name="Gabinete0" type="Node3D" parent="School/SalaMonitores"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.31, 2.25, -196.20)
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_monitor")
+caixa = Vector3(2.05, 1.18, 1.14)
+
+[node name="Gabinete1" type="Node3D" parent="School/SalaMonitores"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.31, 2.25, -194.00)
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_monitor")
+caixa = Vector3(2.05, 1.18, 1.14)
+
+[node name="Gabinete2" type="Node3D" parent="School/SalaMonitores"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.31, 2.25, -191.80)
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_monitor")
+caixa = Vector3(2.05, 1.18, 1.14)
+
+[node name="Gabinete3" type="Node3D" parent="School/SalaMonitores"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.31, 3.47, -196.20)
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_monitor")
+caixa = Vector3(2.05, 1.18, 1.14)
+
+[node name="Gabinete4" type="Node3D" parent="School/SalaMonitores"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.31, 3.47, -194.00)
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_monitor")
+caixa = Vector3(2.05, 1.18, 1.14)
+
+[node name="Gabinete5" type="Node3D" parent="School/SalaMonitores"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.31, 3.47, -191.80)
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_monitor")
+caixa = Vector3(2.05, 1.18, 1.14)
+
+[node name="AmbienteV54" type="Node3D" parent="School"]
+
+[node name="Aranha" type="Node3D" parent="School/AmbienteV54"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0, -108.5)
+script = ExtResource("v54_aranha")
+ponto_a = Vector3(-6.2, 0, -108.5)
+ponto_b = Vector3(-6.2, 0, -99.0)
+velocidade = 0.8
+
+[node name="Modelo" type="Node3D" parent="School/AmbienteV54/Aranha"]
+script = ExtResource("v54_modelo_prop")
+modelo = ExtResource("v54_aranha_glb")
+caixa = Vector3(1.5, 0.6, 1.5)
+
+[node name="Patio" type="Node3D" parent="School/Props"]
+
+[node name="Portugues" type="Node3D" parent="School/Props"]
+
+[node name="Matematica" type="Node3D" parent="School/Props"]
+
+[node name="Ciencias" type="Node3D" parent="School/Props"]
+
+[node name="Geografia" type="Node3D" parent="School/Props"]
+
+[node name="Musica" type="Node3D" parent="School/Props"]
+
+[node name="Saida" type="Node3D" parent="School/Props"]
+
+[node name="Corredores" type="Node3D" parent="School/Props"]
+
+[node name="QuadroAvisos" parent="School/Props/Patio" instance=ExtResource("p2_QuadroAvisos")]
+transform = Transform3D(-2.00000, 0, 0.00000, 0, 2.00000, 0, -0.00000, 0, -2.00000, -9.0000, 0.0000, -58.6200)
+
+[node name="QuadroNegro" parent="School/Props/Portugues" instance=ExtResource("p2_QuadroNegro")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.3800, 0.0000, -18.7500)
+
+[node name="MesaProfessor1" parent="School/Props/Portugues" instance=ExtResource("p2_MesaProfessor")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -19.4000, 0.0000, -25.3000)
+spot_id = &"room_1.esconderijo_mesa"
+hide_offset = Vector3(0, 0.05, 0.05)
+front_offset = Vector3(0, 0.05, 0.75)
+label_text = "embaixo da mesa"
+
+[node name="ArmarioAlto1" parent="School/Props/Portugues" instance=ExtResource("p2_ArmarioAlto")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -22.2100, 0.0000, -27.6000)
+
+[node name="EstanteFundo" parent="School/Props/Portugues" instance=ExtResource("p2_Estante")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -22.6000, 0.0000, -11.5000)
+
+[node name="EstanteSul" parent="School/Props/Portugues" instance=ExtResource("p2_Estante")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, -14.0000, 0.0000, -29.2000)
+
+[node name="EstanteNorte" parent="School/Props/Portugues" instance=ExtResource("p2_Estante")]
+transform = Transform3D(-3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, -3.00000, -17.0000, 0.0000, -8.3000)
+
+[node name="Carteira1" parent="School/Props/Portugues" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -15.5000, 0.0000, -24.5000)
+
+[node name="Carteira2" parent="School/Props/Portugues" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -15.5000, 0.0000, -18.0000)
+
+[node name="Carteira3" parent="School/Props/Portugues" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -10.0000, 0.0000, -24.5000)
+
+[node name="Carteira4" parent="School/Props/Portugues" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -10.0000, 0.0000, -18.0000)
+
+[node name="LivrosAntigos1" parent="School/Props/Portugues" instance=ExtResource("p2_LivrosAntigos")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -19.4000, 2.4600, -23.6500)
+
+[node name="QuadroNegro" parent="School/Props/Matematica" instance=ExtResource("p2_QuadroNegro")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.3800, 0.0000, -47.9500)
+
+[node name="MesaProfessor1" parent="School/Props/Matematica" instance=ExtResource("p2_MesaProfessor")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -20.5500, 0.0000, -47.9500)
+spot_id = &"room_2.esconderijo_mesa"
+hide_offset = Vector3(0, 0.05, 0.05)
+front_offset = Vector3(0, 0.05, 0.75)
+label_text = "embaixo da mesa"
+
+[node name="ArmarioAlto1" parent="School/Props/Matematica" instance=ExtResource("p2_ArmarioAlto")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -22.2100, 0.0000, -56.3000)
+
+[node name="EstanteSul" parent="School/Props/Matematica" instance=ExtResource("p2_Estante")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, -13.0000, 0.0000, -57.6000)
+
+[node name="EstanteNorte" parent="School/Props/Matematica" instance=ExtResource("p2_Estante")]
+transform = Transform3D(-3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, -3.00000, -17.4000, 0.0000, -38.3000)
+
+[node name="Carteira1" parent="School/Props/Matematica" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -15.5000, 0.0000, -53.0000)
+
+[node name="Carteira2" parent="School/Props/Matematica" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -15.5000, 0.0000, -46.5000)
+
+[node name="Carteira3" parent="School/Props/Matematica" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -10.0000, 0.0000, -53.0000)
+
+[node name="Carteira4" parent="School/Props/Matematica" instance=ExtResource("p2_Carteira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -10.0000, 0.0000, -46.5000)
+
+[node name="Calculadora1" parent="School/Props/Matematica" instance=ExtResource("p2_Calculadora")]
+transform = Transform3D(1.02606, 0, 2.81908, 0, 3.00000, 0, -2.81908, 0, 1.02606, -20.4000, 2.4600, -46.1500)
+
+[node name="Relogio" parent="School/Props/Matematica" instance=ExtResource("p2_Relogio")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -23.3600, 5.2000, -47.9500)
+
+[node name="QuadroNegro" parent="School/Props/Ciencias" instance=ExtResource("p2_QuadroNegro")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.3800, 0.0000, -104.2500)
+
+[node name="MesaProfessor1" parent="School/Props/Ciencias" instance=ExtResource("p2_MesaProfessor")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -20.5500, 0.0000, -104.2500)
+spot_id = &"room_3.esconderijo_mesa"
+hide_offset = Vector3(0, 0.05, 0.05)
+front_offset = Vector3(0, 0.05, 0.75)
+label_text = "embaixo da mesa"
+
+[node name="ArmarioAlto1" parent="School/Props/Ciencias" instance=ExtResource("p2_ArmarioAlto")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -22.2100, 0.0000, -113.8000)
+
+[node name="BancadaLab1" parent="School/Props/Ciencias" instance=ExtResource("p2_BancadaLab")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -14.5000, 0.0000, -108.0000)
+
+[node name="BancadaLab2" parent="School/Props/Ciencias" instance=ExtResource("p2_BancadaLab")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -9.5000, 0.0000, -101.0000)
+
+[node name="EstanteNorte" parent="School/Props/Ciencias" instance=ExtResource("p2_Estante")]
+transform = Transform3D(-3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, -3.00000, -18.0000, 0.0000, -93.2000)
+
+[node name="BancadaPesquisa1" parent="School/Props/Ciencias" instance=ExtResource("p2_BancadaPesquisa")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -6.2000, 0.0000, -112.3000)
+
+[node name="PortaLaboratorio" parent="School/Props/Ciencias" instance=ExtResource("p2_PortaLaboratorio")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.3400, 0.0000, -96.6000)
+
+[node name="FrascoCiencia1" parent="School/Props/Ciencias" instance=ExtResource("p2_FrascoCiencia")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -14.0500, 2.8800, -105.0000)
+
+[node name="Vidrarias1" parent="School/Props/Ciencias" instance=ExtResource("p2_Vidrarias")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -9.8000, 2.8800, -101.0000)
+
+[node name="Cranio1" parent="School/Props/Ciencias" instance=ExtResource("p2_Cranio")]
+transform = Transform3D(2.59808, 0, 1.50000, 0, 3.00000, 0, -1.50000, 0, 2.59808, -6.2000, 2.9100, -113.3500)
+
+[node name="EstanteSul" parent="School/Props/Ciencias" instance=ExtResource("p2_Estante")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, -12.0000, 0.0000, -115.3000)
+
+[node name="CartazPH" parent="School/Props/Ciencias" instance=ExtResource("p2_QuadroAvisos")]
+transform = Transform3D(2.00000, 0, 0.00000, 0, 2.00000, 0, -0.00000, 0, 2.00000, -19.0000, 0.0000, -116.0600)
+
+[node name="MapaMundi" parent="School/Props/Geografia" instance=ExtResource("p2_MapaMundi")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.2000, 0.0000, -127.4500)
+
+[node name="MesaProfessor1" parent="School/Props/Geografia" instance=ExtResource("p2_MesaProfessor")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -20.5500, 0.0000, -127.4500)
+spot_id = &"room_4.esconderijo_mesa"
+hide_offset = Vector3(0, 0.05, 0.05)
+front_offset = Vector3(0, 0.05, 0.75)
+label_text = "embaixo da mesa"
+
+[node name="ArmarioAlto1" parent="School/Props/Geografia" instance=ExtResource("p2_ArmarioAlto")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -22.2100, 0.0000, -135.4000)
+
+[node name="MesaCartas1" parent="School/Props/Geografia" instance=ExtResource("p2_MesaCartas")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -13.5000, 0.0000, -128.0000)
+
+[node name="Globo1" parent="School/Props/Geografia" instance=ExtResource("p2_Globo")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -8.5000, 0.0000, -133.5000)
+
+[node name="EstanteSul" parent="School/Props/Geografia" instance=ExtResource("p2_Estante")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, -17.0000, 0.0000, -137.1000)
+
+[node name="EstanteNorte" parent="School/Props/Geografia" instance=ExtResource("p2_Estante")]
+transform = Transform3D(-3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, -3.00000, -17.6000, 0.0000, -117.8000)
+
+[node name="EstanteAntiga" parent="School/Props/Geografia" instance=ExtResource("p2_EstanteAntiga")]
+transform = Transform3D(-3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, -3.00000, -10.0000, 0.0000, -117.7250)
+
+[node name="MapaCidade" parent="School/Props/Geografia" instance=ExtResource("p2_MapaCidade")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.2000, -0.8000, -121.0000)
+
+[node name="QuadroNegro" parent="School/Props/Musica" instance=ExtResource("p2_QuadroNegro")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -23.3800, 0.0000, -175.0000)
+
+[node name="MesaProfessor1" parent="School/Props/Musica" instance=ExtResource("p2_MesaProfessor")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -20.5500, 0.0000, -175.0000)
+spot_id = &"room_5.esconderijo_mesa"
+hide_offset = Vector3(0, 0.05, 0.05)
+front_offset = Vector3(0, 0.05, 0.75)
+label_text = "embaixo da mesa"
+
+[node name="ArmarioPartituras" parent="School/Props/Musica" instance=ExtResource("p2_ArmarioAlto")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -22.2100, 0.0000, -168.5000)
+
+[node name="Piano" parent="School/Props/Musica" instance=ExtResource("p2_Piano")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, -15.5000, 0.0000, -183.8000)
+
+[node name="Cantigas1" parent="School/Props/Musica" instance=ExtResource("p2_Cantigas")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, -14.4500, 3.7500, -184.1600)
+
+[node name="Escrivaninha" parent="School/Props/Musica" instance=ExtResource("p2_Escrivaninha")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -20.7000, 0.0000, -181.5000)
+
+[node name="EstanteNorte" parent="School/Props/Musica" instance=ExtResource("p2_Estante")]
+transform = Transform3D(-3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, -3.00000, -15.5000, 0.0000, -165.9000)
+
+[node name="EstantePartitura1" parent="School/Props/Musica" instance=ExtResource("p2_EstantePartitura")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -13.0000, 0.0000, -177.5000)
+
+[node name="EstantePartitura2" parent="School/Props/Musica" instance=ExtResource("p2_EstantePartitura")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -13.0000, 0.0000, -172.0000)
+
+[node name="EstantePartitura3" parent="School/Props/Musica" instance=ExtResource("p2_EstantePartitura")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -9.0000, 0.0000, -177.5000)
+
+[node name="EstantePartitura4" parent="School/Props/Musica" instance=ExtResource("p2_EstantePartitura")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -9.0000, 0.0000, -181.5000)
+
+[node name="Cadeira1" parent="School/Props/Musica" instance=ExtResource("p2_Cadeira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -10.0000, 0.0000, -169.5000)
+
+[node name="Cadeira2" parent="School/Props/Musica" instance=ExtResource("p2_Cadeira")]
+transform = Transform3D(0.00000, 0, 3.00000, 0, 3.00000, 0, -3.00000, 0, 0.00000, -6.5000, 0.0000, -181.5000)
+
+[node name="ArmarioAlto1" parent="School/Props/Saida" instance=ExtResource("p2_ArmarioAlto")]
+transform = Transform3D(3.00000, 0, 0.00000, 0, 3.00000, 0, -0.00000, 0, 3.00000, 3.5000, 0.0000, -196.7100)
+
+[node name="ArmariosAlunos1" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -17.5000)
+
+[node name="ArmariosAlunos2" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -25.6000)
+
+[node name="ArmariosAlunos3" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -33.5000)
+
+[node name="ArmariosAlunos4" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -50.0000)
+
+[node name="ArmariosAlunos5" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -64.0000)
+
+[node name="ArmariosAlunos6" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -79.5000)
+
+[node name="ArmariosAlunos7" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -87.0000)
+
+[node name="ArmariosAlunos8" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -106.0000)
+
+[node name="ArmariosAlunos9" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -111.5000)
+
+[node name="ArmariosAlunos10" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -130.0000)
+
+[node name="ArmariosAlunos11" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -145.0000)
+
+[node name="ArmariosAlunos12" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -155.0000)
+
+[node name="ArmariosAlunos13" parent="School/Props/Corredores" instance=ExtResource("p2_ArmariosAlunos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -2.8300, 0.0000, -186.0000)
+
+[node name="QuadroAvisos1" parent="School/Props/Corredores" instance=ExtResource("p2_QuadroAvisos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -3.3900, 0.0000, -21.0000)
+
+[node name="QuadroAvisos2" parent="School/Props/Corredores" instance=ExtResource("p2_QuadroAvisos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -3.3900, 0.0000, -46.5000)
+
+[node name="QuadroAvisos3" parent="School/Props/Corredores" instance=ExtResource("p2_QuadroAvisos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -3.3900, 0.0000, -101.0000)
+
+[node name="QuadroAvisos4" parent="School/Props/Corredores" instance=ExtResource("p2_QuadroAvisos")]
+transform = Transform3D(0.00000, 0, 2.00000, 0, 2.00000, 0, -2.00000, 0, 0.00000, -3.3900, 0.0000, -160.0000)
+
+[node name="Entulho1" parent="School/Props/Corredores" instance=ExtResource("p2_Entulho")]
+transform = Transform3D(0.00000, 0, -2.00000, 0, 2.00000, 0, 2.00000, 0, 0.00000, 2.2000, 0.0000, -60.0000)
+
+[node name="Entulho2" parent="School/Props/Corredores" instance=ExtResource("p2_Entulho")]
+transform = Transform3D(0.00000, 0, -2.00000, 0, 2.00000, 0, 2.00000, 0, 0.00000, 2.3000, 0.0000, -140.0000)
+
+[node name="Entulho3" parent="School/Props/Corredores" instance=ExtResource("p2_Entulho")]
+transform = Transform3D(0.00000, 0, -2.00000, 0, 2.00000, 0, 2.00000, 0, 0.00000, 1.8000, 0.0000, -172.0000)
+
+[node name="Gameplay" type="Node3D" parent="."]
+
+[node name="Patio" type="Node3D" parent="Gameplay"]
+
+[node name="Portugues" type="Node3D" parent="Gameplay"]
+
+[node name="Matematica" type="Node3D" parent="Gameplay"]
+
+[node name="Ciencias" type="Node3D" parent="Gameplay"]
+
+[node name="Geografia" type="Node3D" parent="Gameplay"]
+
+[node name="Musica" type="Node3D" parent="Gameplay"]
+
+[node name="Saida" type="Node3D" parent="Gameplay"]
+
+[node name="Mapa" type="Area3D" parent="Gameplay/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.000, 0.000, -76.550)
+script = ExtResource("30_interact")
+interaction_id = &"patio.mapa"
+prompt_height = 2.1
+metadata/stand = Vector3(-11.000, 0, -76.300)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Patio/Mapa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Patio/Mapa"]
+transform = Transform3D(1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.000, 1.452, -1.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_0")
+surface_material_override/0 = SubResource("StoryMat_mapa")
+
+[node name="Bilhete" type="Area3D" parent="Gameplay/Patio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.000, 0.000, -60.450)
+script = ExtResource("30_interact")
+interaction_id = &"patio.bilhete"
+prompt_height = 2.1
+metadata/stand = Vector3(-9.000, 0, -60.700)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Patio/Bilhete"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Patio/Bilhete"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 2.900, 1.700)
+cast_shadow = 0
+mesh = SubResource("StoryVis_1")
+surface_material_override/0 = SubResource("StoryMat_papel_parede")
+
+[node name="Quadro" type="Area3D" parent="Gameplay/Portugues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.195, 0.000, -14.756)
+script = ExtResource("30_interact")
+interaction_id = &"room_1.quadro"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.000, 0, -14.600)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Portugues/Quadro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Caderno" type="Area3D" parent="Gameplay/Portugues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.500, 0.000, -9.400)
+script = ExtResource("30_interact")
+interaction_id = &"room_1.caderno"
+prompt_height = 2.1
+metadata/stand = Vector3(-12.500, 0, -9.650)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Portugues/Caderno"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Portugues/Caderno"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 1.995, 0.950)
+cast_shadow = 0
+mesh = SubResource("StoryVis_2")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/EstanteNorte")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Portugues/Caderno"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 2.115, 0.950)
+cast_shadow = 0
+mesh = SubResource("StoryVis_3")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/EstanteNorte")
+
+[node name="LivroPreso" type="Area3D" parent="Gameplay/Portugues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.000, 0.000, -28.100)
+script = ExtResource("30_interact")
+interaction_id = &"room_1.livro_preso"
+prompt_height = 2.1
+metadata/stand = Vector3(-11.000, 0, -27.850)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Portugues/LivroPreso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Portugues/LivroPreso"]
+transform = Transform3D(1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.000, 3.645, -0.800)
+cast_shadow = 0
+mesh = SubResource("StoryVis_4")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/EstanteSul")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Portugues/LivroPreso"]
+transform = Transform3D(1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.000, 3.765, -0.800)
+cast_shadow = 0
+mesh = SubResource("StoryVis_5")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/EstanteSul")
+
+[node name="Gaveta" type="Area3D" parent="Gameplay/Portugues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.800, 0.000, -28.650)
+script = ExtResource("30_interact")
+interaction_id = &"room_1.gaveta"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.800, 0, -28.900)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Portugues/Gaveta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Portugues/Gaveta"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 1.890, 0.350)
+cast_shadow = 0
+mesh = SubResource("StoryVis_6")
+surface_material_override/0 = SubResource("StoryMat_cadeado")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/MesaProfessor1")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Portugues/Gaveta"]
+transform = Transform3D(-1.50000, -0.00000, 0.00000, 0.00000, 0.00000, -1.50000, 0.00000, -1.50000, 0.00000, 0.000, 2.190, 0.350)
+cast_shadow = 0
+mesh = SubResource("StoryVis_7")
+surface_material_override/0 = SubResource("StoryMat_cadeado")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/MesaProfessor1")
+
+[node name="Chamada" type="Area3D" parent="Gameplay/Portugues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.500, 0.000, -13.900)
+script = ExtResource("30_interact")
+interaction_id = &"room_1.chamada"
+prompt_height = 2.1
+metadata/stand = Vector3(-21.250, 0, -13.900)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Portugues/Chamada"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Portugues/Chamada"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -0.290, 3.000, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_8")
+surface_material_override/0 = SubResource("StoryMat_papel_parede")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Portugues/EstanteFundo")
+
+[node name="Quadro" type="Area3D" parent="Gameplay/Matematica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.195, 0.000, -43.956)
+script = ExtResource("30_interact")
+interaction_id = &"room_2.quadro"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.000, 0, -43.800)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Matematica/Quadro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Prova" type="Area3D" parent="Gameplay/Matematica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.750, 0.000, -46.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_2.prova"
+prompt_height = 2.1
+metadata/stand = Vector3(-17.000, 0, -46.500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Matematica/Prova"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Matematica/Prova"]
+transform = Transform3D(0.00000, 0.00000, -1.50000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, 0.00000, 1.100, 2.244, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_9")
+surface_material_override/0 = SubResource("StoryMat_papel")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Matematica/Carteira2")
+
+[node name="Comanda" type="Area3D" parent="Gameplay/Matematica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.000, 0.000, -39.400)
+script = ExtResource("30_interact")
+interaction_id = &"room_2.comanda"
+prompt_height = 2.1
+metadata/stand = Vector3(-15.000, 0, -39.650)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Matematica/Comanda"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Matematica/Comanda"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 4.200, 0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_10")
+surface_material_override/0 = SubResource("StoryMat_papel_parede")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Matematica/EstanteNorte")
+
+[node name="Transferidor" type="Area3D" parent="Gameplay/Matematica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.250, 0.000, -41.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_2.transferidor"
+prompt_height = 2.1
+metadata/stand = Vector3(-21.000, 0, -41.500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Matematica/Transferidor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Matematica/Transferidor"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -2.050, 3.600, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_11")
+surface_material_override/0 = SubResource("StoryMat_transferidor")
+
+[node name="Cofre" type="Area3D" parent="Gameplay/Matematica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.000, 0.000, -56.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_2.cofre"
+prompt_height = 2.1
+metadata/stand = Vector3(-16.000, 0, -56.250)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Matematica/Cofre"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Matematica/Cofre"]
+transform = Transform3D(1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.000, 1.050, -0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_12")
+surface_material_override/0 = SubResource("StoryMat_cadeado")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Matematica/EstanteSul")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Matematica/Cofre"]
+transform = Transform3D(1.50000, -0.00000, 0.00000, 0.00000, 0.00000, -1.50000, 0.00000, 1.50000, 0.00000, 0.000, 1.350, -0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_13")
+surface_material_override/0 = SubResource("StoryMat_cadeado")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Matematica/EstanteSul")
+
+[node name="Diario" type="Area3D" parent="Gameplay/Matematica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.850, 0.000, -49.450)
+script = ExtResource("30_interact")
+interaction_id = &"room_2.diario"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.600, 0, -49.450)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Matematica/Diario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Matematica/Diario"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -1.400, 2.535, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_14")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Matematica/MesaProfessor1")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Matematica/Diario"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -1.400, 2.655, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_15")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Matematica/MesaProfessor1")
+
+[node name="CartazPh" type="Area3D" parent="Gameplay/Ciencias"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.000, 0.000, -114.050)
+script = ExtResource("30_interact")
+interaction_id = &"room_3.cartaz_ph"
+prompt_height = 2.1
+metadata/stand = Vector3(-19.000, 0, -113.800)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Ciencias/CartazPh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Caderno" type="Area3D" parent="Gameplay/Ciencias"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.800, 0.000, -111.000)
+script = ExtResource("30_interact")
+interaction_id = &"room_3.caderno"
+prompt_height = 2.1
+metadata/stand = Vector3(-12.550, 0, -111.000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Ciencias/Caderno"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Ciencias/Caderno"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -1.700, 2.955, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_16")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/BancadaLab1")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Ciencias/Caderno"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -1.700, 3.075, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_17")
+surface_material_override/0 = SubResource("StoryMat_livro")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/BancadaLab1")
+
+[node name="Frascos" type="Area3D" parent="Gameplay/Ciencias"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.000, 0.000, -94.300)
+script = ExtResource("30_interact")
+interaction_id = &"room_3.frascos"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.000, 0, -94.550)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Ciencias/Frascos"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Ciencias/Frascos"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.912, 2.235, 1.100)
+cast_shadow = 0
+mesh = SubResource("StoryVis_18")
+surface_material_override/0 = SubResource("StoryMat_frascos")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/EstanteNorte")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Ciencias/Frascos"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.312, 2.235, 1.100)
+cast_shadow = 0
+mesh = SubResource("StoryVis_19")
+surface_material_override/0 = SubResource("StoryMat_frascos")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/EstanteNorte")
+
+[node name="Marcador2" type="MeshInstance3D" parent="Gameplay/Ciencias/Frascos"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, -0.288, 2.235, 1.100)
+cast_shadow = 0
+mesh = SubResource("StoryVis_20")
+surface_material_override/0 = SubResource("StoryMat_frascos")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/EstanteNorte")
+
+[node name="Marcador3" type="MeshInstance3D" parent="Gameplay/Ciencias/Frascos"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, -0.888, 2.235, 1.100)
+cast_shadow = 0
+mesh = SubResource("StoryVis_21")
+surface_material_override/0 = SubResource("StoryMat_frascos")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/EstanteNorte")
+
+[node name="Armario" type="Area3D" parent="Gameplay/Ciencias"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.600, 0.000, -114.200)
+script = ExtResource("30_interact")
+interaction_id = &"room_3.armario"
+prompt_height = 2.1
+metadata/stand = Vector3(-9.600, 0, -113.950)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Ciencias/Armario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Ciencias/Armario"]
+transform = Transform3D(1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.000, 1.050, -0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_22")
+surface_material_override/0 = SubResource("StoryMat_cadeado")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/EstanteSul")
+
+[node name="Marcador1" type="MeshInstance3D" parent="Gameplay/Ciencias/Armario"]
+transform = Transform3D(1.50000, -0.00000, 0.00000, 0.00000, 0.00000, -1.50000, 0.00000, 1.50000, 0.00000, 0.000, 1.350, -0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_23")
+surface_material_override/0 = SubResource("StoryMat_cadeado")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/EstanteSul")
+
+[node name="Relatorio" type="Area3D" parent="Gameplay/Ciencias"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.850, 0.000, -102.750)
+script = ExtResource("30_interact")
+interaction_id = &"room_3.relatorio"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.600, 0, -102.750)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Ciencias/Relatorio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Ciencias/Relatorio"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -1.400, 2.469, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_24")
+surface_material_override/0 = SubResource("StoryMat_papel")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Ciencias/MesaProfessor1")
+
+[node name="Rosa" type="Area3D" parent="Gameplay/Geografia"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.000, 0.000, -124.250)
+script = ExtResource("30_interact")
+interaction_id = &"room_4.rosa"
+prompt_height = 2.1
+metadata/stand = Vector3(-9.000, 0, -124.000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Geografia/Rosa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Geografia/Rosa"]
+transform = Transform3D(1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, 1.50000, 0.000, 0.025, -1.250)
+cast_shadow = 0
+mesh = SubResource("StoryVis_25")
+surface_material_override/0 = SubResource("StoryMat_rosa")
+
+[node name="Plano" type="Area3D" parent="Gameplay/Geografia"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.050, 0.000, -129.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_4.plano"
+prompt_height = 2.1
+metadata/stand = Vector3(-10.800, 0, -129.500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Geografia/Plano"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Geografia/Plano"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -2.450, 2.649, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_26")
+surface_material_override/0 = SubResource("StoryMat_papel")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Geografia/MesaCartas1")
+
+[node name="Globo" type="Area3D" parent="Gameplay/Geografia"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.100, 0.000, -133.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_4.globo"
+prompt_height = 2.1
+metadata/stand = Vector3(-6.850, 0, -133.500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Geografia/Globo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="MapaCidade" type="Area3D" parent="Gameplay/Geografia"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.850, 0.000, -121.000)
+script = ExtResource("30_interact")
+interaction_id = &"room_4.mapa_cidade"
+prompt_height = 2.1
+metadata/stand = Vector3(-20.600, 0, -121.000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Geografia/MapaCidade"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Foto" type="Area3D" parent="Gameplay/Geografia"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.100, 0.000, -118.900)
+script = ExtResource("30_interact")
+interaction_id = &"room_4.foto"
+prompt_height = 2.1
+metadata/stand = Vector3(-19.100, 0, -119.150)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Geografia/Foto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Geografia/Foto"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 3.900, 0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_27")
+surface_material_override/0 = SubResource("StoryMat_foto")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Geografia/EstanteNorte")
+
+[node name="Quadro" type="Area3D" parent="Gameplay/Musica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.187, 0.000, -170.566)
+script = ExtResource("30_interact")
+interaction_id = &"room_5.quadro"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.000, 0, -170.400)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Musica/Quadro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Partitura" type="Area3D" parent="Gameplay/Musica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.050, 0.000, -177.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_5.partitura"
+prompt_height = 2.1
+metadata/stand = Vector3(-11.800, 0, -177.500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Musica/Partitura"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Musica/Partitura"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -0.800, 3.750, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_28")
+surface_material_override/0 = SubResource("StoryMat_papel_parede")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Musica/EstantePartitura1")
+
+[node name="Piano" type="Area3D" parent="Gameplay/Musica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.500, 0.000, -182.700)
+script = ExtResource("30_interact")
+interaction_id = &"room_5.piano"
+prompt_height = 2.1
+metadata/stand = Vector3(-15.500, 0, -182.450)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Musica/Piano"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Bilhete" type="Area3D" parent="Gameplay/Musica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.500, 0.000, -167.000)
+script = ExtResource("30_interact")
+interaction_id = &"room_5.bilhete"
+prompt_height = 2.1
+metadata/stand = Vector3(-12.500, 0, -167.250)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Musica/Bilhete"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Musica/Bilhete"]
+transform = Transform3D(-1.50000, 0.00000, -0.00000, 0.00000, 1.50000, 0.00000, 0.00000, 0.00000, -1.50000, 0.000, 3.000, 0.290)
+cast_shadow = 0
+mesh = SubResource("StoryVis_29")
+surface_material_override/0 = SubResource("StoryMat_papel_parede")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Musica/EstanteNorte")
+
+[node name="Teclado" type="Area3D" parent="Gameplay/Musica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.500, 0.000, -178.400)
+script = ExtResource("30_interact")
+interaction_id = &"room_5.teclado"
+prompt_height = 2.1
+metadata/stand = Vector3(-6.250, 0, -178.400)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Musica/Teclado"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Programa" type="Area3D" parent="Gameplay/Musica"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.850, 0.000, -176.500)
+script = ExtResource("30_interact")
+interaction_id = &"room_5.programa"
+prompt_height = 2.1
+metadata/stand = Vector3(-18.600, 0, -176.500)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Musica/Programa"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Musica/Programa"]
+transform = Transform3D(0.00000, 0.00000, 1.50000, 0.00000, 1.50000, 0.00000, -1.50000, 0.00000, 0.00000, -1.400, 2.469, 0.000)
+cast_shadow = 0
+mesh = SubResource("StoryVis_30")
+surface_material_override/0 = SubResource("StoryMat_papel")
+script = ExtResource("fade_follow")
+follow = NodePath("../../../../School/Props/Musica/MesaProfessor1")
+
+[node name="Ficha" type="Area3D" parent="Gameplay/Saida"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.133, 0.000, -191.990)
+script = ExtResource("30_interact")
+interaction_id = &"sala_saida.ficha"
+prompt_height = 2.1
+metadata/stand = Vector3(-2.900, 0, -191.900)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/Saida/Ficha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("SphereShape3D_interact")
+
+[node name="Marcador0" type="MeshInstance3D" parent="Gameplay/Saida/Ficha"]
+transform = Transform3D(0.53847, 0.00000, 1.40002, 0.00000, 1.50000, 0.00000, -1.40002, 0.00000, 0.53847, -1.067, 2.219, -0.410)
+cast_shadow = 0
+mesh = SubResource("StoryVis_31")
+surface_material_override/0 = SubResource("StoryMat_papel")
+
+[node name="LousaNotas" type="Node3D" parent="Gameplay/Musica"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -23.300, 3.400, -175.000)
+script = ExtResource("lousa_notas")
+room_id = "room_5"
+largura = 4.40
+
+[node name="TecladoPorta" type="StaticBody3D" parent="Gameplay/Musica" groups=["camera_fade"]]
+transform = Transform3D(0.00000, 0, 1.00000, 0, 1, 0, -1.00000, 0, 0.00000, -7.600, 0.000, -178.400)
+collision_mask = 0
+script = ExtResource("teclado_porta")
+puzzle_id = &"mus_teclado"
+

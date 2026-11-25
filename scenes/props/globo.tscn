@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/modelo_prop.gd" id="ms"]
+[ext_resource type="PackedScene" path="res://assets/models/globo.glb" id="g"]
+
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(0.6, 0.9, 0.6)
+
+[node name="Globo" type="Node3D" groups=["camera_fade"]]
+
+[node name="Modelo" type="Node3D" parent="."]
+script = ExtResource("ms")
+modelo = ExtResource("g")
+rotacao = Vector3(0, 0, 0)
+caixa = Vector3(0.7, 0.9, 0.7)
+ajuste = 0
+base = Vector3(0, 0, 0)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("caixa")
+

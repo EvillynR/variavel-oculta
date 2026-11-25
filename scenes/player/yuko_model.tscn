@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://c2cp16gregojw" path="res://assets/characters/yuko/YukoRig.glb" id="1_glb"]
+[ext_resource type="Script" path="res://scripts/player/yuko_animator.gd" id="2_anim"]
+
+[node name="Yuko" type="Node3D"]
+script = ExtResource("2_anim")
+
+[node name="YukoRig" parent="." instance=ExtResource("1_glb")]

@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/core/apresentacao_sala.gd" id="1"]
+
+[node name="Apresentacao_6_final_saida" type="Node"]
+script = ExtResource("1")
+sala = "final"

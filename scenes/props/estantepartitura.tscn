@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/materials/prop_metal.tres" id="m0"]
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(0.500, 1.400, 0.500)
+
+
+[node name="EstantePartitura" type="CSGCombiner3D" groups=["camera_fade"]]
+
+[node name="Haste" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.5750, 0.0000)
+material = ExtResource("m0")
+radius = 0.03
+height = 1.150
+sides = 14
+
+[node name="Base" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.0200, 0.0000)
+material = ExtResource("m0")
+radius = 0.25
+height = 0.040
+sides = 14
+
+[node name="Apoio" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.2500, 0.0000)
+material = ExtResource("m0")
+size = Vector3(0.500, 0.300, 0.040)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 0.7000, 0.0000)
+shape = SubResource("caixa")
+

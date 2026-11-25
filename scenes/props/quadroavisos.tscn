@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/materials/prop_fabric.tres" id="m0"]
+[ext_resource type="Material" path="res://assets/materials/prop_paper.tres" id="m1"]
+[ext_resource type="Material" path="res://assets/materials/prop_wood_dark.tres" id="m2"]
+[sub_resource type="BoxShape3D" id="caixa"]
+size = Vector3(2.100, 1.250, 0.070)
+
+
+[node name="QuadroAvisos" type="CSGCombiner3D" groups=["camera_fade"]]
+
+[node name="Moldura" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.6250, -0.0200)
+material = ExtResource("m2")
+size = Vector3(2.100, 1.250, 0.040)
+
+[node name="Cortica" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.6250, 0.0100)
+material = ExtResource("m0")
+size = Vector3(2.000, 1.150, 0.020)
+
+[node name="Papel0" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.7000, 1.5250, 0.0250)
+material = ExtResource("m1")
+size = Vector3(0.300, 0.450, 0.010)
+
+[node name="Papel1" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, -0.2800, 1.8750, 0.0250)
+material = ExtResource("m1")
+size = Vector3(0.300, 0.450, 0.010)
+
+[node name="Papel2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.1400, 1.5250, 0.0250)
+material = ExtResource("m1")
+size = Vector3(0.300, 0.450, 0.010)
+
+[node name="Papel3" type="CSGBox3D" parent="."]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.5600, 1.8750, 0.0250)
+material = ExtResource("m1")
+size = Vector3(0.300, 0.450, 0.010)
+
+[node name="Colisao" type="StaticBody3D" parent="." groups=["prop_body", "camera_fade"]]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Caixa" type="CollisionShape3D" parent="Colisao"]
+transform = Transform3D(1.00000, 0, -0.00000, 0, 1, 0, 0.00000, 0, 1.00000, 0.0000, 1.6250, -0.0050)
+shape = SubResource("caixa")
+

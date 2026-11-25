@@ -1,0 +1,24 @@
+game_data_test rc=0 1s | RESULTADO: 142/142 testes passaram
+narrative_data_test rc=0 0s | RESULTADO: 40/40 testes passaram
+puzzle_system_test rc=0 1s | RESULTADO: 49/49 testes passaram
+interaction_prompt_test rc=0 1s | RESULTADO: 24/24 testes passaram
+room_progress_test rc=0 5s | RESULTADO: 37/37 testes passaram
+monster_pilot_test rc=0 4s | RESULTADO: 35/35 testes passaram
+monster_hearing_test rc=1 4s | RESULTADO: 60/63 testes passaram
+six_rooms_test rc=1 2s | RESULTADO: 70/72 testes passaram
+player_monster_collision_test rc=0 4s | RESULTADO: 48/48 testes passaram
+player_wall_movement_test rc=0 3s | RESULTADO: 21/21 testes passaram
+camera_behavior_test rc=0 2s | RESULTADO: 10/10 testes passaram
+camera_occlusion_test rc=0 1s | RESULTADO: SEM BLOQUEIOS
+door_test rc=0 2s | RESULTADO: 48/48 testes passaram
+esconderijo_test rc=0 2s | RESULTADO: 16/16 testes passaram
+ruido_test rc=0 1s | RESULTADO: 9/9 testes passaram
+etapa45_navigation_test rc=1 12s | RESULTADO: 161/164 testes passaram
+camera_solid_collision_test rc=1 19s | RESULTADO: 59/63 testes passaram
+percurso_completo_test rc=0 8s | RESULTADO: 21/21 testes passaram
+floor_sweep_test rc=0 1s | RESULTADO: 13/13 testes passaram
+camera_fixa_test rc=0 9s | RESULTADO: 12/12 testes passaram
+save_load_test rc=0 1s | RESULTADO: 27/27 testes passaram
+fluxo_menu_test rc=0 2s | RESULTADO: 31/31 testes passaram
+moveis_colisao_test rc=0 29s | RESULTADO: 3/3 testes passaram
+camera_geometry_sweep_test (órbita) | RESULTADO: SEM PROBLEMAS
