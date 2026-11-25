@@ -7,11 +7,8 @@ O projeto é o resultado prático do trabalho "A gamificação como solução no
 ![A Leitora escrevendo na lousa da sala de Português](docs/capturas/leitora_lousa.jpg)
 
 ## Equipe
-
-- **Beatriz Helena**: pesquisa
-- **Ana Júlia Torres Reis**: personagens e animações no Blender
-- **Ícaro Alves**: gamificação e pistas
-- **Evillyn Rosa**: gestão do projeto e back end
+- **Ana Júlia Torres Reis**: personagens, importação de objetos, Front-end e  animações no Blender
+- **Evillyn Rosa**: gestão do projeto, gamificação, pistas e back end
 
 ## Jogar sem instalar nada (Windows)
 
